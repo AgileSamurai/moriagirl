@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 name.add(currentName);
 
                 syokaiButton.setVisibility(View.VISIBLE);
-                Toast.makeText(getApplicationContext(), currentName + R.string.toastContexts,
+                Toast.makeText(getApplicationContext(), currentName + "登録しました～",
                         Toast.LENGTH_SHORT).show();
             }
         });
