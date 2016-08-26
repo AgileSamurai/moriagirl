@@ -14,82 +14,74 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MainActivity extends AppCompatActivity {
+    List<String> name = new ArrayList();
+    Button syokaiButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        syokaiButton = (Button)findViewById(R.id.syokai);
     }
 
-    public static class MainActivity extends AppCompatActivity {
-        List<String> name = new ArrayList();
-        Button syokaiButton;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            syokaiButton = (Button)findViewById(R.id.syokai);
-        }
+    public void miku(View view){
+        displayMessage("一人ずつ名前を入力してください～");
+    }
 
+    public void input(View view){
 
-        public void miku(View view){
-            displayMessage("一人ずつ名前を入力してください～");
-        }
+        AlertDialog.Builder ad=new AlertDialog.Builder(this);
+        ad.setTitle("名前");
+        ad.setIcon(R.drawable.asd);
 
-        public void input(View view){
+        final EditText input = new EditText(MainActivity.this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(lp);
+        ad.setView(input);
 
-            AlertDialog.Builder ad=new AlertDialog.Builder(this);
-            ad.setTitle("名前");
-            ad.setIcon(R.drawable.asd);
+        //ad.setView(R.layout.edittext);
+        ad.setPositiveButton("登録", new DialogInterface.OnClickListener() {
 
-            final EditText input = new EditText(MainActivity.this);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT);
-            input.setLayoutParams(lp);
-            ad.setView(input);
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                String currentName = input.getText().toString();
+                name.add(currentName);
 
-            //ad.setView(R.layout.edittext);
-            ad.setPositiveButton("登録", new DialogInterface.OnClickListener() {
+                syokaiButton.setVisibility(View.VISIBLE);
+                Toast.makeText(getApplicationContext(), currentName + "登録しました～",
+                        Toast.LENGTH_SHORT).show();
 
-                @Override
-                public void onClick(DialogInterface dialog, int i) {
-                    String currentName = input.getText().toString();
-                    name.add(currentName);
-
-                    syokaiButton.setVisibility(View.VISIBLE);
-                    Toast.makeText(getApplicationContext(), currentName + "登録しました～",
-                            Toast.LENGTH_SHORT).show();
-
-                }
-            });
-            ad.setNegativeButton("キャンセル",new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int i) {
-                    dialog.dismiss();
-                }
-            });
-            ad.create();
-            ad.show();
-        }
-
-        public void syokai(View view) {
-            if(!name.isEmpty()){
-                displayMessage("では、" + name.get(0) + " さん自己紹介してください～");
-                name.remove(0);
-            }else {
-                syokaiButton.setVisibility(View.INVISIBLE);
-                displayMessage("バイバイ～");
             }
+        });
+        ad.setNegativeButton("キャンセル",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.dismiss();
+            }
+        });
+        ad.create();
+        ad.show();
+    }
+
+    public void syokai(View view) {
+        if(!name.isEmpty()){
+            displayMessage("では、" + name.get(0) + " さん自己紹介してください～");
+            name.remove(0);
+        }else {
+            syokaiButton.setVisibility(View.INVISIBLE);
+            displayMessage("バイバイ～");
         }
+    }
 
 
-        private void displayMessage(String message) {
-            TextView priceTextView = (TextView) findViewById(R.id.miku);
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.miku);
 
-            priceTextView.setText(message);
-        }
+        priceTextView.setText(message);
     }
 }
