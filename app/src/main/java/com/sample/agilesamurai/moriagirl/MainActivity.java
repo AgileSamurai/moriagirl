@@ -17,16 +17,22 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     List<String> name = new ArrayList();
     Button syokaiButton;
+    Speeching speeching;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         syokaiButton = (Button)findViewById(R.id.syokai);
+        speeching = new Speeching(this);
     }
 
+    @Override
+    protected void onDestroy(){
+        speeching.shutDown();
+    }
     public void displayInputMessage(View view){
-        displayMessage(R.string.inputName);
+        displayMessage(getString(R.string.inputName));
     }
 
     public void inputName(View view){
@@ -66,17 +72,17 @@ public class MainActivity extends AppCompatActivity {
             name.remove(0);
         }else {
             syokaiButton.setVisibility(View.INVISIBLE);
-            displayMessage(R.string.byebye);
+            displayMessage(getString(R.string.byebye));
         }
     }
 
     private void displayMessage(String message) {
         TextView priceTextView = (TextView) findViewById(R.id.mikuText);
         priceTextView.setText(message);
+        speech(message);
     }
 
-    private void displayMessage(int message) {
-        TextView priceTextView = (TextView) findViewById(R.id.mikuText);
-        priceTextView.setText(message);
+    private void speech(String string){
+        speeching.speechText(string);
     }
 }

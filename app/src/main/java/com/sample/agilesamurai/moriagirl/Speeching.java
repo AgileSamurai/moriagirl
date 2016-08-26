@@ -80,7 +80,7 @@ public class Speeching  implements TextToSpeech.OnInitListener{
     private void setSpeechPitch(float pitch){
             textToSpeech.setPitch(pitch);
         }
-    }
+
 
     // 読み上げの始まりと終わりを取得
     private void setTtsListener(){
