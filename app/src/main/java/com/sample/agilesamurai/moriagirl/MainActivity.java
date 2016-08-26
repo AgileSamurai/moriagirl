@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,37 +27,31 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void miku(View view){
-        displayMessage("一人ずつ名前を入力してください～");
+        displayMessage(R.string.inputName);
     }
 
     public void input(View view){
-
         AlertDialog.Builder ad=new AlertDialog.Builder(this);
-        ad.setTitle("名前");
+        ad.setTitle(R.string.name);
         ad.setIcon(R.drawable.asd);
-
         final EditText input = new EditText(MainActivity.this);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
         input.setLayoutParams(lp);
         ad.setView(input);
-
-        //ad.setView(R.layout.edittext);
-        ad.setPositiveButton("登録", new DialogInterface.OnClickListener() {
-
+        ad.setPositiveButton(R.string.signIn, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 String currentName = input.getText().toString();
                 name.add(currentName);
 
                 syokaiButton.setVisibility(View.VISIBLE);
-                Toast.makeText(getApplicationContext(), currentName + "登録しました～",
+                Toast.makeText(getApplicationContext(), currentName + R.string.toastContexts,
                         Toast.LENGTH_SHORT).show();
-
             }
         });
-        ad.setNegativeButton("キャンセル",new DialogInterface.OnClickListener() {
+        ad.setNegativeButton(R.string.cancel ,new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 dialog.dismiss();
@@ -74,14 +67,17 @@ public class MainActivity extends AppCompatActivity {
             name.remove(0);
         }else {
             syokaiButton.setVisibility(View.INVISIBLE);
-            displayMessage("バイバイ～");
+            displayMessage(R.string.byebye);
         }
     }
 
-
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.miku);
+        TextView priceTextView = (TextView) findViewById(R.id.mikuText);
+        priceTextView.setText(message);
+    }
 
+    private void displayMessage(int message) {
+        TextView priceTextView = (TextView) findViewById(R.id.mikuText);
         priceTextView.setText(message);
     }
 }
