@@ -15,7 +15,7 @@
         android:padding="20dp"
         android:layout_margin="20dp"
         android:text="@string/aisatsu"
-        android:onClick="input"/>
+        android:onClick="inputName"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="miku"
+        android:onClick="displayInputMessage"
         android:src="@drawable/abata" />
 
         <Button
@@ -40,7 +40,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
             android:visibility="gone"
-            android:onClick="syokai"/>
+            android:onClick="selfIntroduction"/>
 
     </RelativeLayout>
 

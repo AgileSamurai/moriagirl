@@ -25,12 +25,11 @@ public class MainActivity extends AppCompatActivity {
         syokaiButton = (Button)findViewById(R.id.syokai);
     }
 
-
-    public void miku(View view){
+    public void displayInputMessage(View view){
         displayMessage(R.string.inputName);
     }
 
-    public void input(View view){
+    public void inputName(View view){
         AlertDialog.Builder ad=new AlertDialog.Builder(this);
         ad.setTitle(R.string.name);
         ad.setIcon(R.drawable.asd);
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         ad.show();
     }
 
-    public void syokai(View view) {
+    public void selfIntroduction(View view) {
         if(!name.isEmpty()){
             displayMessage("では、" + name.get(0) + " さん自己紹介してください～");
             name.remove(0);
