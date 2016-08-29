@@ -50,7 +50,7 @@ public class TextRead {
 
                 //1から10までrandom
                 Random rnd = new Random();
-                int ran = rnd.nextInt(10) + 1;
+                int ran = rnd.nextInt(text_num);
 
                 // １行ずつ読み込む
                 String str;
