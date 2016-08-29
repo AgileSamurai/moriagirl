@@ -19,7 +19,7 @@ public class Talking {
      * @param text 話すテキスト
      */
     public void talk(String text){
-        balloon.show(text);   
+        balloon.show(text);
         speeching.speechText(text);
     }
 
