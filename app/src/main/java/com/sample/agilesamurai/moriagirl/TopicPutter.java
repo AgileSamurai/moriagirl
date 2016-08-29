@@ -64,7 +64,7 @@ public class TopicPutter {
 
                 //1から10までrandom
                 Random rnd = new Random();
-                int ran = rnd.nextInt(11) + 1;
+                int ran = rnd.nextInt(10) + 1;
 
                 // １行ずつ読み込み、改行を付加する
                 String str;
@@ -72,7 +72,7 @@ public class TopicPutter {
                 while ((str = br.readLine()) != null) {
                     count++;
                     if(count == ran) {
-                        text += str + "\n";
+                        text = str;
                     }
                 }
 
