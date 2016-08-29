@@ -21,6 +21,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     List<String> name = new ArrayList();
     Button syokaiButton;
+    MemberManager memberManager;
     Speeching speeching;
 
     @Override
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         syokaiButton = (Button)findViewById(R.id.syokai);
         speeching = new Speeching(this);
+
+        memberManager = new MemberManager(this);
     }
 
     @Override
@@ -41,34 +44,9 @@ public class MainActivity extends AppCompatActivity {
         displayMessage(getString(R.string.inputName));
     }
 
+    // TODO: いつタップされても入力できちゃうから直す
     public void inputName(View view){
-        AlertDialog.Builder ad=new AlertDialog.Builder(this);
-        ad.setTitle(R.string.name);
-        ad.setIcon(R.drawable.asd);
-        final EditText input = new EditText(MainActivity.this);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT);
-        input.setLayoutParams(lp);
-        ad.setView(input);
-        ad.setPositiveButton(R.string.signIn, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                String currentName = input.getText().toString();
-                name.add(currentName);
-                syokaiButton.setVisibility(View.VISIBLE);
-                Toast.makeText(getApplicationContext(), currentName + "登録しました～",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-        ad.setNegativeButton(R.string.cancel ,new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                dialog.dismiss();
-            }
-        });
-        ad.create();
-        ad.show();
+        memberManager.inputName();
     }
 
     public void selfIntroduction(View view) {
