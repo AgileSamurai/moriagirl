@@ -7,7 +7,7 @@ import android.widget.TextView;
  * Created by コウ on 2016/8/29.
  */
 public class Balloon extends AppCompatActivity {
-    private void displayMessage(String message) {
+    protected void show(String message) {
         TextView priceTextView = (TextView) findViewById(R.id.mikuText);
         priceTextView.setText(message);
     }
