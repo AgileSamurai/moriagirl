@@ -19,7 +19,7 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    List<String> name = new ArrayList();
+    List<String> name;
     Button syokaiButton;
     MemberManager memberManager;
     Speeching speeching;
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         speeching = new Speeching(this);
 
         memberManager = new MemberManager(this);
+        name = memberManager.getNames();
     }
 
     @Override
