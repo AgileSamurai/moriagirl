@@ -1,5 +1,6 @@
 package com.sample.agilesamurai.moriagirl;
 
+import android.app.Activity;
 import android.content.Context;
 
 /**
@@ -9,9 +10,9 @@ public class Talking {
 
     Balloon balloon;
     Speeching speeching;
-    public Talking(Context context){
-        balloon = new Balloon();
-        speeching = new Speeching(context);
+    public Talking(Activity activity){
+        balloon = new Balloon(activity);
+        speeching = new Speeching(activity);
     }
 
     /**

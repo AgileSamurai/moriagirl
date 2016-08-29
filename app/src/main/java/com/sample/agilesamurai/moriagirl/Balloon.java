@@ -1,5 +1,6 @@
 package com.sample.agilesamurai.moriagirl;
 
+import android.app.Activity;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,11 +10,11 @@ import android.widget.TextView;
 /**
  * Created by コウ on 2016/8/29.
  */
-public class Balloon  {
-    private Window mWindow;
-    
-    public Window getWindow() {
-        return mWindow;
+public class Balloon {
+    private Activity activity;
+
+    public Balloon(Activity activity){
+        this.activity = activity;
     }
 
     protected void show(String message) {
@@ -22,6 +23,6 @@ public class Balloon  {
     }
 
     public View findViewById(@IdRes int id) {
-        return getWindow().findViewById(id);
+        return activity.findViewById(id);
     }
 }
