@@ -53,11 +53,12 @@ public class TextRead {
         try {
             try {
                 // assetsフォルダ内のtopic.txt をオープンする
+                inputstream = context.getAssets().open(filename);
                 bufferedreader = new BufferedReader(new InputStreamReader(inputstream));
 
                 //1から10までrandom
                 Random rnd = new Random();
-                int ran = rnd.nextInt(text_num);
+                int ran = rnd.nextInt(text_num)+1;
 
                 // １行ずつ読み込む
                 String str;
@@ -89,6 +90,7 @@ public class TextRead {
     public String simpleTextRead(int index){
         try {
             try {
+                inputstream = context.getAssets().open(filename);
                 bufferedreader = new BufferedReader(new InputStreamReader(inputstream));
 
                 //1から10までrandom
