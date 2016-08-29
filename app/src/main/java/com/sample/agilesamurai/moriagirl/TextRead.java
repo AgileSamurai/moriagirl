@@ -16,7 +16,7 @@ public class TextRead {
     String text;
     String filename;
     Context context;
-    Talking talking;
+    //Talking talking;
     int text_num;
 
     //コンストラクタ
@@ -26,19 +26,26 @@ public class TextRead {
         text = "";
         context = context_input;
         //talking = new Talking(context);
-        filename = name
+        filename = name;
         setFile();
     }
 
     //扱うテキストファイルの名前を設定,行数を取得
     public void setFile() {
-        inputstream = context.getAssets().open(filename);
-        bufferedreader = new BufferedReader(new InputStreamReader(inputstream));
+        try {
 
-        String str;
-        while (str = bufferedreader.readLine() != null) {
-           text_num++;
+            inputstream = context.getAssets().open(filename);
+            bufferedreader = new BufferedReader(new InputStreamReader(inputstream));
+
+            String str;
+            while ((str = bufferedreader.readLine()) != null) {
+                text_num++;
+            }
+
+        } catch (Exception e) {
+            // エラー発生時の処理
         }
+
     }
 
     //テキストファイルからランダムに読み込み
