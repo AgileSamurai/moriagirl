@@ -20,7 +20,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@id/mikuImage"
+            android:id="@+id/mikuImage"
             android:layout_width="300dp"
             android:layout_height="500dp"
             android:scaleType="fitStart"
@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/mikuImage"
+            android:layout_toRightOf="@id/mikuImage"
             android:text="00:00"
             android:textSize="56dp"
             android:gravity="center"
