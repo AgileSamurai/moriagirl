@@ -7,10 +7,10 @@ import android.content.Context;
  */
 public class Talking {
 
-    // Baloon baloon;   // TODO: enable
+    Balloon balloon;
     Speeching speeching;
     public Talking(Context context){
-        // baloon = new Baloon();   // TODO: enable
+        balloon = new Balloon();
         speeching = new Speeching(context);
     }
 
@@ -19,7 +19,7 @@ public class Talking {
      * @param text 話すテキスト
      */
     public void talk(String text){
-        // baloon.show(text);   // TODO: enable
+        balloon.show(text);
         speeching.speechText(text);
     }
 
