@@ -16,6 +16,7 @@ import java.util.List;
 /**
  * Created by motoki on 2016/08/29.
  */
+
 public class MemberManager{
     private List names = new ArrayList();
     private Activity activity;
@@ -33,6 +34,7 @@ public class MemberManager{
         alertDialogBuilder.setIcon(R.drawable.asd);
         final EditText input = new EditText(activity);
         final int[] registerClicked = new int[1]; // リスナーの方で設定できるようにするために配列にした
+
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
@@ -52,6 +54,7 @@ public class MemberManager{
                 Toast.makeText(activity, currentName + "登録しました～",
                         Toast.LENGTH_SHORT).show();
             }
+
         });
 
         alertDialogBuilder.setNegativeButton(R.string.cancel ,new DialogInterface.OnClickListener() {
@@ -60,6 +63,7 @@ public class MemberManager{
                 dialog.dismiss();
                 registerClicked[0] = 0;
             }
+
         });
 
         alertDialogBuilder.create();
@@ -69,6 +73,7 @@ public class MemberManager{
             return true;
         else
             return false;
+
     }
 
     /**

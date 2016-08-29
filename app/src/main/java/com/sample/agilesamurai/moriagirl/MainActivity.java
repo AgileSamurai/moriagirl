@@ -21,6 +21,13 @@ public class MainActivity extends AppCompatActivity {
     MemberManager memberManager;
     Speeching speeching;
 
+    public enum State {
+        DisplayInputMessage,
+        InputName,
+        SelfIntroduction;
+    }
+    State state = State.DisplayInputMessage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,18 +45,36 @@ public class MainActivity extends AppCompatActivity {
         speeching.shutDown();
     }
 
-    public void displayInputMessage(View view){
+    public void displayInputMessage(){
         displayMessage(getString(R.string.inputName));
+        state = State.InputName;
     }
 
     // TODO: いつタップされても入力できちゃうから直す
-    public void inputName(View view){
-        memberManager.inputName();
+    public void inputName() {
+        boolean apply;
+        apply = memberManager.inputName();
+        System.out.println(apply);
     }
 
     public void selfIntroduction(View view){
+        state = State.SelfIntroduction;
         SelfIntroduction selfIntroduction = new SelfIntroduction(name, this);
         selfIntroduction.introduction();
+    }
+
+    public void onClick(View view){
+        switch(state) {
+            case DisplayInputMessage:
+                displayInputMessage();
+                break;
+            case InputName:
+                inputName();
+                break;
+            case SelfIntroduction:
+                selfIntroduction(view);
+                break;
+        }
     }
 
     private void displayMessage(String message) {
