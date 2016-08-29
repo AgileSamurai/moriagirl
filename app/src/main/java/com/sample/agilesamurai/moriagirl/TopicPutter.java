@@ -22,7 +22,7 @@ public class TopicPutter {
         text = "";
     }
 
-    public String TextContents(){
+    public String textContents(){
         return text;
     }
 
