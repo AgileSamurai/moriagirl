@@ -1,5 +1,6 @@
 package com.sample.agilesamurai.moriagirl;
 
+import android.app.Activity;
 import android.content.Context;
 import java.io.InputStreamReader;
 import java.io.InputStream;
@@ -14,15 +15,15 @@ public class TopicPutter {
     InputStream inputstream;
     BufferedReader bufferedreader;
     String text;
-    Context context;
+    Activity activity;
     Talking talking;
 
-    TopicPutter(Context context_input) {
+    TopicPutter(Activity context_input) {
         inputstream = null;
         bufferedreader= null;
         text = "";
-        context = context_input;
-        talking = new Talking(context);
+        activity = context_input;
+        talking = new Talking(activity);
     }
 
     public String textContents(){
@@ -35,7 +36,7 @@ public class TopicPutter {
         try {
             try {
                 // assetsフォルダ内の sample.txt をオープンする
-                inputstream = context.getAssets().open("sample.txt");
+                inputstream = activity.getAssets().open("sample.txt");
                 bufferedreader = new BufferedReader(new InputStreamReader(inputstream));
 
                 // １行ずつ読み込み、改行を付加する
@@ -59,7 +60,7 @@ public class TopicPutter {
         try {
             try {
                 // assetsフォルダ内のtopic.txt をオープンする
-                inputstream = context.getAssets().open("topic.txt");
+                inputstream = activity.getAssets().open("topic.txt");
                 bufferedreader = new BufferedReader(new InputStreamReader(inputstream));
 
                 //1から10までrandom

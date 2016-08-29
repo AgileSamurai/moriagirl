@@ -1,5 +1,6 @@
 package com.sample.agilesamurai.moriagirl;
 
+import android.app.Activity;
 import android.content.Context;
 
 /**
@@ -7,23 +8,25 @@ import android.content.Context;
  */
 public class Greeting {
     Talking talking;
-    String gr1;
+
+    String grl;
     TextRead inputfile;
 
-    public Greeting(Context context_input){
+    public Greeting(Activity context_input){
        // gr1 = "こんにちは、もりあガールです";
         talking = new Talking(context_input);
         inputfile = new TextRead(context_input,"greeting.txt");
     }
 
     public void startGreeting(){
-        gr1 = inputfile.simpleTextRead(0);
-        talking.talk(gr1);
+        grl = inputfile.simpleTextRead(0);
+        talking.talk(grl);
+
     }
 
 
     public void randomGreeting(){
-        gr1 = inputfile.randomTextRead();
-        talking.talk(gr1);
+        grl = inputfile.randomTextRead();
+        talking.talk(grl);
     }
 }
