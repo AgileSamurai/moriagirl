@@ -38,7 +38,7 @@ public class TopicPutter {
                 br = new BufferedReader(new InputStreamReader(is));
 
                 // １行ずつ読み込み、改行を付加する
-                String text = br.readLine();
+                text = br.readLine();
 
                 //話す
                 //talking.talk(text);
