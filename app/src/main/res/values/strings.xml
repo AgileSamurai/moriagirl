@@ -8,4 +8,5 @@
     <string name="name">名前</string>
     <string name="inputName">一人ずつ名前を入力してください～</string>
     <string name="kuma">球磨だクマ！</string>
+    <string name="end">終わり</string>
 </resources>
