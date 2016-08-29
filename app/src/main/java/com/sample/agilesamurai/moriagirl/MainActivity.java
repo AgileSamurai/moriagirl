@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     Button syokaiButton;
     MemberManager memberManager;
     Speeching speeching;
-    LinearLayout linear;
     int state = 0;
 
     @Override
