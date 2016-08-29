@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by motoki on 2016/08/29.
  */
-public class MemberManager  extends ArrayList<String>{
+public class MemberManager{
     private List names = new ArrayList();
     private Activity activity;
 
