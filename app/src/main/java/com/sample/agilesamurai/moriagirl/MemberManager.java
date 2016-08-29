@@ -16,6 +16,7 @@ import java.util.List;
 /**
  * Created by motoki on 2016/08/29.
  */
+
 public class MemberManager{
     private List names = new ArrayList();
     private Activity activity;
@@ -27,7 +28,7 @@ public class MemberManager{
     /**
      * 名前を入力するウィンドウを表示し、名前を入力させる
      */
-    public void inputName(){
+    public boolean inputName(){
         AlertDialog.Builder alertDialogBuilder=new AlertDialog.Builder(activity);
         alertDialogBuilder.setTitle(R.string.name);
         alertDialogBuilder.setIcon(R.drawable.asd);
@@ -50,17 +51,23 @@ public class MemberManager{
                 Toast.makeText(activity, currentName + "登録しました～",
                         Toast.LENGTH_SHORT).show();
             }
+
         });
 
         alertDialogBuilder.setNegativeButton(R.string.cancel ,new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 dialog.dismiss();
+
             }
+
         });
 
         alertDialogBuilder.create();
         alertDialogBuilder.show();
+
+        return false;
+
     }
 
     /**

@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     Button syokaiButton;
     MemberManager memberManager;
     Speeching speeching;
+    LinearLayout linear;
+    int state = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +43,20 @@ public class MainActivity extends AppCompatActivity {
         speeching.shutDown();
     }
 
-    public void displayInputMessage(View view){
+    public void displayInputMessage(){
         displayMessage(getString(R.string.inputName));
+        state = 1;
     }
 
     // TODO: いつタップされても入力できちゃうから直す
-    public void inputName(View view){
-        memberManager.inputName();
+    public void inputName() {
+        boolean apply = memberManager.inputName();
+        if(!apply){
+            state = 2;
+        }
     }
 
-    public void selfIntroduction(View view) {
+    public void selfIntroduction() {
         if(!name.isEmpty()){
             displayMessage("では、" + name.get(0) + " さん自己紹介してください～");
             name.remove(0);
@@ -58,6 +64,21 @@ public class MainActivity extends AppCompatActivity {
             syokaiButton.setVisibility(View.INVISIBLE);
             displayMessage(getString(R.string.byebye));
         }
+    }
+
+    public void onClick(View view){
+        switch(state) {
+            case 0:
+                displayInputMessage();
+                break;
+            case 1:
+                inputName();
+                break;
+            case 2:
+                selfIntroduction();
+                break;
+        }
+
     }
 
     private void displayMessage(String message) {
