@@ -20,18 +20,18 @@ public class TextRead {
     int text_num;
 
     //コンストラクタ
-    TextRead(Context context_input) {
+    TextRead(Context context_input,String name) {
         inputstream = null;
         bufferedreader= null;
         text = "";
         context = context_input;
         //talking = new Talking(context);
+        filename = name
         setFile();
     }
 
     //扱うテキストファイルの名前を設定,行数を取得
     public void setFile() {
-        filename = name;
         inputstream = context.getAssets().open(filename);
         bufferedreader = new BufferedReader(new InputStreamReader(inputstream));
 
