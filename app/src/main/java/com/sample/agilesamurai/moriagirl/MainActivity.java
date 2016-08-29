@@ -20,7 +20,13 @@ public class MainActivity extends AppCompatActivity {
     Button syokaiButton;
     MemberManager memberManager;
     Speeching speeching;
-    int state = 0;
+
+    public enum State {
+        DisplayInputMessage,
+        InputName,
+        SelfIntroduction;
+    }
+    State state = State.DisplayInputMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +47,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void displayInputMessage(){
         displayMessage(getString(R.string.inputName));
-        state = 1;
+        state = State.InputName;
     }
 
     // TODO: いつタップされても入力できちゃうから直す
     public void inputName() {
-        boolean apply = memberManager.inputName();
+        boolean apply;
+        apply = memberManager.inputName();
         if(!apply){
-            state = 2;
+            state = State.SelfIntroduction;
         }
     }
 
@@ -59,17 +66,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view){
         switch(state) {
-            case 0:
+            case DisplayInputMessage:
                 displayInputMessage();
                 break;
-            case 1:
+            case InputName:
                 inputName();
                 break;
-            case 2:
+            case SelfIntroduction:
                 selfIntroduction();
                 break;
         }
-
     }
 
     private void displayMessage(String message) {
