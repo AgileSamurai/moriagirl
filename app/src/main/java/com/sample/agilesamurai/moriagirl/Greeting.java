@@ -8,6 +8,7 @@ import android.content.Context;
  */
 public class Greeting {
     Talking talking;
+
     String grl;
     public Greeting(Activity context_input){
         grl = "こんにちは、もりあガールです";
