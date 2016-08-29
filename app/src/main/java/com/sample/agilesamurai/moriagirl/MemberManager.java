@@ -24,7 +24,10 @@ public class MemberManager  extends ArrayList<String>{
         this.activity = activity;
     }
 
-    public void inputName(View view){
+    /**
+     * 名前を入力するウィンドウを表示し、名前を入力させる
+     */
+    public void inputName(){
         AlertDialog.Builder alertDialogBuilder=new AlertDialog.Builder(activity);
         alertDialogBuilder.setTitle(R.string.name);
         alertDialogBuilder.setIcon(R.drawable.asd);
@@ -43,6 +46,7 @@ public class MemberManager  extends ArrayList<String>{
                 Button syokaiButton = (Button)activity.findViewById(R.id.syokai);
                 syokaiButton.setVisibility(View.VISIBLE);
 
+                // TODO: Toastよりは吹き出しに何か表示してしゃべってくれた方がいい
                 Toast.makeText(activity, currentName + "登録しました～",
                         Toast.LENGTH_SHORT).show();
             }
@@ -59,6 +63,10 @@ public class MemberManager  extends ArrayList<String>{
         alertDialogBuilder.show();
     }
 
+    /**
+     * 名前を取得する
+     * @return 名前List
+     */
     public List getNames(){
         return names;
     }
