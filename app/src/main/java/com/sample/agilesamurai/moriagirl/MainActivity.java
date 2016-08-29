@@ -1,8 +1,6 @@
 package com.sample.agilesamurai.moriagirl;
 
 import android.content.DialogInterface;
-import android.content.res.AssetManager;
-import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,13 +11,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    List<String> name = new ArrayList();
+    static List<String> name = new ArrayList();
     Button syokaiButton;
     Speeching speeching;
 
@@ -71,14 +68,9 @@ public class MainActivity extends AppCompatActivity {
         ad.show();
     }
 
-    public void selfIntroduction(View view) {
-        if(!name.isEmpty()){
-            displayMessage("では、" + name.get(0) + " さん自己紹介してください～");
-            name.remove(0);
-        }else {
-            syokaiButton.setVisibility(View.INVISIBLE);
-            displayMessage(getString(R.string.byebye));
-        }
+    public void selfIntroduction(View view){
+        SelfIntroduction selfIntroduction = new SelfIntroduction(name, this);
+        selfIntroduction.introduction();
     }
 
     private void displayMessage(String message) {
