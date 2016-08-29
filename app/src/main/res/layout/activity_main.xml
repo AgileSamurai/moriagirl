@@ -42,6 +42,9 @@
             android:visibility="gone"
             android:onClick="selfIntroduction"/>
 
+
+
+
     </RelativeLayout>
 
 </LinearLayout>
