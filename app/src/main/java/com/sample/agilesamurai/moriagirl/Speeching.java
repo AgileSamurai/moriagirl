@@ -81,7 +81,6 @@ public class Speeching  implements TextToSpeech.OnInitListener{
             textToSpeech.setPitch(pitch);
         }
 
-
     // 読み上げの始まりと終わりを取得
     private void setTtsListener(){
         // android version more than 15th
