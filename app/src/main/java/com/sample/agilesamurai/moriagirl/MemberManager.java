@@ -32,7 +32,7 @@ public class MemberManager{
         alertDialogBuilder.setTitle(R.string.name);
         alertDialogBuilder.setIcon(R.drawable.asd);
         final EditText input = new EditText(activity);
-        final int[] hog = new int[1]; // リスナーの方で設定できるようにするために配列にした
+        final int[] registerClicked = new int[1]; // リスナーの方で設定できるようにするために配列にした
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
@@ -47,7 +47,7 @@ public class MemberManager{
                 Button syokaiButton = (Button)activity.findViewById(R.id.syokai);
                 syokaiButton.setVisibility(View.VISIBLE);
 
-                hog[0] = 1;
+                registerClicked[0] = 1;
                 // TODO: Toastよりは吹き出しに何か表示してしゃべってくれた方がいい
                 Toast.makeText(activity, currentName + "登録しました～",
                         Toast.LENGTH_SHORT).show();
@@ -58,14 +58,14 @@ public class MemberManager{
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 dialog.dismiss();
-                hog[0] = 0;
+                registerClicked[0] = 0;
             }
         });
 
         alertDialogBuilder.create();
         alertDialogBuilder.show();
 
-        if (1 == hog[0])
+        if (1 == registerClicked[0])
             return true;
         else
             return false;
