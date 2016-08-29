@@ -54,12 +54,11 @@ public class MainActivity extends AppCompatActivity {
     public void inputName() {
         boolean apply;
         apply = memberManager.inputName();
-        if(!apply){
-            state = State.SelfIntroduction;
-        }
+        System.out.println(apply);
     }
 
-    public void selfIntroduction(){
+    public void selfIntroduction(View view){
+        state = State.SelfIntroduction;
         SelfIntroduction selfIntroduction = new SelfIntroduction(name, this);
         selfIntroduction.introduction();
     }
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 inputName();
                 break;
             case SelfIntroduction:
-                selfIntroduction();
+                selfIntroduction(view);
                 break;
         }
     }

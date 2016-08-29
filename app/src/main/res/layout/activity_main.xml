@@ -39,7 +39,9 @@
             android:textSize="46dp"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:onClick="selfIntroduction"/>
+
 
     </RelativeLayout>
 

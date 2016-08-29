@@ -10,16 +10,23 @@ public class Greeting {
     Talking talking;
 
     String grl;
+    TextRead inputfile;
+
     public Greeting(Activity context_input){
-        grl = "こんにちは、もりあガールです";
+       // gr1 = "こんにちは、もりあガールです";
         talking = new Talking(context_input);
+        inputfile = new TextRead(context_input,"greeting.txt");
     }
 
     public void startGreeting(){
+        grl = inputfile.simpleTextRead(0);
         talking.talk(grl);
+
     }
 
+
     public void randomGreeting(){
-        //TopicPutterのrandomTextPutのtopic.txtを変えればすぐできるが・・・
+        grl = inputfile.randomTextRead();
+        talking.talk(grl);
     }
 }
