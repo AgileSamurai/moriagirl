@@ -15,13 +15,14 @@ public class TopicPutter {
     BufferedReader bufferedreader;
     String text;
     Context context;
-    //Talking talking;
+    Talking talking;
 
     TopicPutter(Context context_input) {
-        context = context_input;
         inputstream = null;
         bufferedreader= null;
         text = "";
+        context = context_input;
+        talking = new Talking(context);
     }
 
     public String textContents(){
@@ -32,8 +33,6 @@ public class TopicPutter {
     //とりあえず１行目のお題表示
     public void textPut(){
         try {
-            //talking = new Talking(context);
-
             try {
                 // assetsフォルダ内の sample.txt をオープンする
                 inputstream = context.getAssets().open("sample.txt");
@@ -43,7 +42,7 @@ public class TopicPutter {
                 text = bufferedreader.readLine();
 
                 //話す
-                //talking.talk(text);
+                talking.talk(text);
 
             } finally {
                 //ファイルを閉じる
@@ -58,8 +57,6 @@ public class TopicPutter {
     //10行の中でランダムで１行表示
     public void randomTextPut(){
         try {
-            //talking = new Talking(context);
-
             try {
                 // assetsフォルダ内のtopic.txt をオープンする
                 inputstream = context.getAssets().open("topic.txt");
@@ -80,7 +77,7 @@ public class TopicPutter {
                 }
 
                 //話す
-                //talking.talk(text);
+                talking.talk(text);
 
             } finally {
                 //ファイルを閉じる
