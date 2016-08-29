@@ -9,7 +9,7 @@ import java.io.BufferedReader;
 /**
  * Created by ito on 2016/08/26.
  */
-public class ReadTextFile {
+public class TopicPutter {
     InputStream is = null;
     BufferedReader br = null;
     String text = "";
@@ -18,7 +18,7 @@ public class ReadTextFile {
         return text;
     }
 
-    public ReadTextFile(Context context) {
+    public TopicPutter(Context context) {
         try {
             try {
                 // assetsフォルダ内の sample.txt をオープンする
