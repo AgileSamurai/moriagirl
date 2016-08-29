@@ -1,5 +1,6 @@
 package com.sample.agilesamurai.moriagirl;
 
+import android.app.Activity;
 import android.content.Context;
 
 /**
@@ -7,15 +8,15 @@ import android.content.Context;
  */
 public class Greeting {
     Talking talking;
-    String gr1;
 
-    public Greeting(Context context_input){
-        gr1 = "こんにちは、もりあガールです";
+    String grl;
+    public Greeting(Activity context_input){
+        grl = "こんにちは、もりあガールです";
         talking = new Talking(context_input);
     }
 
     public void startGreeting(){
-        talking.talk(gr1);
+        talking.talk(grl);
     }
 
     public void randomGreeting(){
