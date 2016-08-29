@@ -47,7 +47,7 @@
             android:text="@string/end"
             android:textSize="46dp"
             android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/mikuImage"
+            android:layout_toRightOf="@id/mikuImage"
             android:layout_centerInParent="true"/>
 
     </RelativeLayout>
