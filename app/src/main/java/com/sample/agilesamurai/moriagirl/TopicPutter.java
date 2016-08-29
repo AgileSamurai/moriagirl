@@ -66,13 +66,14 @@ public class TopicPutter {
                 Random rnd = new Random();
                 int ran = rnd.nextInt(10) + 1;
 
-                // １行ずつ読み込み、改行を付加する
+                // １行ずつ読み込む
                 String str;
                 int count = 0;
                 while ((str = bufferedreader.readLine()) != null) {
                     count++;
                     if(count == ran) {
                         text = str;
+                        break;
                     }
                 }
 

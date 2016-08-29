@@ -7,12 +7,18 @@ import android.content.Context;
  */
 public class Greeting {
     Talking talking;
+    String gr1;
 
     public Greeting(Context context_input){
-       talking = new Talking(context_input);
+        gr1 = "こんにちは、もりあガールです";
+        talking = new Talking(context_input);
     }
 
     public void startGreeting(){
-        talking.talk("こんにちは、もりあガールです");
+        talking.talk(gr1);
+    }
+
+    public void randomGreeting(){
+        //TopicPutterのrandomTextPutのtopic.txtを変えればすぐできるが・・・
     }
 }
