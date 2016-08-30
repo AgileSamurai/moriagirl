@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         setState(State.SelfIntroduction);
         selfIntroduction = new SelfIntroduction(name, this);
         selfIntroduction.introduction();
+        syokaiButton.setVisibility(View.INVISIBLE);
     }
 
     public void topicPut(){
