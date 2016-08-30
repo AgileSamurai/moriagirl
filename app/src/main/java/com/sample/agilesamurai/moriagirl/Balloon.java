@@ -2,9 +2,7 @@ package com.sample.agilesamurai.moriagirl;
 
 import android.app.Activity;
 import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 import android.widget.TextView;
 
 /**
@@ -18,7 +16,7 @@ public class Balloon {
     }
 
     protected void show(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.mikuText);
+        TextView priceTextView = (TextView) findViewById(R.id.speakText);
         priceTextView.setText(message);
     }
 
