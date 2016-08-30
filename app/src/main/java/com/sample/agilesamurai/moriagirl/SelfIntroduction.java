@@ -11,14 +11,14 @@ import java.util.List;
  * Created by コウ on 2016/8/29.
  */
 public class SelfIntroduction{
-    Balloon balloon;
+    Talking talking;
     Button button;
     List<String> name;
     Activity activity;
     TopicPutter topicPutter;
 
     public SelfIntroduction(List<String> name1,Activity activity){
-        balloon = new Balloon(activity);
+        talking = new Talking(activity);
         button = (Button)activity.findViewById(R.id.syokai);
         name = name1;
         topicPutter = new TopicPutter(activity);
@@ -27,16 +27,11 @@ public class SelfIntroduction{
 
     public void introduction() {
         if(!name.isEmpty()){
-            balloon.show("では、" + name.get(0) + " さん自己紹介してください～");
+            talking.talk("では、" + name.get(0) + " さん自己紹介してください～");
             name.remove(0);
         }else {
             button.setVisibility(View.INVISIBLE);
-            for(int top = 0; top < 3; top ++){
-                if(top == 0) topicPutter.randomTextPut();
-                else if (top == 1) topicPutter.randomTextPut();
-                else if (top == 2) topicPutter.randomTextPut();
-                else balloon.show(activity.getString(R.string.byebye));
-            }
+            talking.talk("お題を言うね");
         }
     }
 }

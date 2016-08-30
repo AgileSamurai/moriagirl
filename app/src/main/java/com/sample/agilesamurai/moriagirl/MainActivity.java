@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     MemberManager memberManager;
     Speeching speeching;
     Greeting greeting;
+    SelfIntroduction selfIntroduction;
 
     public enum State {
         DisplayInputMessage,
@@ -111,9 +112,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void selfIntroduction(View view){
         state = State.SelfIntroduction;
-        SelfIntroduction selfIntroduction = new SelfIntroduction(name, this);
+        selfIntroduction = new SelfIntroduction(name, this);
         selfIntroduction.introduction();
     }
+
 
     public void onClick(View view){
         switch(state) {
@@ -125,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case SelfIntroduction:
                 selfIntroduction(view);
+                break;
+            case ByeBye:
+
                 break;
         }
     }
