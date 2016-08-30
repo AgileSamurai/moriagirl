@@ -26,8 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Greeting greeting;
     SelfIntroduction selfIntroduction;
     TopicPutter topicPutter;
-    Talking talking;
-
+    
     public enum State {
         DisplayInputMessage,
         InputName,
