@@ -1,6 +1,7 @@
 package com.sample.agilesamurai.moriagirl;
 
 import android.content.DialogInterface;
+import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,20 +14,25 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MainActivity extends AppCompatActivity {
     static List<String> name = new ArrayList();
     Button syokaiButton;
     MemberManager memberManager;
     Speeching speeching;
     Greeting greeting;
+    SelfIntroduction selfIntroduction;
+    TopicPutter topicPutter;
+    final int num_of_topic = 3;
 
     public enum State {
         DisplayInputMessage,
         InputName,
-        SelfIntroduction;
+        SelfIntroduction,
+        TopicPut,
+        ByeBye;
     }
-    State state = State.DisplayInputMessage;
+
+    static State state = State.DisplayInputMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         memberManager = new MemberManager(this);
         name = memberManager.getNames();
         greeting = new Greeting(this);
-
+        topicPutter = new TopicPutter(this);
         greeting.randomGreeting();
     }
 
@@ -50,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void displayInputMessage(){
         displayMessage(getString(R.string.inputName));
-        state = State.InputName;
+        setState(State.InputName);
     }
 
     @Override
@@ -106,10 +112,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selfIntroduction(View view){
-        state = State.SelfIntroduction;
-        SelfIntroduction selfIntroduction = new SelfIntroduction(name, this);
+        setState(State.SelfIntroduction);
+        selfIntroduction = new SelfIntroduction(name, this);
         selfIntroduction.introduction();
     }
+
+    public void topicPut(){
+        int count;
+        count = topicPutter.randomTextPut();
+        if(count == num_of_topic){
+            setState(State.ByeBye);
+        }
+    }
+
 
     public void onClick(View view){
         switch(state) {
@@ -121,6 +136,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case SelfIntroduction:
                 selfIntroduction(view);
+                break;
+            case TopicPut:
+                topicPut();
+                break;
+            case ByeBye:
+                System.out.println("byebye");
                 break;
         }
     }
@@ -134,4 +155,9 @@ public class MainActivity extends AppCompatActivity {
     private void speech(String string){
         speeching.speechText(string);
     }
+
+    static public void setState(State s){
+        state = s;
+    }
 }
+

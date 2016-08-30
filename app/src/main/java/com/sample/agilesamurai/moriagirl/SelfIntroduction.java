@@ -11,25 +11,28 @@ import java.util.List;
  * Created by コウ on 2016/8/29.
  */
 public class SelfIntroduction{
-    Balloon balloon;
+    Talking talking;
     Button button;
     List<String> name;
     Activity activity;
+    TopicPutter topicPutter;
 
     public SelfIntroduction(List<String> name1,Activity activity){
-        balloon = new Balloon(activity);
+        talking = new Talking(activity);
         button = (Button)activity.findViewById(R.id.syokai);
         name = name1;
+        topicPutter = new TopicPutter(activity);
         this.activity = activity;
     }
 
     public void introduction() {
         if(!name.isEmpty()){
-            balloon.show("では、" + name.get(0) + " さん自己紹介してください～");
+            talking.talk("では、" + name.get(0) + " さん自己紹介してください～");
             name.remove(0);
         }else {
+            MainActivity.setState(MainActivity.State.TopicPut);
             button.setVisibility(View.INVISIBLE);
-            balloon.show( activity.getString(R.string.byebye));
+            talking.talk("自己紹介終わり!お題を言うね");
         }
     }
 }
