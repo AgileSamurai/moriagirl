@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     TopicPutter topicPutter;
     Byebye byebye;
     final int num_of_topic = 3;
+    boolean byebyeFlag = false;
 
     public enum State {
         DisplayInputMessage,
@@ -128,8 +129,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void byebye(){
-        byebye.randomByeBye();
+    public void byebye() {
+        if (byebyeFlag) {
+            finish();
+        } else {
+            byebye.randomByeBye();
+            byebyeFlag = true;
+        }
     }
 
 
