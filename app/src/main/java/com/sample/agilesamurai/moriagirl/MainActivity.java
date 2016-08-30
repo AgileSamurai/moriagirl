@@ -17,7 +17,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MainActivity extends AppCompatActivity {
     static List<String> name = new ArrayList();
     Button syokaiButton;
@@ -26,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     Greeting greeting;
     SelfIntroduction selfIntroduction;
     TopicPutter topicPutter;
-    
+    final int num_of_topic = 3;
+
     public enum State {
         DisplayInputMessage,
         InputName,
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     public void topicPut(){
         int count;
         count = topicPutter.randomTextPut();
-        if(count == 3){
+        if(count == num_of_topic){
             setState(State.ByeBye);
         }
     }
