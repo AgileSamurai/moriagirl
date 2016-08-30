@@ -19,11 +19,10 @@ public class Greeting {
     }
 
     public void startGreeting(){
-        grl = inputfile.simpleTextRead(0);
+        grl = inputfile.simpleTextRead(1);
         talking.talk(grl);
 
     }
-
 
     public void randomGreeting(){
         grl = inputfile.randomTextRead();
