@@ -20,17 +20,17 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/mikuImage"
+            android:id="@+id/kumaImage"
             android:layout_width="300dp"
             android:layout_height="500dp"
             android:scaleType="fitStart"
             android:onClick="displayInputMessage"
-            android:src="@drawable/abata"/>
+            android:src="@drawable/ribbonkuma"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/mikuImage"
+            android:layout_toRightOf="@id/kumaImage"
             android:text="00:00"
             android:textSize="56dp"
             android:gravity="center"
@@ -47,7 +47,7 @@
             android:text="@string/end"
             android:textSize="46dp"
             android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@id/mikuImage"
+            android:layout_toRightOf="@id/kumaImage"
             android:layout_centerInParent="true"/>
 
     </RelativeLayout>

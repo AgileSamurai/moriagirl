@@ -31,7 +31,7 @@ public class MemberManager{
     public boolean inputName(){
         AlertDialog.Builder alertDialogBuilder=new AlertDialog.Builder(activity);
         alertDialogBuilder.setTitle(R.string.name);
-        alertDialogBuilder.setIcon(R.drawable.asd);
+        alertDialogBuilder.setIcon(R.drawable.ribbonkuma);
         final EditText input = new EditText(activity);
         final int[] registerClicked = new int[1]; // リスナーの方で設定できるようにするために配列にした
 
