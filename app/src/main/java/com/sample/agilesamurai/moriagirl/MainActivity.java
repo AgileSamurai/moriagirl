@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     public enum State {
         DisplayInputMessage,
         InputName,
-        SelfIntroduction;
+        SelfIntroduction,
+        ByeBye;
     }
     State state = State.DisplayInputMessage;
 

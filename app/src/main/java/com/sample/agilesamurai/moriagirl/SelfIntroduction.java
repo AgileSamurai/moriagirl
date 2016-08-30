@@ -15,11 +15,13 @@ public class SelfIntroduction{
     Button button;
     List<String> name;
     Activity activity;
+    TopicPutter topicPutter;
 
     public SelfIntroduction(List<String> name1,Activity activity){
         balloon = new Balloon(activity);
         button = (Button)activity.findViewById(R.id.syokai);
         name = name1;
+        topicPutter = new TopicPutter(activity);
         this.activity = activity;
     }
 
@@ -29,7 +31,12 @@ public class SelfIntroduction{
             name.remove(0);
         }else {
             button.setVisibility(View.INVISIBLE);
-            balloon.show( activity.getString(R.string.byebye));
+            for(int top = 0; top < 3; top ++){
+                if(top == 0) topicPutter.randomTextPut();
+                else if (top == 1) topicPutter.randomTextPut();
+                else if (top == 2) topicPutter.randomTextPut();
+                else balloon.show(activity.getString(R.string.byebye));
+            }
         }
     }
 }

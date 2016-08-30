@@ -21,7 +21,6 @@ public class Greeting {
     public void startGreeting(){
         grl = inputfile.simpleTextRead(1);
         talking.talk(grl);
-
     }
 
     public String startGreetingReturn(){

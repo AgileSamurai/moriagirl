@@ -31,7 +31,7 @@ public class TopicPutter {
 
     //とりあえず１行目のお題表示
     public void textPut(){
-        text = inputfile.simpleTextRead(0);
+        text = inputfile.simpleTextRead(1);
         talking.talk(text);
     }
 
