@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         name = memberManager.getNames();
         greeting = new Greeting(this);
         topicPutter = new TopicPutter(this);
-        displayMessage(greeting.randomGreetingReturn());
+        greeting.randomGreeting();
     }
 
     @Override
