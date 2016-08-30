@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog.Builder alertDialogBuilder=new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("タイトル画面へ戻りますか？");
-        alertDialogBuilder.setIcon(R.drawable.asd);
+        alertDialogBuilder.setIcon(R.drawable.ribbonkuma);
 
         alertDialogBuilder.setPositiveButton("戻る", new DialogInterface.OnClickListener() {
             @Override
