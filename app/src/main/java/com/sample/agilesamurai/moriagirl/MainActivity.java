@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy(){
         super.onDestroy();
+        setState(State.DisplayInputMessage);
         speeching.shutDown();
     }
 
