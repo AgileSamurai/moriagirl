@@ -7,17 +7,25 @@ import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
 
 import java.util.HashMap;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 /**
  * Created by motoki on 2016/08/26.
  * TODO: 声が端末の環境に依存しているので、指定できればした方がいい
  */
-public class Speeching  implements TextToSpeech.OnInitListener{
+public class Speeching  implements TextToSpeech.OnInitListener, Runnable {
     private TextToSpeech textToSpeech;
     private static final String TAG = "TestTTS";
+    private String text;
+    private boolean initialized = false;
+
+    private Handler handler ;
 
     public Speeching(Context context){
         textToSpeech = new TextToSpeech(context,this);
+        //handler = new Handler();
+
     }
 
     /**
@@ -29,8 +37,10 @@ public class Speeching  implements TextToSpeech.OnInitListener{
     public void onInit(int status) {
         // TTS初期化
         if (TextToSpeech.SUCCESS == status) {
+            initialized = true;
             Log.d(TAG, "initialized");
         } else {
+            initialized = false;
             Log.e(TAG, "faile to initialize");
         }
     }
@@ -47,10 +57,16 @@ public class Speeching  implements TextToSpeech.OnInitListener{
 
     /**
      * テキストを読み上げる
-     * @param string 読み上げるテキスト
+     * @param text 読み上げるテキスト
      */
-    public void speechText(String string) {
-        if (0 < string.length()) {
+    public void speechText(String text) {
+        this.text = text;
+        Thread thread = new Thread(this);
+        thread.start();     // 別スレッドで喋らせる
+    }
+
+    public void speech(){
+        if (0 < text.length()) {
             if (textToSpeech.isSpeaking()) {
                 textToSpeech.stop();
                 return;
@@ -63,9 +79,8 @@ public class Speeching  implements TextToSpeech.OnInitListener{
             HashMap<String, String> map = new HashMap<String, String>();
             map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"messageID");
 
-            textToSpeech.speak(string, TextToSpeech.QUEUE_FLUSH, map);
+            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, map);
             setTtsListener();
-
         }
     }
 
@@ -117,5 +132,23 @@ public class Speeching  implements TextToSpeech.OnInitListener{
             Log.e(TAG, "Build VERSION is less than API 15");
         }
 
+    }
+
+    public boolean isInitialized(){
+        return initialized;
+    }
+
+    /**
+     * Starts executing the active part of the class' code. This method is
+     * called when a thread is started that has been created with a class which
+     * implements {@code Runnable}.
+     */
+    @Override
+    public void run() {
+        // 初期化されるまで待つ
+        while(!isInitialized()) ;
+
+        // しゃべる
+        speech();
     }
 }
