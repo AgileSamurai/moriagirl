@@ -22,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
     Greeting greeting;
     SelfIntroduction selfIntroduction;
     TopicPutter topicPutter;
+    Byebye byebye;
     final int num_of_topic = 3;
+    boolean byebyeFlag = false;
 
     public enum State {
         DisplayInputMessage,
@@ -45,12 +47,14 @@ public class MainActivity extends AppCompatActivity {
         name = memberManager.getNames();
         greeting = new Greeting(this);
         topicPutter = new TopicPutter(this);
+        byebye = new Byebye(this);
         greeting.randomGreeting();
     }
 
     @Override
     protected void onDestroy(){
         super.onDestroy();
+        setState(State.DisplayInputMessage);
         speeching.shutDown();
     }
 
@@ -126,6 +130,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void byebye() {
+        if (byebyeFlag) {
+            finish();
+        } else {
+            byebye.randomByeBye();
+            byebyeFlag = true;
+        }
+    }
+
 
     public void onClick(View view){
         switch(state) {
@@ -142,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 topicPut();
                 break;
             case ByeBye:
-                System.out.println("byebye");
+                byebye();
                 break;
         }
     }
