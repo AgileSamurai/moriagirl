@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Greeting greeting;
     SelfIntroduction selfIntroduction;
     TopicPutter topicPutter;
+    Byebye byebye;
     final int num_of_topic = 3;
 
     public enum State {
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         name = memberManager.getNames();
         greeting = new Greeting(this);
         topicPutter = new TopicPutter(this);
+        byebye = new Byebye(this);
         greeting.randomGreeting();
     }
 
@@ -125,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void byebye(){
+        byebye.randomByeBye();
+    }
+
 
     public void onClick(View view){
         switch(state) {
@@ -141,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 topicPut();
                 break;
             case ByeBye:
-                System.out.println("byebye");
+                byebye();
                 break;
         }
     }
