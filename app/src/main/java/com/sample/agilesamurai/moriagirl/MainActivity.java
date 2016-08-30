@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button syokaiButton;
     MemberManager memberManager;
     Speeching speeching;
+    Greeting greeting;
 
     public enum State {
         DisplayInputMessage,
@@ -34,11 +35,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         syokaiButton = (Button)findViewById(R.id.syokai);
         speeching = new Speeching(this);
-
         memberManager = new MemberManager(this);
         name = memberManager.getNames();
+        greeting = new Greeting(this);
+
+        displayMessage(greeting.randomGreetingReturn());
     }
 
     @Override
