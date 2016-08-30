@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,6 +50,51 @@ public class MainActivity extends AppCompatActivity {
     public void displayInputMessage(){
         displayMessage(getString(R.string.inputName));
         state = State.InputName;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // メニューの要素を追加して取得
+        MenuItem actionItem = menu.add("Action Button Return title");
+
+        // アイコンを設定
+        actionItem.setIcon(android.R.drawable.ic_menu_revert);
+
+        // SHOW_AS_ACTION_ALWAYS:常に表示
+        actionItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Toast.makeText(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+
+        AlertDialog.Builder alertDialogBuilder=new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("タイトル画面へ戻りますか？");
+        alertDialogBuilder.setIcon(R.drawable.asd);
+
+        alertDialogBuilder.setPositiveButton("戻る", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                finish();
+            }
+
+        });
+
+        alertDialogBuilder.setNegativeButton(R.string.cancel ,new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+
+            }
+
+
+        });
+
+        alertDialogBuilder.create().show();
+
+        //finish();
+        return true;
     }
 
     // TODO: いつタップされても入力できちゃうから直す
