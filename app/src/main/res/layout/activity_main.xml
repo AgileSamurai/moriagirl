@@ -9,12 +9,14 @@
 
     <TextView
         android:id="@+id/speakText"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/tnm"
         android:textSize="36sp"
         android:padding="20dp"
-        android:layout_margin="20dp" />
+        android:layout_margin="20dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
