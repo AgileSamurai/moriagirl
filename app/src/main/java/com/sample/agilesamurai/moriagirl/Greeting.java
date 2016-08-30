@@ -24,20 +24,8 @@ public class Greeting {
 
     }
 
-    public String startGreetingReturn(){
-        grl = inputfile.simpleTextRead(1);
-        //talking.talk(grl);
-        return grl;
-    }
-
     public void randomGreeting(){
         grl = inputfile.randomTextRead();
         talking.talk(grl);
-    }
-
-    public String randomGreetingReturn(){
-        grl = inputfile.randomTextRead();
-        //talking.talk(grl);
-        return grl;
     }
 }
