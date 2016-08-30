@@ -24,14 +24,17 @@ public class MainActivity extends AppCompatActivity {
     Speeching speeching;
     Greeting greeting;
     SelfIntroduction selfIntroduction;
+    TopicPutter topicPutter;
 
     public enum State {
         DisplayInputMessage,
         InputName,
         SelfIntroduction,
+        TopicPut,
         ByeBye;
     }
-    State state = State.DisplayInputMessage;
+
+    static State state = State.DisplayInputMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         memberManager = new MemberManager(this);
         name = memberManager.getNames();
         greeting = new Greeting(this);
-
+        topicPutter = new TopicPutter(this);
         displayMessage(greeting.randomGreetingReturn());
     }
 
@@ -116,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
         selfIntroduction.introduction();
     }
 
+    public void topicPut(){
+        topicPutter.randomTextPut();
+    }
+
 
     public void onClick(View view){
         switch(state) {
@@ -128,8 +135,10 @@ public class MainActivity extends AppCompatActivity {
             case SelfIntroduction:
                 selfIntroduction(view);
                 break;
+            case TopicPut:
+                topicPut();
+                break;
             case ByeBye:
-
                 break;
         }
     }
@@ -143,4 +152,9 @@ public class MainActivity extends AppCompatActivity {
     private void speech(String string){
         speeching.speechText(string);
     }
+
+    static public void setState(State s){
+        state = s;
+    }
 }
+

@@ -30,6 +30,7 @@ public class SelfIntroduction{
             talking.talk("では、" + name.get(0) + " さん自己紹介してください～");
             name.remove(0);
         }else {
+            MainActivity.setState(MainActivity.State.TopicPut);
             button.setVisibility(View.INVISIBLE);
             talking.talk("お題を言うね");
         }
