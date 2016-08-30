@@ -16,6 +16,7 @@ public class TopicPutter {
     Activity activity;
     Talking talking;
     TextRead inputfile;
+    int count = 0;
 
     TopicPutter(Activity context_input) {
         text = "";
@@ -29,16 +30,20 @@ public class TopicPutter {
     }
 
 
+    /*
     //とりあえず１行目のお題表示
     public void textPut(){
         text = inputfile.simpleTextRead(1);
         talking.talk(text);
     }
+    */
 
     //10行の中でランダムで１行表示
-    public void randomTextPut(){
+    public int randomTextPut(){
+        count++;
         text = inputfile.randomTextRead();
         talking.talk(text);
+        return count;
     }
 
 }

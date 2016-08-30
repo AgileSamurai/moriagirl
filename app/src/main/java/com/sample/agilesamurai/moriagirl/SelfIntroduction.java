@@ -32,7 +32,7 @@ public class SelfIntroduction{
         }else {
             MainActivity.setState(MainActivity.State.TopicPut);
             button.setVisibility(View.INVISIBLE);
-            talking.talk("お題を言うね");
+            talking.talk("自己紹介終わり!お題を言うね");
         }
     }
 }

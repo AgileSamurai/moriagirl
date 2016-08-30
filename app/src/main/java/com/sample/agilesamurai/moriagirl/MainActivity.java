@@ -1,6 +1,7 @@
 package com.sample.agilesamurai.moriagirl;
 
 import android.content.DialogInterface;
+import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Greeting greeting;
     SelfIntroduction selfIntroduction;
     TopicPutter topicPutter;
+    Talking talking;
 
     public enum State {
         DisplayInputMessage,
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void displayInputMessage(){
         displayMessage(getString(R.string.inputName));
-        state = State.InputName;
+        setState(State.InputName);
     }
 
     @Override
@@ -114,13 +116,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selfIntroduction(View view){
-        state = State.SelfIntroduction;
+        setState(State.SelfIntroduction);
         selfIntroduction = new SelfIntroduction(name, this);
         selfIntroduction.introduction();
     }
 
     public void topicPut(){
-        topicPutter.randomTextPut();
+        int count;
+        count = topicPutter.randomTextPut();
+        if(count == 3){
+            setState(State.ByeBye);
+        }
     }
 
 
@@ -139,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                 topicPut();
                 break;
             case ByeBye:
+                System.out.println("byebye");
                 break;
         }
     }
