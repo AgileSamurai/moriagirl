@@ -19,7 +19,7 @@
     <ImageView
         android:layout_width="272dp"
         android:layout_height="96dp"
-        android:src="@drawable/kuma"
+        android:src="@drawable/ribbonkuma"
         android:layout_centerInParent="true"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.42" />
