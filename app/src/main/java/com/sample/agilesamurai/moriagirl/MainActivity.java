@@ -1,7 +1,6 @@
 package com.sample.agilesamurai.moriagirl;
 
 import android.content.DialogInterface;
-import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     static List<String> name = new ArrayList();
     Button syokaiButton;
     MemberManager memberManager;
-    Speeching speeching;
+    Speaking speaking;
     Greeting greeting;
     SelfIntroduction selfIntroduction;
     TopicPutter topicPutter;
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         syokaiButton = (Button)findViewById(R.id.syokai);
-        speeching = new Speeching(this);
+        speaking = new Speaking(this);
         memberManager = new MemberManager(this);
         name = memberManager.getNames();
         greeting = new Greeting(this);
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy(){
         super.onDestroy();
         setState(State.DisplayInputMessage);
-        speeching.shutDown();
+        speaking.shutDown();
     }
 
     public void displayInputMessage(){
@@ -167,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void speech(String string){
-        speeching.speechText(string);
+        speaking.speak(string);
     }
 
     static public void setState(State s){

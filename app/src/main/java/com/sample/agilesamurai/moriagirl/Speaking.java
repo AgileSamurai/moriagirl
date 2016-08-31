@@ -8,13 +8,12 @@ import android.util.Log;
 
 import java.util.HashMap;
 import java.util.logging.Handler;
-import java.util.logging.LogRecord;
 
 /**
  * Created by motoki on 2016/08/26.
  * TODO: 声が端末の環境に依存しているので、指定できればした方がいい
  */
-public class Speeching  implements TextToSpeech.OnInitListener, Runnable {
+public class Speaking implements TextToSpeech.OnInitListener, Runnable {
     private TextToSpeech textToSpeech;
     private static final String TAG = "TestTTS";
     private String text;
@@ -22,7 +21,7 @@ public class Speeching  implements TextToSpeech.OnInitListener, Runnable {
 
     private Handler handler ;
 
-    public Speeching(Context context){
+    public Speaking(Context context){
         textToSpeech = new TextToSpeech(context,this);
         //handler = new Handler();
 
@@ -59,13 +58,13 @@ public class Speeching  implements TextToSpeech.OnInitListener, Runnable {
      * テキストを読み上げる
      * @param text 読み上げるテキスト
      */
-    public void speechText(String text) {
+    public void speak(String text) {
         this.text = text;
         Thread thread = new Thread(this);
         thread.start();     // 別スレッドで喋らせる
     }
 
-    public void speech(){
+    public void speak(){
         if (0 < text.length()) {
             if (textToSpeech.isSpeaking()) {
                 textToSpeech.stop();
@@ -148,6 +147,6 @@ public class Speeching  implements TextToSpeech.OnInitListener, Runnable {
         while(!isInitialized()) ;
 
         // しゃべる
-        speech();
+        speak();
     }
 }
