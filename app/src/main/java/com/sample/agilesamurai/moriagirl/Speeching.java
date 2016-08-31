@@ -69,7 +69,6 @@ public class Speeching  implements TextToSpeech.OnInitListener, Runnable {
         if (0 < text.length()) {
             if (textToSpeech.isSpeaking()) {
                 textToSpeech.stop();
-                return;
             }
             setSpeechRate(1.0f);
             setSpeechPitch(1.0f);
