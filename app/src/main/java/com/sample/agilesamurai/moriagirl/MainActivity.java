@@ -17,6 +17,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     static List<String> name = new ArrayList();
     Button syokaiButton;
+    Button byebyeButton;
     MemberManager memberManager;
     Speeching speeching;
     Greeting greeting;
@@ -24,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     TopicPutter topicPutter;
     Byebye byebye;
     final int num_of_topic = 3;
-    boolean byebyeFlag = false;
 
     public enum State {
         DisplayInputMessage,
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         syokaiButton = (Button)findViewById(R.id.syokai);
+        byebyeButton = (Button)findViewById(R.id.byebye);
         speeching = new Speeching(this);
         memberManager = new MemberManager(this);
         name = memberManager.getNames();
@@ -131,12 +132,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void byebye() {
-        if (byebyeFlag) {
-            finish();
-        } else {
-            byebye.randomByeBye();
-            byebyeFlag = true;
-        }
+        byebyeButton.setVisibility(View.VISIBLE);
+        byebye.randomByeBye();
     }
 
 
@@ -158,6 +155,10 @@ public class MainActivity extends AppCompatActivity {
                 byebye();
                 break;
         }
+    }
+
+    public void byebyeClick(View view){
+        finish();
     }
 
     private void displayMessage(String message) {

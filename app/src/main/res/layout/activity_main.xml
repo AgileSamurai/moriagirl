@@ -42,6 +42,21 @@
             android:visibility="gone"
             android:onClick="selfIntroduction"/>
 
+        <Button
+            android:id="@+id/byebye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/gg"
+            android:text="@string/end"
+            android:textSize="46dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:onClick="byebyeClick"/>
+
 
     </RelativeLayout>
 
