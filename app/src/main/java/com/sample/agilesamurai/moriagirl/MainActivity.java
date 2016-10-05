@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
     public void topicPut(){
         int count;
         count = topicPutter.randomTextPut();
-        if(count == num_of_topic){
+        if(count == num_of_topic || count == -1){
             setState(State.ByeBye);
         }
     }
