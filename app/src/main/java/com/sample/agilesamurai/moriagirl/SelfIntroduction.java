@@ -16,23 +16,29 @@ public class SelfIntroduction{
     List<String> name;
     Activity activity;
     TopicPutter topicPutter;
+    //自己紹介が終わった人数
+    int count;
+    int size;
 
-    public SelfIntroduction(List<String> name1,Activity activity){
+    public SelfIntroduction(List<String> name1,int selfintroduction_count,Activity activity){
         talking = new Talking(activity);
         button = (Button)activity.findViewById(R.id.syokai);
         name = name1;
         topicPutter = new TopicPutter(activity);
         this.activity = activity;
+        count = selfintroduction_count;
+        size = name.size();
     }
 
     public void introduction() {
-        if(!name.isEmpty()){
-            talking.talk("では、" + name.get(0) + " さん自己紹介してください～");
-            name.remove(0);
+        if(count != name.size()){
+            talking.talk("では、" + name.get(count) + " さん自己紹介してください～");
+            System.out.println(count);
         }else {
             MainActivity.setState(MainActivity.State.TopicPut);
             button.setVisibility(View.INVISIBLE);
             talking.talk("自己紹介終わり!お題を言うね");
+
         }
     }
 }
