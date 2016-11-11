@@ -30,10 +30,10 @@ public class MoriagariSensor  implements Runnable {
 
     public MoriagariSensor() {
         bufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE,
-                AudioFormat.,
+                AudioFormat.CHANNEL_IN_MONO,
                 AudioFormat.ENCODING_PCM_16BIT);
         audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC,
-                SAMPLE_RATE, AudioFormat.CHANNEL_CONFIGURATION_MONO,
+                SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO,
                 AudioFormat.ENCODING_PCM_16BIT, bufferSize);
         listener = null;
         isRecording = true;
@@ -55,7 +55,7 @@ public class MoriagariSensor  implements Runnable {
         while (!isPausing) {
             int read = audioRecord.read(buffer, 0, bufferSize);
             if (read < 0) {
-                //throw new IllegalStateException();
+                throw new IllegalStateException();
             }
 
             int maxValue = 0;
