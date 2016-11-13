@@ -16,6 +16,7 @@
             android:screenOrientation="portrait">
 
         </activity>
+        <activity android:name=".views.SoundMeterActivity" />
 
         <activity android:name=".titleActivity"
             android:screenOrientation="portrait">
