@@ -33,6 +33,7 @@ public class App extends Application {
     @Override
     public void onTerminate() {
         subscriptions.unsubscribe();
+        soundMeter.stop();
         super.onTerminate();
     }
 
