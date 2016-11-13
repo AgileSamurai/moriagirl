@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,12 +49,6 @@ public class MainActivity extends AppCompatActivity {
         topicPutter = new TopicPutter(this);
         byebye = new Byebye(this);
         greeting.randomGreeting();
-
-        MoriagariSensor moriagariSensor = new MoriagariSensor();
-        Thread moriagariSensorThread = new Thread(moriagariSensor);
-        moriagariSensorThread.run();
-        Log.d("MainActivity", "onCreate:" );
-
     }
 
     @Override
