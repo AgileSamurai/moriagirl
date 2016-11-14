@@ -1,11 +1,6 @@
 package com.sample.agilesamurai.moriagirl;
 
 import android.app.Activity;
-import android.content.Context;
-import java.io.InputStreamReader;
-import java.io.InputStream;
-import java.io.BufferedReader;
-import java.util.Random;
 
 
 /**
@@ -25,7 +20,7 @@ public class TopicPutter {
         text = "";
         activity = context_input;
         talking = new Talking(activity);
-        inputfile = new TextRead(context_input,"topic.txt");
+        inputfile = new TextRead(context_input, "GroupTopic.txt");
     }
 
     public String textContents(){
