@@ -7,8 +7,10 @@ import android.util.Pair;
 
 import com.annimon.stream.Collectors;
 import com.annimon.stream.Stream;
+import com.annimon.stream.function.Function;
 import com.google.common.primitives.Shorts;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -91,10 +93,13 @@ class SoundMeterModelImpl {
         final int OFFSET = 0;
         recorder.read(buffer, OFFSET, FRAME_BUFFER_SIZE);
         // TODO: Find a better way to find maximum (in Java7)
-        List<Integer> list = Stream.of(Shorts.asList(buffer))
-                .map(Math::abs)               // Math::abs returns int type (and then auto boxing to Integer)
-                .collect(Collectors.toList());
-        Integer max = Collections.max(list);  // Not have max() in Lightweight-Stream-API
+        List<Short> list = Shorts.asList(buffer);
+        List<Integer> ilist = new ArrayList<>();
+        for (int i = 0; i < list.size(); ++i) {
+            Integer x = Math.abs(list.get(i));
+            ilist.add(x);
+        }
+        Integer max = Collections.max(ilist);
         Long elapsedTime = System.currentTimeMillis() - startTime;
 
         Pair<Double, Double> loudnessAtTime = Pair.create(elapsedTime.doubleValue() / 1000, max.doubleValue());

@@ -18,6 +18,7 @@ import com.sample.agilesamurai.moriagirl.models.SoundMeterDataModel;
 import com.sample.agilesamurai.moriagirl.models.SoundMeterModel;
 
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
@@ -48,12 +49,16 @@ public class SoundMeterActivity extends Activity {
         subscriptions.add(soundMeterDataModel.getOutStream()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((Pair<Double, Double> loudnessAtTime) -> {
-                    lineData.notifyDataChanged();
-                    chart.notifyDataSetChanged();
-                    chart.invalidate();
+                .subscribe(new Action1<Pair<Double, Double>>() {
+                    @Override
+                    public void call(Pair<Double, Double> loudnessAtTime) {
+                        lineData.notifyDataChanged();
+                        chart.notifyDataSetChanged();
+                        chart.invalidate();
+                    }
                 }));
     }
+
 
     @Override
     protected void onDestroy() {
