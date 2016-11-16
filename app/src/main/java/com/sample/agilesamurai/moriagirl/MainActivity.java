@@ -9,6 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ImageView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         topicPutter = new TopicPutter(this);
         byebye = new Byebye(this);
         greeting.randomGreeting();
+        
+        //for Animation
+        ImageView imageView = (ImageView) findViewById(R.id.gifView);
+        GlideDrawableImageViewTarget target = new GlideDrawableImageViewTarget(imageView);
+        Glide.with(this).load(R.raw.test).into(target);
     }
 
     @Override
