@@ -1,12 +1,8 @@
 package com.sample.agilesamurai.moriagirl;
 
 import android.app.Activity;
-import android.content.Context;
-import java.io.InputStreamReader;
-import java.io.InputStream;
-import java.io.BufferedReader;
 import java.util.Random;
-
+import java.util.List;
 
 /**
  * Created by ito on 2016/08/26.
@@ -15,7 +11,8 @@ public class TopicPutter {
     String text;
     Activity activity;
     Talking talking;
-    TextRead inputfile;
+    TextRead grouptopic;
+    TextRead personaltopic;
     int count = 0;
 
     String[] textList = {"僕の趣味は寝ることだよ．君たちの趣味を教えてよ", "昨日あった出来事の中で一番印象に残ってるものを教えてよ．"};
@@ -25,7 +22,8 @@ public class TopicPutter {
         text = "";
         activity = context_input;
         talking = new Talking(activity);
-        inputfile = new TextRead(context_input,"topic.txt");
+        grouptopic = new TextRead(context_input, "GroupTopic.txt");
+        personaltopic = new TextRead(context_input, "PersonalTopic.txt");
     }
 
     public String textContents(){
@@ -42,9 +40,17 @@ public class TopicPutter {
     */
 
     //10行の中でランダムで１行表示
-    public int randomTextPut(){
+    public int randomTextPut(List<String> name){
         count++;
-        text = inputfile.randomTextRead();
+        Random rnd = new Random();
+        int ran = rnd.nextInt(2);
+        if(ran == 0) {
+            text = grouptopic.randomTextRead();
+        }else{
+            text = personaltopic.randomTextRead();
+            ran = rnd.nextInt(name.size());
+            text = name.get(ran) + "さん" + text;
+        }
         talking.talk(text);
         return count;
     }

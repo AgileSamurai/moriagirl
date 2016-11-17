@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     TopicPutter topicPutter;
     Byebye byebye;
     final int num_of_topic = 3;
+    //何人自己紹介したのかカウント
+    int selfintroduction_count = 0;
 
     public enum State {
         DisplayInputMessage,
@@ -117,14 +119,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void selfIntroduction(View view){
         setState(State.SelfIntroduction);
-        selfIntroduction = new SelfIntroduction(name, this);
+        selfIntroduction = new SelfIntroduction(name,selfintroduction_count,this);
         selfIntroduction.introduction();
+        selfintroduction_count++;
         syokaiButton.setVisibility(View.INVISIBLE);
     }
 
     public void topicPut(){
         int count;
-        count = topicPutter.randomTextPut();
+        count = topicPutter.randomTextPut(name);
         if(count == num_of_topic || count == -1){
             setState(State.ByeBye);
         }

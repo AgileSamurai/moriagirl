@@ -51,7 +51,7 @@ public class MemberManager{
 
                 registerClicked[0] = 1;
                 // TODO: Toastよりは吹き出しに何か表示してしゃべってくれた方がいい
-                Toast.makeText(activity, currentName + "登録しました～",
+                Toast.makeText(activity, currentName + "登録しました〜",
                         Toast.LENGTH_SHORT).show();
             }
 
