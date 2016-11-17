@@ -6,9 +6,9 @@ import android.os.AsyncTask;
  */
 
 public class NexTopic extends AsyncTask<Integer, Integer, Integer> {
+
     public NexTopic(){
         super();
-        //
     }
 
     /**
@@ -16,10 +16,20 @@ public class NexTopic extends AsyncTask<Integer, Integer, Integer> {
      */
     @Override
     protected Integer doInBackground(Integer... value) {
-        try {
+        //配列準備
 
-        } catch (InterruptedException e) {
+        //現在時刻取得
+
+        //ループ開始
+        while(){
+            //現在の音量取得
+
+            //時刻の更新
         }
+
+        //結果分析
+
+        //返す値を決める
         return value[0] + 2;
     }
 
