@@ -52,11 +52,11 @@ public class MainActivity extends AppCompatActivity {
         topicPutter = new TopicPutter(this);
         byebye = new Byebye(this);
         greeting.randomGreeting();
-        
+
         //for Animation
         ImageView imageView = (ImageView) findViewById(R.id.gifView);
         GlideDrawableImageViewTarget target = new GlideDrawableImageViewTarget(imageView);
-        Glide.with(this).load(R.raw.test).into(target);
+        Glide.with(this).load(R.raw.test_small).into(target);
     }
 
     @Override
