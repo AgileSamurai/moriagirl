@@ -21,8 +21,8 @@ import rx.subjects.PublishSubject;
  */
 
 public class SoundMeterModel {
-    public static int LOUDNESS_MAX_VALUE = Short.MAX_VALUE;
-    public static int LOUDNESS_MIN_VALUE = 0;
+    public final static int LOUDNESS_MAX_VALUE = Short.MAX_VALUE;
+    public final static int LOUDNESS_MIN_VALUE = 0;
 
     private SoundMeterModelImpl impl;
 
@@ -46,11 +46,11 @@ class SoundMeterModelImpl {
     // The best choice may be PCM_8BIT encoding
     // but currently only PCM_16BIT encoding is possible
     // see the source, https://source.codeaurora.org/quic/la/platform/frameworks/base/tree/media/java/android/media/AudioRecord.java?id=refs/heads/jb_mr1 #499
-    final private int SAMPLE_RATE = 8000;
-    final private int BIT_RATE    = AudioFormat.ENCODING_PCM_16BIT;
-    final private int CHANNEL     = AudioFormat.CHANNEL_IN_MONO;
-    final private int BUFFER_SIZE = AudioRecord.getMinBufferSize(SAMPLE_RATE, CHANNEL, BIT_RATE);
-    final private int FRAME_BUFFER_SIZE = BUFFER_SIZE / 2;
+    private final static int SAMPLE_RATE = 8000;
+    private final static int BIT_RATE    = AudioFormat.ENCODING_PCM_16BIT;
+    private final static int CHANNEL     = AudioFormat.CHANNEL_IN_MONO;
+    private final static int BUFFER_SIZE = AudioRecord.getMinBufferSize(SAMPLE_RATE, CHANNEL, BIT_RATE);
+    private final static int FRAME_BUFFER_SIZE = BUFFER_SIZE / 2;
     private AudioRecord recorder;
     private short[] buffer;
 
