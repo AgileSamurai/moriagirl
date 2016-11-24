@@ -1,14 +1,19 @@
 package com.sample.agilesamurai.moriagirl;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.sample.agilesamurai.moriagirl.views.SoundMeterActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +56,16 @@ public class MainActivity extends AppCompatActivity {
         topicPutter = new TopicPutter(this);
         byebye = new Byebye(this);
         greeting.randomGreeting();
+
+        // Open SoundMeter Activity
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SoundMeterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
