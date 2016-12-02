@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     SelfIntroduction selfIntroduction;
     TopicPutter topicPutter;
     Byebye byebye;
+    private NexTopic nexTopic;
     final int num_of_topic = 3;
 
     public enum State {
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         topicPutter = new TopicPutter(this);
         byebye = new Byebye(this);
         greeting.randomGreeting();
+        nexTopic = new NexTopic();
     }
 
     @Override
@@ -125,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
     public void topicPut(){
         int count;
         count = topicPutter.randomTextPut();
+        nexTopic.execute(count);
         if(count == num_of_topic){
             setState(State.ByeBye);
         }
