@@ -1,0 +1,31 @@
+{
+  "pTopic":[
+    {
+      "emotion":"smile",
+      "min_duration": 20,
+      "max_duration": 120,
+      "sound_effect": "none",
+      "type": "speech",
+      "params":{
+      "text": "一番好きな言語は何？",
+      "speak": "一番好きな言語は何？"
+      "volume":10,
+      "speed": 10
+      }
+    },
+    {
+      "emotion":"smile",
+      "min_duration": 20,
+      "max_duration": 120,
+      "sound_effect": "none",
+      "type": "speech",
+      "params":{
+        "text": "得意な言語を教えて！",
+        "speak": "得意な言語を教えて？"
+        "volume":10,
+        "speed": 10
+      }
+    }
+
+  ]
+}
