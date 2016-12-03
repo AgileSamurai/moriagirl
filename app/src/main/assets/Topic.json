@@ -8,7 +8,7 @@
       "type": "speech",
       "params":{
       "text": "一番好きな言語は何？",
-      "speak": "一番好きな言語は何？"
+      "speak": "一番好きな言語は何？",
       "volume":10,
       "speed": 10
       }
@@ -21,7 +21,7 @@
       "type": "speech",
       "params":{
         "text": "得意な言語を教えて！",
-        "speak": "得意な言語を教えて？"
+        "speak": "得意な言語を教えて？",
         "volume":10,
         "speed": 10
       }
