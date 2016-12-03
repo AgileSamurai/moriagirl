@@ -16,6 +16,7 @@ public class TopicPutter {
     Activity activity;
     Talking talking;
     TextRead inputfile;
+    private NexTopic nexTopic;
     int count = 0;
 
     TopicPutter(Activity context_input) {
@@ -44,6 +45,13 @@ public class TopicPutter {
         text = inputfile.randomTextRead();
         talking.talk(text);
         return count;
+    }
+
+    public void sensorTextPut(){
+        text = inputfile.randomTextRead();
+        talking.talk(text);
+        nexTopic = new NexTopic(activity);//いちいち初期化する必要あり
+        nexTopic.execute(1);
     }
 
 }

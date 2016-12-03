@@ -1,8 +1,10 @@
 package com.sample.agilesamurai.moriagirl;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import java.util.ArrayList;
+import android.app.Activity;
 
 /**
  * Created by ito on 2016/11/15.
@@ -11,10 +13,12 @@ import java.util.ArrayList;
 public class NexTopic extends AsyncTask<Integer, Integer, Integer> {
 
     private TopicPutter topicPutter;
+    private Activity activity;
 
-    public NexTopic(){
+    public NexTopic(Activity context_input){
         super(); //?
-        this.topicPutter = topicPutter;
+        activity = context_input;
+        topicPutter = new TopicPutter(activity);
     }
 
     /**
@@ -38,7 +42,7 @@ public class NexTopic extends AsyncTask<Integer, Integer, Integer> {
             //配列に盛り上がり T or F を入れる
             exarray.add(not_excite);
 
-            if(exarray.size() > 10){ //判断配列のサイズ設定
+            if(exarray.size() > 3){ //判断配列のサイズ設定
                 exarray.remove(0); //一番最初の要素消去
 
                 for(int i=0; i < exarray.size(); i++){
@@ -46,7 +50,7 @@ public class NexTopic extends AsyncTask<Integer, Integer, Integer> {
                 }
             }
 
-            if(num > 5) break; //盛り上がっていなかったらbreak;
+            if(num > 2) break; //盛り上がっていなかったらbreak;
         }
 
         //返す値を決める
@@ -58,6 +62,7 @@ public class NexTopic extends AsyncTask<Integer, Integer, Integer> {
      */
     @Override
     protected void onPostExecute(Integer result) {
-        Log.d("別スレッド1", "ちゃんときてるかチェック " + result);
+        topicPutter.sensorTextPut();
+        //Log.d("別スレッド1", "ちゃんときてるかチェック " + result);
     }
 }
