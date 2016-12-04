@@ -33,8 +33,8 @@ public class Action {
 
 
 
-    Action(){
-        ChangeAction();
+    Action(ActionController.ActionType type){
+        ChangeAction(type);
     }
 
 

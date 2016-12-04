@@ -32,6 +32,7 @@ public class ActionController {
 
     public int putTopic(List<String> name, TopicType type){
         count++;
+<<<<<<< Updated upstream
         Random rnd = new Random();
         int ran = rnd.nextInt(2);
         if(ran == 0) {
@@ -41,7 +42,12 @@ public class ActionController {
             ran = rnd.nextInt(name.size());
             text = name.get(ran) + "さん" + text;
         }
+=======
+        text = action.text;
+        System.out.print("jajajaja");
+>>>>>>> Stashed changes
         talking.talk(text);
+        System.out.print("ddddd");
         return count;
     }
 }
