@@ -15,9 +15,10 @@ public class ActionController {
     Action action;
     int count = 0;
 
-    public enum TopicType{
+    public enum ActionType{
         Personal,
-        Group
+        Group,
+        Reaction
     }
 
     String[] textList = {"僕の趣味は寝ることだよ．君たちの趣味を教えてよ", "昨日あった出来事の中で一番印象に残ってるものを教えてよ．"};
@@ -30,7 +31,7 @@ public class ActionController {
         Action action = new Action();
     }
 
-    public int putTopic(List<String> name, TopicType type){
+    public int putTopic(List<String> name, ActionType type){
         count++;
         text = action.text;
         talking.talk(text);
