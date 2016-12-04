@@ -29,13 +29,17 @@ public class ActionController {
         activity = context_input;
         talking = new Talking(activity);
         Action.InitRoot(context_input);
-        Action action = new Action();
+        this.action = new Action();
     }
 
     public int putTopic(List<String> name, ActionType type){
+        System.out.println("a");
         count++;
+        System.out.println("b");
         text = action.text;
+        System.out.println("c");
         talking.talk(text);
+        System.out.println("d");
         return count;
     }
 }
