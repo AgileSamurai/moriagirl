@@ -15,12 +15,6 @@ public class ActionController {
     Action action;
     int count = 0;
 
-    public enum ActionType{
-        Personal,
-        Group,
-        Reaction
-    }
-
     String[] textList = {"僕の趣味は寝ることだよ．君たちの趣味を教えてよ", "昨日あった出来事の中で一番印象に残ってるものを教えてよ．"};
     int listSize = textList.length;
 
@@ -32,7 +26,7 @@ public class ActionController {
         this.action = new Action();
     }
 
-    public int putTopic(List<String> name, ActionType type){
+    public int putTopic(List<String> name, Action.ActionType type){
         System.out.println("a");
         count++;
         System.out.println("b");

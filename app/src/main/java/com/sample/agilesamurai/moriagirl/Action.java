@@ -29,10 +29,15 @@ public class Action {
     Double speed;
     static Context context;
 
+    public enum ActionType{
+        Personal,
+        Group,
+        Reaction
+    }
 
 
     Action(){
-        ChangeAction(ActionController.ActionType.Personal);
+        ChangeAction(ActionType.Personal);
     }
 
 
@@ -49,17 +54,18 @@ public class Action {
 
         //Actionの値を読み込み
 
-    public void ChangeAction(ActionController.ActionType actionType) {
+    public void ChangeAction(ActionType actionType) {
         String category;
+        category = "";
 
         switch(actionType){
-            case ActionController.ActionType.Personal:
+            case Personal:
                 category = "PersonalTopic";
                 break;
-            case ActionController.ActionType.Group:
+            case Group:
                 category = "GroupTopic";
                 break;
-            case ActionController.ActionType.Reaction:
+            case Reaction:
                 category = "reaction";
                 break;
         }
