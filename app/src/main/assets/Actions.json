@@ -74,16 +74,17 @@
       }
     },
     {
-      "emotion":"smile",
+      "emotion": "smile",
       "min_duration": 20,
       "max_duration": 120,
       "sound_effect": "none",
       "type": "speech",
-      "params":{
+      "params": {
         "text": "be a driver",
         "speak": "びーあどらいばー",
-        "volume":10,
+        "volume": 10,
         "speed": 10
       }
+    }
   ]
 }
