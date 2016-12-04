@@ -27,6 +27,9 @@ public class ActionController {
     public int putTopic(List<String> name, Action.ActionType type){
         count++;
         text = action.text;
+        System.out.print(type);
+        if(type == Action.ActionType.Personal) text = text.replaceFirst("NAME",name.get(0));
+        //if(type == Action.ActionType.Personal) text = text.replace('m','M');
         talking.talk(text);
         action.ChangeAction(Action.ActionType.Personal);
         return count;

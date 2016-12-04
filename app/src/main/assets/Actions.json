@@ -39,8 +39,8 @@
       "sound_effect": "none",
       "type": "speech",
       "params":{
-        "text": "$name さん一番好きな言語は何？",
-        "speak": "$name さん一番好きな言語は何？",
+        "text": "NAME さん一番好きな言語は何？",
+        "speak": "NAME さん一番好きな言語は何？",
         "volume":10,
         "speed": 10
       }
@@ -52,8 +52,8 @@
       "sound_effect": "none",
       "type": "speech",
       "params":{
-        "text": "$name さん得意な言語を教えて！",
-        "speak": "$name さん得意な言語を教えて!",
+        "text": "NAME さん得意な言語を教えて！",
+        "speak": "NAME さん得意な言語を教えて!",
         "volume":10,
         "speed": 10
       }
