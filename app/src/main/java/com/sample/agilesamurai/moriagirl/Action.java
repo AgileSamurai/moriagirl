@@ -43,7 +43,7 @@ public class Action {
     public static void Init_root(){
         try {
             mapper = new ObjectMapper();
-            root = mapper.readTree(new File("Topic.json"));
+            root = mapper.readTree(new File("Actions.json"));
         }catch ( IOException e) {
         }
     }
