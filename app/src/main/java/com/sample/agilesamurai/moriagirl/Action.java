@@ -1,8 +1,5 @@
 package com.sample.agilesamurai.moriagirl;
 
-
-
-
 import android.content.Context;
 import android.content.res.AssetManager;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -35,9 +32,8 @@ public class Action {
         Reaction
     }
 
-
-    Action(){
-        ChangeAction(ActionType.Personal);
+    Action(ActionType type){
+        ChangeAction(type);
     }
 
 
