@@ -1,8 +1,8 @@
 {
-  "gTopic_num": 2,
-  "pTopic_num": 2,
+  "GroupTopic_num": 2,
+  "PersonalTopic_num": 2,
   "reaction_num":2,
-  "gTopic":[
+  "GroupTopic":[
     {
       "emotion":"smile",
       "min_duration": 20,
@@ -31,7 +31,7 @@
     }
 
   ],
-  "pTopic":[
+  "PersonalTopic":[
     {
       "emotion":"smile",
       "min_duration": 20,
