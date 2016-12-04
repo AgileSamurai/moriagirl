@@ -28,7 +28,7 @@ public class ActionController {
         text = "";
         activity = context_input;
         talking = new Talking(activity);
-        Action.InitRoot();
+        Action.InitRoot(context_input);
         Action action = new Action();
     }
 

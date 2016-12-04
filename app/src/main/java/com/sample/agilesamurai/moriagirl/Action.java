@@ -2,6 +2,9 @@ package com.sample.agilesamurai.moriagirl;
 
 
 
+import android.content.Context;
+import android.content.res.AssetManager;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -9,25 +12,28 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Random;
 
 /**
  * Created by takahashitomokatsu on 2016/12/03.
  */
 public class Action {
-        static ObjectMapper mapper;
-        static JsonNode root;
+    static ObjectMapper mapper;
+    static JsonNode root;
 
-        String emotion;
-        int min_duration;
-        int max_duration;
-        String sound_effect;
-        String type;
-        //params
-        String text;
-        String speak;
-        Double volume;
-        Double speed;
+    String emotion;
+    int min_duration;
+    int max_duration;
+    String sound_effect;
+    String type;
+    //params
+    String text;
+    String speak;
+    Double volume;
+    Double speed;
+    static Context context;
 
 
 
@@ -36,11 +42,14 @@ public class Action {
     }
 
 
-    public static void InitRoot(){
+    public static void InitRoot(Context context_input){
         try {
+            context = context_input;
+            AssetManager as = context.getAssets();
             mapper = new ObjectMapper();
-            root = mapper.readTree(new File("Actions.json"));
+            root = mapper.readTree(as.open("Actions.json"));
         }catch ( IOException e) {
+            System.out.println("InitRoot_exception");
         }
     }
 
