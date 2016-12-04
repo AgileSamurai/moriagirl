@@ -27,20 +27,12 @@ public class ActionController {
         text = "";
         activity = context_input;
         talking = new Talking(activity);
-        Action acttion = new Action();
+        Action action = new Action();
     }
 
     public int putTopic(List<String> name, TopicType type){
         count++;
-        Random rnd = new Random();
-        int ran = rnd.nextInt(2);
-        if(ran == 0) {
-            text = grouptopic.randomTextRead();
-        }else{
-            text = personaltopic.randomTextRead();
-            ran = rnd.nextInt(name.size());
-            text = name.get(ran) + "さん" + text;
-        }
+        text = action.text;
         talking.talk(text);
         return count;
     }
