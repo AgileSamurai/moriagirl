@@ -30,17 +30,13 @@ public class Action {
         Double speed;
 
 
-    /*
-    Action(){
-        try {
-            mapper = new ObjectMapper();
-            root = mapper.readTree(new File("Topic.json"));
-        }catch ( IOException e) {
-        }
-    }
-    */
 
-    public static void Init_root(){
+    Action(){
+        ChangeAction();
+    }
+
+
+    public static void InitRoot(){
         try {
             mapper = new ObjectMapper();
             root = mapper.readTree(new File("Actions.json"));
@@ -50,7 +46,7 @@ public class Action {
 
         //Actionの値を読み込み
 
-    public void Action_init() {
+    public void ChangeAction() {
         Random rnd = new Random();
         int read = rnd.nextInt(root.get("pTopic_num").asInt());
         emotion = root.get("pTopic").get(read).get("emotion").asText();
