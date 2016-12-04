@@ -1,7 +1,6 @@
 package com.sample.agilesamurai.moriagirl;
 
 import android.app.Activity;
-import java.util.Random;
 import java.util.List;
 
 
@@ -29,6 +28,7 @@ public class ActionController {
         count++;
         text = action.text;
         talking.talk(text);
+        action.ChangeAction(Action.ActionType.Personal);
         return count;
     }
 }
