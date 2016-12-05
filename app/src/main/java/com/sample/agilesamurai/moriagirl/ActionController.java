@@ -2,6 +2,7 @@ package com.sample.agilesamurai.moriagirl;
 
 import android.app.Activity;
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -29,10 +30,11 @@ public class ActionController {
         count++;
         text = action.text;
         speak = action.speak;
-        System.out.print(type);
+        Random rnd = new Random();
+        int ran = rnd.nextInt(name.size());
         if(type == Action.ActionType.Personal) {
-            text = text.replaceFirst("NAME", name.get(0));
-            text = speak.replaceFirst("NAME", name.get(0));
+            text = text.replaceFirst("NAME", name.get(ran));
+            text = speak.replaceFirst("NAME", name.get(ran));
         }
         //if(type == Action.ActionType.Personal) text = text.replace('m','M');
         talking.talk(text, speak);
