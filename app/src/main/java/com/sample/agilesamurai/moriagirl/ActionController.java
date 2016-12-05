@@ -22,7 +22,7 @@ public class ActionController {
         Action.InitRoot(context_input);
     }
 
-    public int putTopic(List<String> name, Action action){
+    public int moveAction(List<String> name, Action action){
         count++;
         text = action.text;
         speak = action.speak;
