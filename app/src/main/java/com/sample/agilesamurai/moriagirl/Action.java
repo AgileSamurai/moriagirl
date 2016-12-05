@@ -37,7 +37,10 @@ public class Action {
         Reaction
     }
 
+    ActionType actionType;
+
     Action(ActionType actionType, int number) {
+        this.actionType = actionType;
         String category;
         category = "";
         int lengthOver = 0;
