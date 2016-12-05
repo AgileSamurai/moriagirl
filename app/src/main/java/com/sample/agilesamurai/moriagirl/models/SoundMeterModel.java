@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 
 import rx.Observable;
-import rx.subjects.Subject;
 import rx.subjects.PublishSubject;
 
 /**
@@ -24,10 +23,15 @@ public class SoundMeterModel {
     public final static int LOUDNESS_MAX_VALUE = Short.MAX_VALUE;
     public final static int LOUDNESS_MIN_VALUE = 0;
 
+    private static SoundMeterModel singleton = new SoundMeterModel();
     private SoundMeterModelImpl impl;
 
-    public SoundMeterModel() {
+    private SoundMeterModel() {
         impl = new SoundMeterModelImpl();
+    }
+
+    public static SoundMeterModel getInstance() {
+        return singleton;
     }
 
     public void start() {
@@ -37,8 +41,8 @@ public class SoundMeterModel {
         impl.stop();
     }
 
-    public Observable<Pair<Double, Double>> getOutStream() {
-        return impl.soundStream.asObservable();
+    public Observable<Integer> getSoundLevel() {
+        return impl.getSoundLevel();
     }
 }
 
@@ -54,13 +58,10 @@ class SoundMeterModelImpl {
     private AudioRecord recorder;
     private short[] buffer;
 
-    private Long startTime;
-
-    Subject<Pair<Double, Double>, Pair<Double, Double>> soundStream;
+    PublishSubject<Integer> soundLevel;
 
     SoundMeterModelImpl() {
         initAudioRecord();
-        soundStream = PublishSubject.create();
     }
 
     private void initAudioRecord() {
@@ -68,36 +69,31 @@ class SoundMeterModelImpl {
         // AudioRecord would not run if frame size is wrong
         buffer = new short[FRAME_BUFFER_SIZE];
         recorder = new AudioRecord(MediaRecorder.AudioSource.MIC, SAMPLE_RATE, CHANNEL, BIT_RATE, BUFFER_SIZE);
-
-        recorder.setRecordPositionUpdateListener(new AudioRecord.OnRecordPositionUpdateListener() {
+        recorder.setPositionNotificationPeriod(FRAME_BUFFER_SIZE);
+        AudioRecord.OnRecordPositionUpdateListener listener = new AudioRecord.OnRecordPositionUpdateListener() {
             @Override
             public void onMarkerReached(AudioRecord recorder) {}  // Don't know the usage of this function
             @Override
             public void onPeriodicNotification(AudioRecord recorder) {
-                // TODO: Refactor read method
                 read();
             }
-        });
-        recorder.setPositionNotificationPeriod(FRAME_BUFFER_SIZE);
-        // TODO: Should not use one-branch if-statement
-        if (recorder.getState() != AudioRecord.STATE_INITIALIZED) {
-            soundStream.onError(new Exception("AudioRecord initialization failed"));
-        }
+        };
+        recorder.setRecordPositionUpdateListener(listener);
     }
 
     private void read() {
         final int OFFSET = 0;
         recorder.read(buffer, OFFSET, FRAME_BUFFER_SIZE);
-        // TODO: Find a better way to find maximum (in Java7)
-        List<Integer> list = Observable.from(Shorts.asList(buffer))
+        Integer max = Observable.from(Shorts.asList(buffer))
             .map(Math::abs)
             .toList()
+            .map(Collections::max)
             .toBlocking().single();
-        Integer max = Collections.max(list);
-        Long elapsedTime = System.currentTimeMillis() - startTime;
+        soundLevel.onNext(max);
+    }
 
-        Pair<Double, Double> loudnessAtTime = Pair.create(elapsedTime.doubleValue() / 1000, max.doubleValue());
-        soundStream.onNext(loudnessAtTime);
+    Observable<Integer> getSoundLevel() {
+        return soundLevel;
     }
 
     void stop() {
@@ -105,15 +101,13 @@ class SoundMeterModelImpl {
         // Release AudioRecord Object
         // after calling, should not restart the object
         recorder.release();
-        soundStream.onCompleted();
     }
 
     void start() {
         // TODO: Return exceptions when called twice
         // start() should only be called once over the application
-        startTime = System.currentTimeMillis();
         recorder.startRecording();
-        // Anti-human behavior, onPeriodicNotification only works after the first read() called
+        // Anti-human behavior, onPeriodicNotification works after the first read() called
         read();
     }
 }

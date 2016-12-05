@@ -6,15 +6,13 @@ import android.os.Bundle;
 import android.util.Pair;
 
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.sample.agilesamurai.moriagirl.App;
 import com.sample.agilesamurai.moriagirl.R;
-import com.sample.agilesamurai.moriagirl.models.SoundMeterDataModel;
+import com.sample.agilesamurai.moriagirl.models.SoundMeterGraphModel;
 import com.sample.agilesamurai.moriagirl.models.SoundMeterModel;
 
 import rx.android.schedulers.AndroidSchedulers;
@@ -29,7 +27,7 @@ import rx.subscriptions.CompositeSubscription;
 public class SoundMeterActivity extends Activity {
     private LineChart chart;
     private LineData lineData;
-    private SoundMeterDataModel soundMeterDataModel;
+    private SoundMeterGraphModel soundMeterGraphViewModel;
 
     private CompositeSubscription subscriptions;
 
@@ -41,12 +39,12 @@ public class SoundMeterActivity extends Activity {
         subscriptions = new CompositeSubscription();
         // TODO: Implement ViewModel
         App app = (App) getApplication();
-        soundMeterDataModel = app.getSoundMeterDataModel();
+        soundMeterGraphViewModel = app.getSoundMeterDataModel();
 
         initChart();
 
         chart.setData(lineData);
-        subscriptions.add(soundMeterDataModel.getOutStream()
+        subscriptions.add(soundMeterGraphViewModel.getOutStream()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<Pair<Double, Double>>() {
@@ -93,8 +91,8 @@ public class SoundMeterActivity extends Activity {
         laxis.setAxisMinimum(SoundMeterModel.LOUDNESS_MIN_VALUE);
 
 
-        // Get sound data from SoundMeterDataModel and set it to chart
-        LineDataSet dataset = soundMeterDataModel.getDataset();
+        // Get sound data from SoundMeterGraphModel and set it to chart
+        LineDataSet dataset = soundMeterGraphViewModel.getDataset();
         dataset.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         dataset.setDrawFilled(true);
         dataset.setFillColor(Color.GREEN);
