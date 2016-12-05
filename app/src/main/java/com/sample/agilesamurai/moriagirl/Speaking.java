@@ -72,6 +72,18 @@ public class Speaking implements TextToSpeech.OnInitListener{
             speak();
     }
 
+    /**
+     * テキストを読み上げる
+     * @param text 読み上げるテキスト
+     * @param speechRate 速さ 普通:1.0
+     * @param pitch ピッチ 普通:1.0
+     */
+    public void speak(String text, float speechRate, float pitch) {
+        setSpeechRate(speechRate);
+        setSpeechPitch(pitch);
+        this.text = text;
+        if (isInitialized())
+            speak();
     }
 
     private void speak(){
@@ -79,8 +91,6 @@ public class Speaking implements TextToSpeech.OnInitListener{
             if (textToSpeech.isSpeaking()) {
                 textToSpeech.stop();
             }
-            setSpeechRate(1.0f);
-            setSpeechPitch(1.0f);
 
             // textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null) に
             // KEY_PARAM_UTTERANCE_ID を HasMap で設定
