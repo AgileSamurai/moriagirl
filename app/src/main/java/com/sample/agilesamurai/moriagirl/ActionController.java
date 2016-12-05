@@ -16,8 +16,6 @@ public class ActionController {
     Action action;
     int count = 0;
 
-    String[] textList = {"僕の趣味は寝ることだよ．君たちの趣味を教えてよ", "昨日あった出来事の中で一番印象に残ってるものを教えてよ．"};
-
     ActionController(Activity context_input) {
         text = "";
         activity = context_input;
@@ -36,7 +34,6 @@ public class ActionController {
             text = text.replaceFirst("NAME", name.get(ran));
             text = speak.replaceFirst("NAME", name.get(ran));
         }
-        //if(type == Action.ActionType.Personal) text = text.replace('m','M');
         talking.talk(text, speak);
         action.ChangeAction(Action.ActionType.Personal);
         return count;
