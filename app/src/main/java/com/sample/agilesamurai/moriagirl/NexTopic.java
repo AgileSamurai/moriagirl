@@ -28,8 +28,9 @@ public class NexTopic extends AsyncTask<Integer, Integer, Integer> {
     protected Integer doInBackground(Integer... value) {
         //値の初期化
         boolean not_excite = false;
-        ArrayList<Boolean> exarray = new ArrayList<Boolean>();
-        int num =0;
+        ArrayList<Integer> exarray = new ArrayList<Integer>();
+        int num = 0;
+        int sec = 0;
 
         //ループ開始
         while(true){
@@ -39,26 +40,27 @@ public class NexTopic extends AsyncTask<Integer, Integer, Integer> {
                 //TODO exception
             }
 
-            //配列に盛り上がり T or F を入れる
-            exarray.add(not_excite);
+            //配列に盛り上がり(Integer)を入れる
+            exarray.add(1);
 
             if(exarray.size() > 3){ //判断配列のサイズ設定
                 exarray.remove(0); //一番最初の要素消去
 
-                for(int i=0; i < exarray.size(); i++){
-                    if(exarray.get(i) == false) num++;
-                }
+                if((exarray.get(0) >= exarray.get(1)) && (exarray.get(1) >= exarray.get(2))) not_excite = true;
             }
 
-            if(num > 2) break; //盛り上がっていなかったらbreak;
+            sec++;
+
+            if((not_excite && sec > value[0]) || sec > value[1]) break; //break;
         }
 
         //返す値を決める
-        return value[0];
+        return 1;
     }
 
     /**
      * バックグランド処理が完了し、UIスレッドに反映する
+     * ここにリアクションもしくは次のお題を書く
      */
     @Override
     protected void onPostExecute(Integer result) {

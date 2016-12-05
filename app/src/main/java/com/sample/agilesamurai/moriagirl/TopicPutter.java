@@ -51,7 +51,7 @@ public class TopicPutter {
         text = inputfile.randomTextRead();
         talking.talk(text);
         nexTopic = new NexTopic(activity);//いちいち初期化する必要あり
-        nexTopic.execute(1);
+        nexTopic.execute(10, 20);//引数1:min_duration,引数2:max_duration
     }
 
 }
