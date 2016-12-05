@@ -13,7 +13,6 @@ public class ActionController {
     String speak;
     Activity activity;
     Talking talking;
-    Action action;
     int count = 0;
 
     ActionController(Activity context_input) {
@@ -21,21 +20,19 @@ public class ActionController {
         activity = context_input;
         talking = new Talking(activity);
         Action.InitRoot(context_input);
-        this.action = new Action(Action.ActionType.Personal);
     }
 
-    public int putTopic(List<String> name, Action.ActionType type){
+    public int putTopic(List<String> name, Action action){
         count++;
         text = action.text;
         speak = action.speak;
         Random rnd = new Random();
         int ran = rnd.nextInt(name.size());
-        if(type == Action.ActionType.Personal) {
+        if(action.actionType == Action.ActionType.Personal) {
             text = text.replaceFirst("NAME", name.get(ran));
             text = speak.replaceFirst("NAME", name.get(ran));
         }
         talking.talk(text, speak);
-        action.ChangeAction(Action.ActionType.Personal);
         return count;
     }
 }
