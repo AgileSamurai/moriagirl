@@ -18,9 +18,9 @@ public class Talking {
      * 吹き出しと文字を表示して、声に出す
      * @param text 話すテキスト
      */
-    public void talk(String text){
+    public void talk(String text, String speak){
         balloon.show(text);
-        speaking.speak(text);
+        speaking.speak(speak);
     }
 
     /**

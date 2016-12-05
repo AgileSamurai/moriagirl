@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class ActionController {
     String text;
+    String speak;
     Activity activity;
     Talking talking;
     Action action;
@@ -27,10 +28,14 @@ public class ActionController {
     public int putTopic(List<String> name, Action.ActionType type){
         count++;
         text = action.text;
+        speak = action.speak;
         System.out.print(type);
-        if(type == Action.ActionType.Personal) text = text.replaceFirst("NAME",name.get(0));
+        if(type == Action.ActionType.Personal) {
+            text = text.replaceFirst("NAME", name.get(0));
+            text = speak.replaceFirst("NAME", name.get(0));
+        }
         //if(type == Action.ActionType.Personal) text = text.replace('m','M');
-        talking.talk(text);
+        talking.talk(text, speak);
         action.ChangeAction(Action.ActionType.Personal);
         return count;
     }
