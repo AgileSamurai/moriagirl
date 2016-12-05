@@ -12,8 +12,8 @@
       "params":{
       "text": "みんなの好きな飲み物を教えて",
       "speak": "みんなの好きな飲み物を教えて",
-      "volume":10,
-      "speed": 10
+      "volume":1,
+      "speed": 1
       }
     },
     {
@@ -25,8 +25,8 @@
       "params":{
         "text": "全員の趣味を教えて！",
         "speak": "全員の趣味を教えて!",
-        "volume":10,
-        "speed": 10
+        "volume":1,
+        "speed": 1
       }
     }
 
@@ -41,8 +41,8 @@
       "params":{
         "text": "NAME さん一番好きな言語は何？",
         "speak": "NAME さん一番好きな言語は何？",
-        "volume":10,
-        "speed": 10
+        "volume":1,
+        "speed": 1
       }
     },
     {
@@ -54,8 +54,8 @@
       "params":{
         "text": "NAME さん得意な言語を教えて！",
         "speak": "NAME さん得意な言語を教えて!",
-        "volume":10,
-        "speed": 10
+        "volume":1,
+        "speed": 1
       }
     }
   ],
@@ -69,8 +69,8 @@
       "params":{
         "text": "なんかシーンとしてない？",
         "speak": "なんかシーンとしてない？",
-        "volume":10,
-        "speed": 10
+        "volume":1,
+        "speed": 1
       }
     },
     {
@@ -82,8 +82,8 @@
       "params": {
         "text": "be a driver",
         "speak": "びーあどらいばー",
-        "volume": 10,
-        "speed": 10
+        "volume": 1,
+        "speed": 1
       }
     }
   ]

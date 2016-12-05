@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
+import java.security.acl.Group;
 import java.util.Random;
 
 /**
@@ -13,28 +14,63 @@ import java.util.Random;
 public class Action {
     private static ObjectMapper mapper;
     private static JsonNode root;
+    private static Context context;
+    private static int groupTopicLength;
+    private static int personalTopicLength;
+    private static int reactionLength;
 
     String emotion;
-    int min_duration;
-    int max_duration;
-    String sound_effect;
+    int minDuration;
+    int maxDuration;
+    String soundEffect;
     String type;
     //params
     String text;
     String speak;
     Double volume;
     Double speed;
-    static Context context;
 
-    public enum ActionType{
+
+    public enum ActionType {
         Personal,
         Group,
         Reaction
     }
 
-    Action(ActionType type){
-        ChangeAction(type);
+    Action(ActionType actionType, int number) {
+        String category;
+        category = "";
+        int lengthOver = 0;
+        switch (actionType) {
+            case Personal:
+                category = "PersonalTopic";
+                if (personalTopicLength <= number) lengthOver = 1;
+                break;
+            case Group:
+                category = "GroupTopic";
+                if (groupTopicLength <= number) lengthOver = 1;
+                break;
+            case Reaction:
+                category = "reaction";
+                if (groupTopicLength <= number) lengthOver = 1;
+                break;
+        }
+
+        if (lengthOver == 0) {
+            emotion = root.get(category).get(number).get("emotion").asText();
+            minDuration = root.get(category).get(number).get("min_duration").asInt();
+            maxDuration = root.get(category).get(number).get("max_duration").asInt();
+            soundEffect = root.get(category).get(number).get("sound_effect").asText();
+            type = root.get(category).get(number).get("type").asText();
+            text = root.get(category).get(number).get("params").get("text").asText();
+            speak = root.get(category).get(number).get("params").get("speak").asText();
+            volume = root.get(category).get(number).get("params").get("volume").asDouble();
+            speed = root.get(category).get(number).get("params").get("speed").asDouble();
+        } else {
+            System.out.println("存在しない番号の" + category + "です");
+        }
     }
+
 
 
     public static void InitRoot(Context context_input){
@@ -43,13 +79,22 @@ public class Action {
             AssetManager as = context.getAssets();
             mapper = new ObjectMapper();
             root = mapper.readTree(as.open("Actions.json"));
+
         }catch ( IOException e) {
             System.out.println("InitRoot_exception");
         }
+
+        groupTopicLength = root.get("GroupTopic").size();
+        personalTopicLength = root.get("PersonalTopic").size();
+        reactionLength = root.get("reaction").size();
+
+        System.out.println(groupTopicLength);
+        System.out.println(personalTopicLength);
+        System.out.println(reactionLength);
     }
 
         //Actionの値を読み込み
-
+/*
     public void ChangeAction(ActionType actionType) {
         String category;
         category = "";
@@ -78,4 +123,5 @@ public class Action {
         volume = root.get(category).get(read).get("params").get("volume").asDouble();
         speed = root.get(category).get(read).get("params").get("speed").asDouble();
     }
+    */
 }
