@@ -46,11 +46,11 @@ public class Action {
         int lengthOver = 0;
         switch (actionType) {
             case Personal:
-                category = "PersonalTopic";
+                category = "personal_topic";
                 if (personalTopicLength <= number) lengthOver = 1;
                 break;
             case Group:
-                category = "GroupTopic";
+                category = "group_topic";
                 if (groupTopicLength <= number) lengthOver = 1;
                 break;
             case Reaction:
@@ -87,8 +87,8 @@ public class Action {
             System.out.println("InitRoot_exception");
         }
 
-        groupTopicLength = root.get("GroupTopic").size();
-        personalTopicLength = root.get("PersonalTopic").size();
+        groupTopicLength = root.get("group_topic").size();
+        personalTopicLength = root.get("personal_topic").size();
         reactionLength = root.get("reaction").size();
 
         System.out.println(groupTopicLength);
