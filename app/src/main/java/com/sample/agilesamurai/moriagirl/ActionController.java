@@ -30,7 +30,7 @@ public class ActionController {
         int ran = rnd.nextInt(name.size());
         if(action.actionType == Action.ActionType.Personal) {
             text = text.replaceFirst("NAME", name.get(ran));
-            text = speak.replaceFirst("NAME", name.get(ran));
+            speak = speak.replaceFirst("NAME", name.get(ran));
         }
         talking.talk(text, speak);
         return count;
