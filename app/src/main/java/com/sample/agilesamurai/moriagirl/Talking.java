@@ -14,14 +14,15 @@ public class Talking {
         speaking = new Speaking(activity);
     }
 
-    /**
-     * 吹き出しと文字を表示して、声に出す
-     * @param text 話すテキスト
-     */
+    public void talk(String text){
+        balloon.show(text);
+    }
+
     public void talk(String text, String speak){
         balloon.show(text);
         speaking.speak(speak);
     }
+
 
     /**
      * 終了処理
