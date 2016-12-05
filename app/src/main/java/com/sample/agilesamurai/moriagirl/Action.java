@@ -11,8 +11,8 @@ import java.util.Random;
  * Created by takahashitomokatsu on 2016/12/03.
  */
 public class Action {
-    static ObjectMapper mapper;
-    static JsonNode root;
+    private static ObjectMapper mapper;
+    private static JsonNode root;
 
     String emotion;
     int min_duration;
