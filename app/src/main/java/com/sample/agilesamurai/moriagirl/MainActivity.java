@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     Speaking speaking;
     Greeting greeting;
     SelfIntroduction selfIntroduction;
-    //TopicPutter topicPutter;
     ActionController actionController;
     Byebye byebye;
     final int num_of_topic = 3;
@@ -55,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         memberManager = new MemberManager(this);
         name = memberManager.getNames();
         greeting = new Greeting(this);
-        //topicPutter = new TopicPutter(this);
         actionController = new ActionController(this);
         byebye = new Byebye(this);
         greeting.randomGreeting();
@@ -142,15 +140,6 @@ public class MainActivity extends AppCompatActivity {
         selfintroduction_count++;
         syokaiButton.setVisibility(View.INVISIBLE);
     }
-/*
-    public void topicPut(){
-        int count;
-        count = topicPutter.randomTextPut(name);
-        if(count == num_of_topic || count == -1){
-            setState(State.ByeBye);
-        }
-    }
-    */
 
     public void topicPut(){
         int count;
