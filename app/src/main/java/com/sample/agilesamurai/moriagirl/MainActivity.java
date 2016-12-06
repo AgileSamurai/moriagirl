@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // メニューの要素を追加して取得
-        MenuItem actionItem = menu.add("Action Button Return title");
+        MenuItem actionItem = menu.add("Action.json Button Return title");
 
         // アイコンを設定
         actionItem.setIcon(android.R.drawable.ic_menu_revert);

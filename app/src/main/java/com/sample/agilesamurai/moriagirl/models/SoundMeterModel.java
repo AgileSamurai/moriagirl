@@ -101,6 +101,7 @@ class SoundMeterModelImpl {
         // Release AudioRecord Object
         // after calling, should not restart the object
         recorder.release();
+        soundLevel.onCompleted();
     }
 
     void start() {

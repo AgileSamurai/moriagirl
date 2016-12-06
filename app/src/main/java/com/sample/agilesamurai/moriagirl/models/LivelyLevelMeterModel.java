@@ -29,7 +29,7 @@ public class LivelyLevelMeterModel {
         sm.start();
     }
 
-    public LivelyLevelMeterModel getInstance() {
+    static public LivelyLevelMeterModel getInstance() {
         return instance;
     }
 
