@@ -13,7 +13,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        llm = LivelyLevelMeterModel.getInstance();
+        //llm = LivelyLevelMeterModel.getInstance();
     }
 
     @Override

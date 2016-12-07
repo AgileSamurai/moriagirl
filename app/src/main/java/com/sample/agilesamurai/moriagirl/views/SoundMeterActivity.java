@@ -39,7 +39,6 @@ public class SoundMeterActivity extends Activity {
         subscriptions = new CompositeSubscription();
         // TODO: Implement ViewModel
         App app = (App) getApplication();
-        soundMeterGraphViewModel = app.getSoundMeterDataModel();
 
         initChart();
 
