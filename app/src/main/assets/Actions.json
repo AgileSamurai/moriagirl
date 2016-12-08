@@ -6,6 +6,8 @@
       "max_duration": 120,
       "sound_effect": "none",
       "type": "speech",
+      "min_fever": 0,
+      "max_fever": 4,
       "params":{
       "text": "みんなの好きな飲み物を教えて",
       "speak": "みんなの好きな飲み物を教えて",
@@ -19,6 +21,8 @@
       "max_duration": 120,
       "sound_effect": "none",
       "type": "speech",
+      "min_fever": 0,
+      "max_fever": 4,
       "params":{
         "text": "全員の趣味を教えて！",
         "speak": "全員の趣味を教えて!",
@@ -35,6 +39,8 @@
       "max_duration": 120,
       "sound_effect": "none",
       "type": "speech",
+      "min_fever": 0,
+      "max_fever": 4,
       "params":{
         "text": "NAME さん一番好きな言語は何？",
         "speak": "NAME さん一番好きな言語は何？",
@@ -48,6 +54,8 @@
       "max_duration": 120,
       "sound_effect": "none",
       "type": "speech",
+      "min_fever": 0,
+      "max_fever": 4,
       "params":{
         "text": "NAME さん得意な言語を教えて！",
         "speak": "NAME さん得意な言語を教えて!",
