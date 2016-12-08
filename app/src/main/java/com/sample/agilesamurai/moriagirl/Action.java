@@ -14,6 +14,8 @@ public class Action {
     String emotion;
     int minDuration;
     int maxDuration;
+    int minFever;
+    int maxFever;
     String soundEffect;
     String type;
     //params
@@ -22,12 +24,14 @@ public class Action {
     Double volume;
     Double speed;
 
-    Action(ActionType actionType, String emotion, int minDuration, int maxDuration,
+    Action(ActionType actionType, String emotion, int minDuration, int maxDuration, int minFever, int maxFever,
            String soundEffect, String type, String text, String speak, double volume, double speed) {
         this.actionType = actionType;
         this.emotion = emotion;
         this.minDuration = minDuration;
         this.maxDuration = maxDuration;
+        this.minFever = minFever;
+        this.maxFever = maxFever;
         this.soundEffect = soundEffect;
         this.type = type;
         this.text = text;
