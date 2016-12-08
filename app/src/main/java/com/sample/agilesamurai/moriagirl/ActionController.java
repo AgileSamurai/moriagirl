@@ -31,12 +31,7 @@ public class ActionController {
     }
 
     public int moveAction(List<String> name, Action.ActionType actionType,int feverLevel){
-        Action action;
-
-        if(actionType == Action.ActionType.Reaction) {
-            
-        }
-
+        if(actionType == )
         count++;
         text = action.text;
         speak = action.speak;
@@ -48,6 +43,10 @@ public class ActionController {
         }
         talking.talk(text, speak);
         return count;
+    }
+
+    public void moveAction(int feverLevel,int num) {
+        if(num > reactionLevel.get(0).size())
     }
 
     public void getActions() {
