@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void topicPut(){
         int count;
-        count = actionController.moveAction(name, new Action(Action.ActionType.Personal, 0));
+        count = actionController.moveAction(name, Action.ActionType.Personal);
         if(count == num_of_topic || count == -1){
             setState(State.ByeBye);
         }
