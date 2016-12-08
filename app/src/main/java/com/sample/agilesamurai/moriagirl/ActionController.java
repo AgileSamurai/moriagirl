@@ -30,13 +30,32 @@ public class ActionController {
         getActions();
     }
 
-    public int moveAction(List<String> name, Action.ActionType actionType,int feverLevel){
-        if(actionType == )
+    public int moveAction(List<String> name) {
+        Random rnd = new Random();
+        int ran = rnd.nextInt(2);
+        Action.ActionType actionType;
+        if (ran == 0) {
+            actionType = Action.ActionType.Personal;
+        } else {
+            actionType = Action.ActionType.Group;
+        }
+        return moveAction(name, actionType);
+    }
+
+    public int moveAction(List<String> name, Action.ActionType actionType){
         count++;
+        Random rnd = new Random();
+        int ran;
+        Action action;
+        if(actionType == Action.ActionType.Personal) {
+            ran = rnd.nextInt(pTopics.size());
+            action = pTopics.get(ran);
+        }else {
+            ran = rnd.nextInt(gTopics.size());
+            action = gTopics.get(ran);
+        }
         text = action.text;
         speak = action.speak;
-        Random rnd = new Random();
-        int ran = rnd.nextInt(name.size());
         if(actionType == Action.ActionType.Personal) {
             text = text.replaceFirst("NAME", name.get(ran));
             speak = speak.replaceFirst("NAME", name.get(ran));
