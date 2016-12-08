@@ -63,6 +63,8 @@
       "max_duration": 120,
       "sound_effect": "none",
       "type": "speech",
+      "min_fever": 0,
+      "max_fever": 1,
       "params":{
         "text": "なんかシーンとしてない？",
         "speak": "なんかシーンとしてない？",
@@ -76,9 +78,56 @@
       "max_duration": 120,
       "sound_effect": "none",
       "type": "speech",
+      "min_fever": 0,
+      "max_fever": 4,
       "params": {
         "text": "be a driver",
         "speak": "びーあどらいばー",
+        "volume": 1,
+        "speed": 1
+      }
+    },
+    {
+      "emotion": "smile",
+      "min_duration": 20,
+      "max_duration": 120,
+      "sound_effect": "none",
+      "type": "speech",
+      "min_fever": 0,
+      "max_fever": 2,
+      "params": {
+        "text": "もっと盛り上がっていこう",
+        "speak": "もっと盛り上がっていこう",
+        "volume": 1,
+        "speed": 1
+      }
+    },
+    {
+      "emotion": "smile",
+      "min_duration": 20,
+      "max_duration": 120,
+      "sound_effect": "none",
+      "type": "speech",
+      "min_fever": 3,
+      "max_fever": 4,
+      "params": {
+        "text": "いいね、盛り上がってるね!",
+        "speak": "いいね、盛り上がってるね!",
+        "volume": 1,
+        "speed": 1
+      }
+    },
+    {
+      "emotion": "smile",
+      "min_duration": 20,
+      "max_duration": 120,
+      "sound_effect": "none",
+      "type": "speech",
+      "min_fever": 0,
+      "max_fever": 1,
+      "params": {
+        "text": "そろそろお題をかえようか？",
+        "speak": "そろそろお題をかえようか？",
         "volume": 1,
         "speed": 1
       }
