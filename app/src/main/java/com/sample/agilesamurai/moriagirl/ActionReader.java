@@ -15,8 +15,8 @@ public class ActionReader {
     private static ObjectMapper mapper;
     private static JsonNode root;
     private static Activity activity;
-    private static int groupTopicLength;
     private static int personalTopicLength;
+    private static int groupTopicLength;
     private static int reactionLength;
 
 
@@ -51,7 +51,7 @@ public class ActionReader {
                 break;
             case Reaction:
                 category = "reaction";
-                if (groupTopicLength <= number) lengthOver = true;
+                if (reactionLength <= number) lengthOver = true;
                 break;
         }
 
@@ -73,5 +73,17 @@ public class ActionReader {
             System.out.println("存在しない番号の" + category + "です");
         }
         return null;
+    }
+
+    int getPersonalTopicLength(){
+        return personalTopicLength;
+    }
+
+    int getGroupTopicLength(){
+        return groupTopicLength;
+    }
+
+    int getReactionLength(){
+        return reactionLength;
     }
 }
