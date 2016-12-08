@@ -61,6 +61,8 @@ public class ActionReader {
                     root.get(category).get(number).get("emotion").asText(),
                     root.get(category).get(number).get("min_duration").asInt(),
                     root.get(category).get(number).get("max_duration").asInt(),
+                    root.get(category).get(number).get("min_fever").asInt(),
+                    root.get(category).get(number).get("max_fever").asInt(),
                     root.get(category).get(number).get("sound_effect").asText(),
                     root.get(category).get(number).get("type").asText(),
                     root.get(category).get(number).get("params").get("text").asText(),
