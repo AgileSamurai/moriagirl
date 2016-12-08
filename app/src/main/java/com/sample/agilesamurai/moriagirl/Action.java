@@ -1,13 +1,5 @@
 package com.sample.agilesamurai.moriagirl;
 
-import android.content.Context;
-import android.content.res.AssetManager;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
-import java.security.acl.Group;
-import java.util.Random;
-
 /**
  * Created by takahashitomokatsu on 2016/12/03.
  */
