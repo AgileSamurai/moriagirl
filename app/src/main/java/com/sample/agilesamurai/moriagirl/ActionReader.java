@@ -51,7 +51,7 @@ public class ActionReader {
                 break;
             case Reaction:
                 category = "reaction";
-                if (groupTopicLength <= number) lengthOver = true;
+                if (reactionLength <= number) lengthOver = true;
                 break;
         }
 
