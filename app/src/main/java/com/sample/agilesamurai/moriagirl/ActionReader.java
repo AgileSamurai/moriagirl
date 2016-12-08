@@ -20,7 +20,7 @@ public class ActionReader {
     private static int reactionLength;
 
 
-    ActionReader(Action.ActionType, int number, Activity context_input) {
+    ActionReader(Activity context_input) {
         try {
             activity = context_input;
             AssetManager as = activity.getAssets();
@@ -36,27 +36,27 @@ public class ActionReader {
         reactionLength = root.get("reaction").size();
     }
 
-    readAction(Action.ActionType actionType, int number) {
+    Action readAction(Action.ActionType actionType, int number) {
         String category;
         category = "";
-        int lengthOver = 0;
+        boolean lengthOver = false;
         switch (actionType) {
             case Personal:
                 category = "PersonalTopic";
-                if (personalTopicLength <= number) lengthOver = 1;
+                if (personalTopicLength <= number) lengthOver = true;
                 break;
             case Group:
                 category = "GroupTopic";
-                if (groupTopicLength <= number) lengthOver = 1;
+                if (groupTopicLength <= number) lengthOver = true;
                 break;
             case Reaction:
                 category = "reaction";
-                if (groupTopicLength <= number) lengthOver = 1;
+                if (groupTopicLength <= number) lengthOver = true;
                 break;
         }
 
-        if (lengthOver == 0) {
-            return Action(
+        if (!lengthOver) {
+            Action action = new Action(
                     actionType,
                     root.get(category).get(number).get("emotion").asText(),
                     root.get(category).get(number).get("min_duration").asInt(),
@@ -68,8 +68,10 @@ public class ActionReader {
                     root.get(category).get(number).get("params").get("volume").asDouble(),
                     root.get(category).get(number).get("params").get("speed").asDouble()
             );
+            return action;
         } else {
             System.out.println("存在しない番号の" + category + "です");
         }
+        return null;
     }
 }

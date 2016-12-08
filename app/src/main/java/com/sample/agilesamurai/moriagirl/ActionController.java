@@ -19,7 +19,6 @@ public class ActionController {
         text = "";
         activity = context_input;
         talking = new Talking(activity);
-        ActionReader.InitRoot(activity);
     }
 
     public int moveAction(List<String> name, Action action){
