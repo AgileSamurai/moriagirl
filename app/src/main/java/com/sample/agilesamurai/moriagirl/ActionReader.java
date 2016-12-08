@@ -31,8 +31,8 @@ public class ActionReader {
             System.out.println("InitRoot_exception");
         }
 
-        groupTopicLength = root.get("GroupTopic").size();
-        personalTopicLength = root.get("PersonalTopic").size();
+        groupTopicLength = root.get("group_topic").size();
+        personalTopicLength = root.get("personal_topic").size();
         reactionLength = root.get("reaction").size();
     }
 
@@ -42,11 +42,11 @@ public class ActionReader {
         boolean lengthOver = false;
         switch (actionType) {
             case Personal:
-                category = "PersonalTopic";
+                category = "personal_topic";
                 if (personalTopicLength <= number) lengthOver = true;
                 break;
             case Group:
-                category = "GroupTopic";
+                category = "group_topic";
                 if (groupTopicLength <= number) lengthOver = true;
                 break;
             case Reaction:

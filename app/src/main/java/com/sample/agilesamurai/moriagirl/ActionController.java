@@ -27,6 +27,9 @@ public class ActionController {
         activity = context_input;
         talking = new Talking(activity);
         actionReader = new ActionReader(activity);
+        for(int i = 0; i < 5; i++){
+            reactionLevel.add(new ArrayList<>());
+        }
         getActions();
     }
 
