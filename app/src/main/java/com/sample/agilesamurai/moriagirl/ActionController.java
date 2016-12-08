@@ -42,21 +42,21 @@ public class ActionController {
         return moveAction(name, actionType);
     }
 
-    public int moveAction(List<String> name, Action.ActionType actionType){
+    public int moveAction(List<String> name, Action.ActionType actionType) {
         count++;
         Random rnd = new Random();
         int ran;
         Action action;
-        if(actionType == Action.ActionType.Personal) {
+        if (actionType == Action.ActionType.Personal) {
             ran = rnd.nextInt(pTopics.size());
             action = pTopics.get(ran);
-        }else {
+        } else {
             ran = rnd.nextInt(gTopics.size());
             action = gTopics.get(ran);
         }
         text = action.text;
         speak = action.speak;
-        if(actionType == Action.ActionType.Personal) {
+        if (actionType == Action.ActionType.Personal) {
             text = text.replaceFirst("NAME", name.get(ran));
             speak = speak.replaceFirst("NAME", name.get(ran));
         }
@@ -70,38 +70,37 @@ public class ActionController {
         int ran = rnd.nextInt(reactionLevel.get(feverLevel).size());
         text = reactions.get(reactionLevel.get(feverLevel).get(ran)).text;
         speak = reactions.get(reactionLevel.get(feverLevel).get(ran)).text;
-        talking.talk(text,speak);
+        talking.talk(text, speak);
     }
 
     public void getActions() {
-        for(int i=0;i<actionReader.getPersonalTopicLength();i++) {
-            pTopics.add(actionReader.readAction(Action.ActionType.Personal,i));
+        for (int i = 0; i < actionReader.getPersonalTopicLength(); i++) {
+            pTopics.add(actionReader.readAction(Action.ActionType.Personal, i));
         }
-        for(int i=0;i<actionReader.getGroupTopicLength();i++) {
-            gTopics.add(actionReader.readAction(Action.ActionType.Group,i));
+        for (int i = 0; i < actionReader.getGroupTopicLength(); i++) {
+            gTopics.add(actionReader.readAction(Action.ActionType.Group, i));
         }
-        for(int i=0;i<actionReader.getReactionLength();i++) {
-            reactions.add(actionReader.readAction(Action.ActionType.Reaction,i));
+        for (int i = 0; i < actionReader.getReactionLength(); i++) {
+            reactions.add(actionReader.readAction(Action.ActionType.Reaction, i));
             int minFever = reactions.get(i).minFever;
             int maxFever = reactions.get(i).maxFever;
 
-            if(minFever <= 0) {
+            if (minFever <= 0) {
                 reactionLevel.get(0).add(i);
             }
-            if(minFever <= 1 && maxFever >=1) {
+            if (minFever <= 1 && maxFever >= 1) {
                 reactionLevel.get(1).add(i);
             }
-            if(minFever <= 2 && maxFever >=2) {
+            if (minFever <= 2 && maxFever >= 2) {
                 reactionLevel.get(2).add(i);
             }
-            if(minFever <= 3 && maxFever >=3){
+            if (minFever <= 3 && maxFever >= 3) {
                 reactionLevel.get(3).add(i);
             }
-            if(maxFever >=4){
+            if (maxFever >= 4) {
                 reactionLevel.get(4).add(i);
             }
 
-            }
         }
     }
 }
