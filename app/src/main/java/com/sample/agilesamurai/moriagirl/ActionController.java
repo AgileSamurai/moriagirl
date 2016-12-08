@@ -45,8 +45,13 @@ public class ActionController {
         return count;
     }
 
-    public void moveAction(int feverLevel,int num) {
-        if(num > reactionLevel.get(0).size())
+    //randomにreaction
+    public void moveAction(int feverLevel) {
+        Random rnd = new Random();
+        int ran = rnd.nextInt(reactionLevel.get(feverLevel).size());
+        text = reactions.get(reactionLevel.get(feverLevel).get(ran)).text;
+        speak = reactions.get(reactionLevel.get(feverLevel).get(ran)).text;
+        talking.talk(text,speak);
     }
 
     public void getActions() {
