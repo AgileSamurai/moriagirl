@@ -75,13 +75,13 @@ public class ActionController {
 
     public void getActions() {
         for(int i=0;i<actionReader.getPersonalTopicLength();i++) {
-            pTopics.add(actionReader.readAction(Action.ActionType.Personal),i);
+            pTopics.add(actionReader.readAction(Action.ActionType.Personal,i));
         }
         for(int i=0;i<actionReader.getGroupTopicLength();i++) {
-            gTopics.add(actionReader.readAction(Action.ActionType.Group),i);
+            gTopics.add(actionReader.readAction(Action.ActionType.Group,i));
         }
-        for(int i=0;i<actionReader.getReactionTopicLength();i++) {
-            reactions.add(actionReader.readAction(Action.ActionType.Reaction),i);
+        for(int i=0;i<actionReader.getReactionLength();i++) {
+            reactions.add(actionReader.readAction(Action.ActionType.Reaction,i));
             int minFever = reactions.get(i).minFever;
             int maxFever = reactions.get(i).maxFever;
 
