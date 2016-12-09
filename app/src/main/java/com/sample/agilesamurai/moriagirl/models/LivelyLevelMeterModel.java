@@ -1,7 +1,6 @@
 package com.sample.agilesamurai.moriagirl.models;
 
 import android.support.v4.util.Pair;
-import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 

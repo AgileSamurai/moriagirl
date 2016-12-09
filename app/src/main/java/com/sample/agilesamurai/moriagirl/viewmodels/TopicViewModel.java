@@ -2,7 +2,6 @@ package com.sample.agilesamurai.moriagirl.viewmodels;
 
 
 import android.databinding.ObservableField;
-import android.util.Log;
 
 import com.sample.agilesamurai.moriagirl.models.LivelyLevelMeterModel;
 import com.sample.agilesamurai.moriagirl.utils.Action;

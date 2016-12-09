@@ -3,13 +3,10 @@ package com.sample.agilesamurai.moriagirl.models;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
-import android.util.Log;
-import android.util.Pair;
 
 import com.google.common.primitives.Shorts;
 
 import java.util.Collections;
-import java.util.List;
 
 import rx.Observable;
 import rx.subjects.PublishSubject;
@@ -79,10 +76,6 @@ class SoundMeterModelImpl {
             }
         };
         recorder.setRecordPositionUpdateListener(listener);
-        soundLevel.doOnNext(value -> {
-            Log.d("Inside", "soundLevel.onNext(max) called with max = " + value.toString());
-        });
-        Log.d("Debug", "init() called");
     }
 
     private void read() {
@@ -94,7 +87,6 @@ class SoundMeterModelImpl {
                 .map(Collections::max)
                 .toBlocking().single();
         soundLevel.onNext(max);
-        Log.d("Outside", "soundLevel.onNext(max) called with max = " + max.toString());
     }
 
     void stop() {
@@ -106,7 +98,6 @@ class SoundMeterModelImpl {
     }
 
     void start() {
-        Log.d("Debug", "soundLevel.start() called");
         // TODO: Return exceptions when called twice
         // start() should only be called once over the application
         recorder.startRecording();
