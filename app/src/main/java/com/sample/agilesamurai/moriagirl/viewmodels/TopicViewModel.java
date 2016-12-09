@@ -4,9 +4,7 @@ package com.sample.agilesamurai.moriagirl.viewmodels;
 import android.databinding.ObservableField;
 
 import com.sample.agilesamurai.moriagirl.models.LivelyLevelMeterModel;
-import com.sample.agilesamurai.moriagirl.utils.Action;
 import com.sample.agilesamurai.moriagirl.utils.LivelyLevelDeterminerProvider;
-import com.sample.agilesamurai.moriagirl.utils.ReactionAction;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,11 +29,10 @@ public class TopicViewModel {
     public TopicViewModel(LivelyLevelMeterModel livelyLevelMeter) {
         livelyLevelMeter.setLivelyLevelDeterminer(
             LivelyLevelDeterminerProvider.getDefaultStaticAverageDeterminer());
-        Subscription sub = livelyLevelMeter.getLivelyLevelWithLast(5, 5, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.io())
+        Subscription sub = livelyLevelMeter.getLivelyLevelWithLast(10, 5, TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe((pair) -> {
-                Log.d("DEBUG", pair.first.toString() + ", " + pair.first.toString());
+            .subscribe(pair -> {
                 lastLevel.set(pair.first.toString());
                 currLevel.set(pair.second.toString());
             });
