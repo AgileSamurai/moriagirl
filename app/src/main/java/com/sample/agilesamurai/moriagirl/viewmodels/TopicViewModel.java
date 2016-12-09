@@ -37,7 +37,7 @@ public class TopicViewModel {
             .subscribe((pair) -> {
                 Log.d("DEBUG", pair.first.toString() + ", " + pair.first.toString());
                 lastLevel.set(pair.first.toString());
-                currLevel.set(pair.first.toString());
+                currLevel.set(pair.second.toString());
             });
         subscriptions.add(sub);
     }
