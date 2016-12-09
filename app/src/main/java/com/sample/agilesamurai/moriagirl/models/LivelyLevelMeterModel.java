@@ -43,14 +43,14 @@ public class LivelyLevelMeterModel {
         return sm.getSoundLevel()
             .buffer(timespan, timeshift, unit)
             .map(determiner::call)
-            .publish();  // Convert to hot observable
+            .share();  // Convert to hot observable
     }
 
     public Observable<Pair<LivelyLevel, LivelyLevel>> getLivelyLevelWithLast(long timespan, long timeshift, TimeUnit unit, LivelyLevel initLastLevel) {
         Observable<LivelyLevel> curr = getLivelyLevel(timespan, timeshift, unit);
         Observable<LivelyLevel> last = curr.startWith(initLastLevel);
         return Observable.zip(last, curr, Pair::create)
-            .publish();  // Convert to hot observable
+            .share();  // Convert to hot observable
     }
 
     public Observable<Pair<LivelyLevel, LivelyLevel>> getLivelyLevelWithLast(long timespan, long timeshift, TimeUnit unit) {
