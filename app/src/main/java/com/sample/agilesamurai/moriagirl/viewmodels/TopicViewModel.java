@@ -29,8 +29,8 @@ public class TopicViewModel {
     public TopicViewModel(LivelyLevelMeterModel livelyLevelMeter) {
         livelyLevelMeter.setLivelyLevelDeterminer(
             LivelyLevelDeterminerProvider.getDefaultStaticAverageDeterminer());
-            .subscribeOn(Schedulers.io())
         Subscription sub = livelyLevelMeter.getLivelyLevelWithLast(10, 5, TimeUnit.SECONDS)
+            .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(pair -> {
                 lastLevel.set(pair.first.toString());
