@@ -3,6 +3,7 @@ package com.sample.agilesamurai.moriagirl.models;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
+import android.util.Log;
 import android.util.Pair;
 
 import com.google.common.primitives.Shorts;
@@ -23,20 +24,16 @@ public class SoundMeterModel {
     public final static int LOUDNESS_MAX_VALUE = Short.MAX_VALUE;
     public final static int LOUDNESS_MIN_VALUE = 0;
 
-    private static SoundMeterModel singleton = new SoundMeterModel();
     private SoundMeterModelImpl impl;
 
-    private SoundMeterModel() {
+    public SoundMeterModel() {
         impl = new SoundMeterModelImpl();
-    }
-
-    public static SoundMeterModel getInstance() {
-        return singleton;
     }
 
     public void start() {
         impl.start();
     }
+
     public void stop() {
         impl.stop();
     }
@@ -56,18 +53,21 @@ class SoundMeterModelImpl {
     private final static int BUFFER_SIZE = AudioRecord.getMinBufferSize(SAMPLE_RATE, CHANNEL, BIT_RATE);
     private final static int FRAME_BUFFER_SIZE = BUFFER_SIZE / 2;
     private AudioRecord recorder;
-    private short[] buffer;
+    private short[] buffer = new short[FRAME_BUFFER_SIZE];
 
-    PublishSubject<Integer> soundLevel;
+    private PublishSubject<Integer> soundLevel= PublishSubject.create();
 
     SoundMeterModelImpl() {
         initAudioRecord();
     }
 
+    Observable<Integer> getSoundLevel() {
+        return soundLevel;
+    }
+
     private void initAudioRecord() {
         // TODO: Maybe can use ByteBuffer instead of short[]
         // AudioRecord would not run if frame size is wrong
-        buffer = new short[FRAME_BUFFER_SIZE];
         recorder = new AudioRecord(MediaRecorder.AudioSource.MIC, SAMPLE_RATE, CHANNEL, BIT_RATE, BUFFER_SIZE);
         recorder.setPositionNotificationPeriod(FRAME_BUFFER_SIZE);
         AudioRecord.OnRecordPositionUpdateListener listener = new AudioRecord.OnRecordPositionUpdateListener() {
@@ -79,21 +79,22 @@ class SoundMeterModelImpl {
             }
         };
         recorder.setRecordPositionUpdateListener(listener);
+        soundLevel.doOnNext(value -> {
+            Log.d("Inside", "soundLevel.onNext(max) called with max = " + value.toString());
+        });
+        Log.d("Debug", "init() called");
     }
 
     private void read() {
         final int OFFSET = 0;
         recorder.read(buffer, OFFSET, FRAME_BUFFER_SIZE);
         Integer max = Observable.from(Shorts.asList(buffer))
-            .map(Math::abs)
-            .toList()
-            .map(Collections::max)
-            .toBlocking().single();
+                .map(Math::abs)
+                .toList()
+                .map(Collections::max)
+                .toBlocking().single();
         soundLevel.onNext(max);
-    }
-
-    Observable<Integer> getSoundLevel() {
-        return soundLevel;
+        Log.d("Outside", "soundLevel.onNext(max) called with max = " + max.toString());
     }
 
     void stop() {
@@ -105,6 +106,7 @@ class SoundMeterModelImpl {
     }
 
     void start() {
+        Log.d("Debug", "soundLevel.start() called");
         // TODO: Return exceptions when called twice
         // start() should only be called once over the application
         recorder.startRecording();

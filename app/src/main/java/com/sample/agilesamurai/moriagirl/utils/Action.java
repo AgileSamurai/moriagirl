@@ -8,15 +8,13 @@ public abstract class Action {
     private String emotion;
     private Double minDuration;
     private Double maxDuration;
-    private String soundEffect;
     private Integer minLivelyLevel;
     private Integer maxLivelyLevel;
 
-    public Action(String emotion, Double minDuration, Double maxDuration, String soundEffect, Integer minLivelyLevel, Integer maxLivelyLevel) {
+    public Action(String emotion, Double minDuration, Double maxDuration, Integer minLivelyLevel, Integer maxLivelyLevel) {
         this.emotion     = emotion;
         this.minDuration = minDuration;
         this.maxDuration = maxDuration;
-        this.soundEffect = soundEffect;
         this.minLivelyLevel = minLivelyLevel;
         this.maxLivelyLevel = maxLivelyLevel;
     }
@@ -31,10 +29,6 @@ public abstract class Action {
 
     public Double getMaxDuration() {
         return this.maxDuration;
-    }
-
-    public String getSoundEffect() {
-        return this.soundEffect;
     }
 
     public Integer getMinLivelyLevel() {

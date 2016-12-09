@@ -1,6 +1,7 @@
 package com.sample.agilesamurai.moriagirl.utils;
 
-import com.sample.agilesamurai.moriagirl.models.LivelyLevelMeterModel.ClimaxLevel;
+import com.sample.agilesamurai.moriagirl.models.LivelyLevelMeterModel;
+import com.sample.agilesamurai.moriagirl.models.LivelyLevelMeterModel.LivelyLevel;
 import com.sample.agilesamurai.moriagirl.models.SoundMeterModel;
 
 import java.util.List;
@@ -23,26 +24,26 @@ public class LivelyLevelDeterminerProvider {
         double ratio2 = ratio * ratio;
         return new LivelyLevelDeterminer() {
             @Override
-            public ClimaxLevel call(List<Integer> volumes) {
+            public LivelyLevel call(List<Integer> volumes) {
                 int size = volumes.size();
                 double average = MathObservable.sumInteger(Observable.from(volumes))
                     .map(sum -> sum.doubleValue() / size) // Convert sum to double to calculate average in double
                     .toBlocking().single();
 
                 if (average > middle * ratio2) {
-                    return ClimaxLevel.VeryHigh;
+                    return LivelyLevel.VeryHigh;
                 }
                 else if(average > middle * ratio) {
-                    return ClimaxLevel.High;
+                    return LivelyLevel.High;
                 }
                 else if(average > middle * (2 - ratio)) {
-                    return ClimaxLevel.Middle;
+                    return LivelyLevel.Middle;
                 }
                 else if(average > middle * (2 - ratio2)) {
-                    return ClimaxLevel.Low;
+                    return LivelyLevel.Low;
                 }
                 else {
-                    return ClimaxLevel.VeryLow;
+                    return LivelyLevel.VeryLow;
                 }
             }
         };

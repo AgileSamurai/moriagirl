@@ -9,5 +9,5 @@ import java.util.List;
  */
 
 public interface LivelyLevelDeterminer {
-    public LivelyLevelMeterModel.ClimaxLevel call(List<Integer> volumes);
+    public LivelyLevelMeterModel.LivelyLevel call(List<Integer> volumes);
 }

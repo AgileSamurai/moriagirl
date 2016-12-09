@@ -5,7 +5,7 @@ package com.sample.agilesamurai.moriagirl.utils;
  */
 
 public class ReactionAction extends Action {
-    public ReactionAction(String emotion, Double minDuration, Double maxDuration, String soundEffect, Integer minLivelyLevel, Integer maxLivelyLevel) {
-        super(emotion, minDuration, maxDuration, soundEffect, minLivelyLevel, maxLivelyLevel);
+    public ReactionAction(String emotion, Double minDuration, Double maxDuration, Integer minLivelyLevel, Integer maxLivelyLevel) {
+        super(emotion, minDuration, maxDuration, minLivelyLevel, maxLivelyLevel);
     }
 }

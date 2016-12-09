@@ -10,9 +10,9 @@ public class SpeechAction extends Action {
     private Double volume;
     private Double speed;
 
-    public SpeechAction(String emotion, Double minDuration, Double maxDuration, String soundEffect, Integer minLivelyLevel, Integer maxLivelyLevel,
+    public SpeechAction(String emotion, Double minDuration, Double maxDuration, Integer minLivelyLevel, Integer maxLivelyLevel,
                         String text, String speak, Double volume, Double speed) {
-        super(emotion, minDuration, maxDuration, soundEffect, minLivelyLevel, maxLivelyLevel);
+        super(emotion, minDuration, maxDuration, minLivelyLevel, maxLivelyLevel);
         this.text   = text;
         this.speak  = speak;
         this.volume = volume;
