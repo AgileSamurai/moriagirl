@@ -15,7 +15,7 @@ import rx.observables.MathObservable;
 
 public class LivelyLevelDeterminerProvider {
     static public LivelyLevelDeterminer getDefaultStaticAverageDeterminer() {
-        double mean = SoundMeterModel.LOUDNESS_MAX_VALUE / 4;  // Guess 1/4 is the mean value of normal sound level
+        double mean = SoundMeterModel.LOUDNESS_MAX_VALUE / 10;  // Guess 1/10 is the mean value of normal sound level
         double ratio = 1.3;
         return getStaticAverageDeterminer(mean, ratio);
     }
