@@ -58,12 +58,4 @@ public class LivelyLevelMeterModel {
         LivelyLevel initLastLevel = LivelyLevel.VeryLow;
         return getLivelyLevelWithLast(timespan, timeshift, unit, initLastLevel);
     }
-
-    public void start() {
-        sm.start();
-    }
-
-    public void stop() {
-        sm.stop();
-    }
 }
