@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.live2d.Live2D;
+import jp.live2d.utils.android.FileManager;
 
 public class MainActivity extends AppCompatActivity {
     static List<String> name = new ArrayList();
@@ -73,10 +74,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        FileManager.init(getApplicationContext());
+
         //for Live2d
         Live2D.init();
-        girlView = new SampleGLSurfaceView(this, "haru/motions/haru_m_07.mtn");
-        glView = (GLSurfaceView) findViewById(R.id.surfaceView1);
+        girlView = new SampleGLSurfaceView(this, "haru/motions/haru_m_05.mtn");
+        glView = (GLSurfaceView) findViewById(R.id.surfaceView);
         glView.setRenderer(girlView.renderer);
     }
 
