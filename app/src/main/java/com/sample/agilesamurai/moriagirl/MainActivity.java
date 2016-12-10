@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
     final int num_of_topic = 3;
     //何人自己紹介したのかカウント
     int selfintroduction_count = 0;
-    private GLSurfaceView glView;
-    private SampleGLSurfaceView girlView;
+    GLSurfaceView glView;
+    SampleGLSurfaceView girlView;
 
     public enum State {
         DisplayInputMessage,
@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        syokaiButton = (Button)findViewById(R.id.syokai);
-        byebyeButton = (Button)findViewById(R.id.byebye);
+        syokaiButton = (Button) findViewById(R.id.syokai);
+        byebyeButton = (Button) findViewById(R.id.byebye);
         speaking = new Speaking(this);
         memberManager = new MemberManager(this);
         name = memberManager.getNames();
@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
 
         //for Live2d
         Live2D.init();
-        girlView = new SampleGLSurfaceView(this) ;
-        this.glView = (GLSurfaceView)this.findViewById(R.id.surfaceView1);
-        this.glView.setRenderer(girlView.renderer);
+        girlView = new SampleGLSurfaceView(this, "haru/motions/haru_m_07.mtn");
+        glView = (GLSurfaceView) findViewById(R.id.surfaceView1);
+        glView.setRenderer(girlView.renderer);
     }
 
     @Override
