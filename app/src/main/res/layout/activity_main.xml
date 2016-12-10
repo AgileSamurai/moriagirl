@@ -27,10 +27,10 @@
         android:layout_height="match_parent"
         android:layout_weight="0.6">
 
-        <ImageView
+        <android.opengl.GLSurfaceView
+        android:id="@+id/surfaceView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/ribbonkuma" />
+        android:layout_height="match_parent" />
 
         <Button
             android:id="@+id/syokai"
