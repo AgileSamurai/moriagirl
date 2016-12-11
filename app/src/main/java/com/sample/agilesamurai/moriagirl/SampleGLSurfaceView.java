@@ -75,7 +75,7 @@ public class SampleGLSurfaceView extends GLSurfaceView{
 //            gl.glDisable( GL10.GL_CULL_FACE ) ;
             bg.draw(gl);
             gl.glScalef(2.4f, 2.4f, 2.4f); // scale(x, y, z)
-            gl.glTranslatef(0.0f, -0.3f, 0.0f); // position(x, y, z)
+            gl.glTranslatef(0.0f, -0.5f, 0.0f); // position(x, y, z) default y= -0.3f
             gl.glOrthof(0 , modelWidth , modelWidth / aspect , 0 , 0.5f , -0.5f ) ;
 
             live2DModel.loadParam();

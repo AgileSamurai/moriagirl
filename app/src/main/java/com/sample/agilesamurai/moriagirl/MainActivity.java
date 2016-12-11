@@ -64,16 +64,6 @@ public class MainActivity extends AppCompatActivity {
         byebye = new Byebye(this);
         greeting.randomGreeting();
 
-        // Open SoundMeter Activity
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SoundMeterActivity.class);
-                startActivity(intent);
-            }
-        });
-
         FileManager.init(getApplicationContext());
 
         //for Live2d
