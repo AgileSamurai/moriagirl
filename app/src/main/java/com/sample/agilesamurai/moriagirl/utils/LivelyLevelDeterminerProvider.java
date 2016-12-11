@@ -14,6 +14,33 @@ import rx.observables.MathObservable;
  */
 
 public class LivelyLevelDeterminerProvider {
+    private interface DetermineFunction {
+        public LivelyLevel call(double volume);
+    }
+
+    static private DetermineFunction getDetermineFunction(double middle, double ratio) {
+        return new DetermineFunction() {
+            @Override
+            public LivelyLevel call(double volume) {
+                if (volume > middle * ratio * ratio) {
+                    return LivelyLevel.VeryHigh;
+                }
+                else if(volume > middle * ratio) {
+                    return LivelyLevel.High;
+                }
+                else if(volume > middle * (2 - ratio)) {
+                    return LivelyLevel.Middle;
+                }
+                else if(volume > middle * (2 - ratio * ratio)) {
+                    return LivelyLevel.Low;
+                }
+                else {
+                    return LivelyLevel.VeryLow;
+                }
+            }
+        };
+    }
+
     static public LivelyLevelDeterminer getDefaultStaticAverageDeterminer() {
         double mean = SoundMeterModel.LOUDNESS_MAX_VALUE / 10;  // Guess 1/10 is the mean value of normal sound level
         double ratio = 1.3;
@@ -21,7 +48,7 @@ public class LivelyLevelDeterminerProvider {
     }
 
     static public LivelyLevelDeterminer getStaticAverageDeterminer(double middle, double ratio) {
-        double ratio2 = ratio * ratio;
+        DetermineFunction det = getDetermineFunction(middle, ratio);
         return new LivelyLevelDeterminer() {
             @Override
             public LivelyLevel call(List<Integer> volumes) {
@@ -29,22 +56,7 @@ public class LivelyLevelDeterminerProvider {
                 double average = MathObservable.sumInteger(Observable.from(volumes))
                     .map(sum -> sum.doubleValue() / size) // Convert sum to double so we can calculate average
                     .toBlocking().single();
-
-                if (average > middle * ratio2) {
-                    return LivelyLevel.VeryHigh;
-                }
-                else if(average > middle * ratio) {
-                    return LivelyLevel.High;
-                }
-                else if(average > middle * (2 - ratio)) {
-                    return LivelyLevel.Middle;
-                }
-                else if(average > middle * (2 - ratio2)) {
-                    return LivelyLevel.Low;
-                }
-                else {
-                    return LivelyLevel.VeryLow;
-                }
+                return det.call(average);
             }
         };
     }
