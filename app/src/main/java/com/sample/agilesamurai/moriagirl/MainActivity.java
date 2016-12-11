@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
         //for Live2d
         Live2D.init();
+        //assets/haru/motionsの中から動きを選択
+        //TODO 動きを変更するにはどうすれば良いのだろうか
         girlView = new SampleGLSurfaceView(this, "haru/motions/haru_m_05.mtn");
         glView = (GLSurfaceView) findViewById(R.id.surfaceView);
         glView.setRenderer(girlView.renderer);
