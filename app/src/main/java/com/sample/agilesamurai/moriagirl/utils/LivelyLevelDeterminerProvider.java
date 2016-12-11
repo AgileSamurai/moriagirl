@@ -27,7 +27,7 @@ public class LivelyLevelDeterminerProvider {
             public LivelyLevel call(List<Integer> volumes) {
                 int size = volumes.size();
                 double average = MathObservable.sumInteger(Observable.from(volumes))
-                    .map(sum -> sum.doubleValue() / size) // Convert sum to double to calculate average in double
+                    .map(sum -> sum.doubleValue() / size) // Convert sum to double so we can calculate average
                     .toBlocking().single();
 
                 if (average > middle * ratio2) {
