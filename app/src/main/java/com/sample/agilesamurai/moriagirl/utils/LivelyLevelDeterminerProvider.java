@@ -1,7 +1,6 @@
 package com.sample.agilesamurai.moriagirl.utils;
 
 import com.sample.agilesamurai.moriagirl.models.LivelyLevelMeterModel;
-import com.sample.agilesamurai.moriagirl.models.LivelyLevelMeterModel.LivelyLevel;
 import com.sample.agilesamurai.moriagirl.models.SoundMeterModel;
 
 import java.util.List;

@@ -4,14 +4,14 @@ package com.sample.agilesamurai.moriagirl.utils;
  * Created by ibara on 2016/12/05.
  */
 
-public class SpeechAction extends Action {
+public class TopicAction extends Action {
     private String text;
     private String speak;
     private Double volume;
     private Double speed;
 
-    public SpeechAction(String emotion, Double minDuration, Double maxDuration, Integer minLivelyLevel, Integer maxLivelyLevel,
-                        String text, String speak, Double volume, Double speed) {
+    public TopicAction(String emotion, Double minDuration, Double maxDuration, Integer minLivelyLevel, Integer maxLivelyLevel,
+                       String text, String speak, Double volume, Double speed) {
         super(emotion, minDuration, maxDuration, minLivelyLevel, maxLivelyLevel);
         this.text   = text;
         this.speak  = speak;

@@ -6,21 +6,15 @@ import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 
+import com.sample.agilesamurai.moriagirl.utils.LivelyLevel;
 import com.sample.agilesamurai.moriagirl.utils.LivelyLevelDeterminer;
+
 
 /**
  * Created by ibara on 2016/12/02.
  */
 
 public class LivelyLevelMeterModel {
-    public enum LivelyLevel {
-        VeryHigh,
-        High,
-        Middle,
-        Low,
-        VeryLow
-    }
-
     private SoundMeterModel sm;
     private LivelyLevelDeterminer determiner;
 

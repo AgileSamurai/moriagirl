@@ -4,8 +4,6 @@
       "emotion":"smile",
       "min_duration": 20,
       "max_duration": 120,
-      "sound_effect": "none",
-      "type": "speech",
       "min_fever": 0,
       "max_fever": 4,
       "params":{
@@ -19,8 +17,6 @@
       "emotion":"smile",
       "min_duration": 20,
       "max_duration": 120,
-      "sound_effect": "none",
-      "type": "speech",
       "min_fever": 0,
       "max_fever": 4,
       "params":{
@@ -37,8 +33,6 @@
       "emotion":"smile",
       "min_duration": 20,
       "max_duration": 120,
-      "sound_effect": "none",
-      "type": "speech",
       "min_fever": 0,
       "max_fever": 4,
       "params":{
@@ -52,8 +46,6 @@
       "emotion":"smile",
       "min_duration": 20,
       "max_duration": 120,
-      "sound_effect": "none",
-      "type": "speech",
       "min_fever": 0,
       "max_fever": 4,
       "params":{
@@ -67,10 +59,6 @@
   "reaction":[
     {
       "emotion":"smile",
-      "min_duration": 20,
-      "max_duration": 120,
-      "sound_effect": "none",
-      "type": "speech",
       "min_fever": 0,
       "max_fever": 1,
       "params":{
@@ -82,10 +70,6 @@
     },
     {
       "emotion": "smile",
-      "min_duration": 20,
-      "max_duration": 120,
-      "sound_effect": "none",
-      "type": "speech",
       "min_fever": 0,
       "max_fever": 4,
       "params": {
@@ -97,10 +81,6 @@
     },
     {
       "emotion": "smile",
-      "min_duration": 20,
-      "max_duration": 120,
-      "sound_effect": "none",
-      "type": "speech",
       "min_fever": 0,
       "max_fever": 2,
       "params": {
@@ -112,10 +92,6 @@
     },
     {
       "emotion": "smile",
-      "min_duration": 20,
-      "max_duration": 120,
-      "sound_effect": "none",
-      "type": "speech",
       "min_fever": 3,
       "max_fever": 4,
       "params": {
@@ -127,10 +103,6 @@
     },
     {
       "emotion": "smile",
-      "min_duration": 20,
-      "max_duration": 120,
-      "sound_effect": "none",
-      "type": "speech",
       "min_fever": 0,
       "max_fever": 1,
       "params": {
