@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Speaking speaking;
     Greeting greeting;
     SelfIntroduction selfIntroduction;
-    TopicPutter topicPutter;
+    ActionController actionController;
     Byebye byebye;
     final int num_of_topic = 3;
     //何人自己紹介したのかカウント
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         TopicPut,
         ByeBye;
     }
+
 
     static State state = State.DisplayInputMessage;
 
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         memberManager = new MemberManager(this);
         name = memberManager.getNames();
         greeting = new Greeting(this);
-        topicPutter = new TopicPutter(this);
+        actionController = new ActionController(this);
         byebye = new Byebye(this);
         greeting.randomGreeting();
 
@@ -142,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void topicPut(){
         int count;
-        count = topicPutter.randomTextPut(name);
+        count = actionController.moveAction(name, Action.ActionType.Personal);
         if(count == num_of_topic || count == -1){
             setState(State.ByeBye);
         }

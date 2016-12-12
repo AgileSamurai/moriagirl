@@ -15,7 +15,6 @@ public class SelfIntroduction{
     Button button;
     List<String> name;
     Activity activity;
-    TopicPutter topicPutter;
     //自己紹介が終わった人数
     int count;
     int size;
@@ -24,7 +23,6 @@ public class SelfIntroduction{
         talking = new Talking(activity);
         button = (Button)activity.findViewById(R.id.syokai);
         name = name1;
-        topicPutter = new TopicPutter(activity);
         this.activity = activity;
         count = selfintroduction_count;
         size = name.size();
