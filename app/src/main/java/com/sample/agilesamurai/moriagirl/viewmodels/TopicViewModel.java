@@ -19,6 +19,10 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
+import android.databinding.BaseObservable;
+import android.databinding.ObservableField;
+
+import com.sample.agilesamurai.moriagirl.utils.Action;
 
 /**
  * Created by ibara1454 on 2016/12/06.
@@ -71,8 +75,15 @@ public class TopicViewModel {
     private void changeAction(Action action) {
         this.action.set(action);
     }
+    private ObservableField<Action> action;
+
+    public TopicViewModel() {
 
     public void unsubscribe() {
         subscriptions.unsubscribe();
+    }
+
+    private ObservableField<Action> getAction() {
+        return this.action;
     }
 }

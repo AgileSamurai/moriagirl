@@ -13,6 +13,9 @@ public class TopicAction extends Action {
     public TopicAction(String emotion, Double minDuration, Double maxDuration, Integer minLivelyLevel, Integer maxLivelyLevel,
                        String text, String speak, Double volume, Double speed) {
         super(emotion, minDuration, maxDuration, minLivelyLevel, maxLivelyLevel);
+    public SpeechAction(String motion, Double minDuration, Double maxDuration, Integer minLivelyLevel, Integer maxLivelyLevel,
+                        String text, String speak, Double volume, Double speed) {
+        super(motion, minDuration, maxDuration, minLivelyLevel, maxLivelyLevel);
         this.text   = text;
         this.speak  = speak;
         this.volume = volume;

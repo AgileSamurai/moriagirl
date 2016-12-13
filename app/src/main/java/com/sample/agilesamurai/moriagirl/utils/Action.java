@@ -5,14 +5,14 @@ package com.sample.agilesamurai.moriagirl.utils;
  */
 
 public abstract class Action {
-    private String emotion;
+    private String motion;
     private Double minDuration;
     private Double maxDuration;
     private Integer minLivelyLevel;
     private Integer maxLivelyLevel;
 
-    public Action(String emotion, Double minDuration, Double maxDuration, Integer minLivelyLevel, Integer maxLivelyLevel) {
-        this.emotion     = emotion;
+    public Action(String motion, Double minDuration, Double maxDuration, Integer minLivelyLevel, Integer maxLivelyLevel) {
+        this.motion      = motion;
         this.minDuration = minDuration;
         this.maxDuration = maxDuration;
         this.minLivelyLevel = minLivelyLevel;
@@ -20,7 +20,7 @@ public abstract class Action {
     }
 
     public String getEmotion() {
-        return this.emotion;
+        return this.motion;
     }
 
     public Double getMinDuration() {
