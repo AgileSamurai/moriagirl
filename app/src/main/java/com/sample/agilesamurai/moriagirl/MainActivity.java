@@ -3,6 +3,8 @@ package com.sample.agilesamurai.moriagirl;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.opengl.GLSurfaceView;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sample.agilesamurai.moriagirl.views.SoundMeterActivity;
 
@@ -28,11 +31,14 @@ public class MainActivity extends AppCompatActivity {
     Button syokaiButton;
     Button byebyeButton;
     MemberManager memberManager;
+    int getGetSetting;
+    ImageView imageView;
     Speaking speaking;
     Greeting greeting;
     SelfIntroduction selfIntroduction;
     TopicPutter topicPutter;
     Byebye byebye;
+    int getSetting;
     final int num_of_topic = 3;
     //何人自己紹介したのかカウント
     int selfintroduction_count = 0;
@@ -64,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         byebye = new Byebye(this);
         greeting.randomGreeting();
 
+
         FileManager.init(getApplicationContext());
 
         //for Live2d
@@ -73,8 +80,26 @@ public class MainActivity extends AppCompatActivity {
         girlView = new SampleGLSurfaceView(this, "haru/motions/haru_m_05.mtn");
         glView = (GLSurfaceView) findViewById(R.id.surfaceView);
         glView.setRenderer(girlView.renderer);
+
+        imageView = (ImageView)findViewById(R.id.kumaImage);
+
+        getGetSetting =1;
+        Intent intent =getIntent();
+        if(intent.getStringExtra("data") != null) {
+            getGetSetting = Integer.parseInt(intent.getStringExtra("data"));
+            check();
+        }
     }
 
+    public void check(){
+        if(getGetSetting == 1){
+            glView.setVisibility(View.VISIBLE);
+            imageView.setVisibility(View.INVISIBLE);
+        }else if(getGetSetting == 2){
+            glView.setVisibility(View.INVISIBLE);
+            imageView.setVisibility(View.VISIBLE);
+        }
+    }
     @Override
     protected void onDestroy(){
         super.onDestroy();
@@ -198,5 +223,6 @@ public class MainActivity extends AppCompatActivity {
     static public void setState(State s){
         state = s;
     }
+
 }
 

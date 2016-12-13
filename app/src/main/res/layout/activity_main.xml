@@ -7,7 +7,8 @@
     tools:context="com.sample.agilesamurai.moriagirl.MainActivity"
     android:orientation="vertical"
     android:onClick="onClick"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@drawable/haikei">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -16,7 +17,10 @@
         <android.opengl.GLSurfaceView
             android:id="@+id/surfaceView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            />
+
+
 
         <TextView
             android:id="@+id/speakText"
@@ -64,6 +68,16 @@
                 android:layout_centerInParent="true"
                 android:visibility="gone"
                 android:onClick="byebyeClick"/>
+
+            <ImageView
+                android:id="@+id/kumaImage"
+                android:layout_width="400dp"
+                android:layout_height="500dp"
+                android:background="@drawable/ribbonkuma"
+                android:layout_marginBottom="76dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:visibility="invisible"/>
 
         </RelativeLayout>
     </FrameLayout>

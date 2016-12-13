@@ -36,10 +36,7 @@ Intent intent = new Intent();
     }
 
     public void config(View view) {
-        AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
-        //alertDlg.setTitle("まだ実装してません");
-        alertDlg.setMessage("まだ実装していません");
-
-        alertDlg.create().show();
+        intent.setClassName("com.sample.agilesamurai.moriagirl","com.sample.agilesamurai.moriagirl.SettingsActivity");
+        startActivity(intent);
     }
 }
