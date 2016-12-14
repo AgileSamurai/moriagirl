@@ -6,20 +6,17 @@ import android.databinding.ObservableField;
 import com.sample.agilesamurai.moriagirl.models.ActionControllerModel;
 import com.sample.agilesamurai.moriagirl.models.LivelyLevelMeterModel;
 import com.sample.agilesamurai.moriagirl.models.TimerModel;
-import com.sample.agilesamurai.moriagirl.utils.Action;
 import com.sample.agilesamurai.moriagirl.utils.LivelyLevel;
 import com.sample.agilesamurai.moriagirl.utils.LivelyLevelDeterminerProvider;
 import com.sample.agilesamurai.moriagirl.utils.ReactionAction;
 import com.sample.agilesamurai.moriagirl.utils.TopicAction;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
-import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 
 import com.sample.agilesamurai.moriagirl.utils.Action;
@@ -40,8 +37,14 @@ public class TopicViewModel {
 
     private CompositeSubscription subscriptions = new CompositeSubscription();
 
-    public TopicViewModel(LivelyLevelMeterModel livelyLevelMeter) {
-        timer.start();
+    public TopicViewModel(LivelyLevelMeterModel livelyLevelMeter,
+                          ActionControllerModel actionController,
+                          TimerModel timer) {
+        this.actionController = actionController;
+        this.timer = timer;
+
+        this.timer.start();
+
         livelyLevelMeter.setLivelyLevelDeterminer(
             LivelyLevelDeterminerProvider.getDefaultStaticAverageDeterminer());
         // Change action
@@ -55,13 +58,19 @@ public class TopicViewModel {
     }
 
     private void changeAction(LivelyLevel level) {
+        // TODO: Need refactoring
         if (level.ordinal() < LivelyLevel.Middle.ordinal()) {
             if (timer.getTimeSecond() < minDuration) {
                 // lively level is low, and duration is lower than min_duration
                 receiveAndApplyAction(actionController.getReaction(level));
             } else {
                 // lively level is low, and duration is larger than min_duration
-                receiveAndApplyAction(actionController.getTopic(level));
+                if (actionController.hasTopic()) {
+                    receiveAndApplyAction(actionController.getTopic(level));
+                }
+                else {
+                    receiveAndApplyAction(actionController.getReaction(level));
+                }
             }
         } else {
             if (timer.getTimeSecond() < maxDuration) {
@@ -69,7 +78,12 @@ public class TopicViewModel {
                 receiveAndApplyAction(actionController.getReaction(level));
             } else {
                 // lively level is high, and duration is larger than min_duration
-                receiveAndApplyAction(actionController.getTopic(level));
+                if (actionController.hasTopic()) {
+                    receiveAndApplyAction(actionController.getTopic(level));
+                }
+                else {
+                    receiveAndApplyAction(actionController.getReaction(level));
+                }
             }
         }
     }
