@@ -2,115 +2,79 @@
   "group_topic":[
     {
       "emotion":"smile",
-      "min_duration": 20,
-      "max_duration": 120,
-      "min_fever": 0,
-      "max_fever": 4,
-      "params":{
+      "min_lively_level": 0,
+      "max_lively_level": 4,
       "text": "みんなの好きな飲み物を教えて",
       "speak": "みんなの好きな飲み物を教えて",
-      "volume":1,
-      "speed": 1
-      }
+      "min_duration": 20,
+      "max_duration": 120
     },
     {
       "emotion":"smile",
+      "min_lively_level": 0,
+      "max_lively_level": 4,
+      "text": "全員の趣味を教えて！",
+      "speak": "全員の趣味を教えて!",
       "min_duration": 20,
-      "max_duration": 120,
-      "min_fever": 0,
-      "max_fever": 4,
-      "params":{
-        "text": "全員の趣味を教えて！",
-        "speak": "全員の趣味を教えて!",
-        "volume":1,
-        "speed": 1
-      }
+      "max_duration": 120
     }
 
   ],
   "personal_topic":[
     {
       "emotion":"smile",
+      "min_lively_level": 0,
+      "max_lively_level": 4,
+      "text": "NAME さん一番好きな言語は何？",
+      "speak": "NAME さん一番好きな言語は何？",
       "min_duration": 20,
-      "max_duration": 120,
-      "min_fever": 0,
-      "max_fever": 4,
-      "params":{
-        "text": "NAME さん一番好きな言語は何？",
-        "speak": "NAME さん一番好きな言語は何？",
-        "volume":1,
-        "speed": 1
-      }
+      "max_duration": 120
     },
     {
-      "emotion":"smile",
+      "emotion": "smile",
+      "min_lively_level": 0,
+      "max_lively_level": 4,
+      "text": "NAME さん得意な言語を教えて！",
+      "speak": "NAME さん得意な言語を教えて!",
       "min_duration": 20,
-      "max_duration": 120,
-      "min_fever": 0,
-      "max_fever": 4,
-      "params":{
-        "text": "NAME さん得意な言語を教えて！",
-        "speak": "NAME さん得意な言語を教えて!",
-        "volume":1,
-        "speed": 1
-      }
+      "max_duration": 120
     }
   ],
   "reaction":[
     {
       "emotion":"smile",
-      "min_fever": 0,
-      "max_fever": 1,
-      "params":{
-        "text": "なんかシーンとしてない？",
-        "speak": "なんかシーンとしてない？",
-        "volume":1,
-        "speed": 1
-      }
+      "min_lively_level": 0,
+      "max_lively_level": 1,
+      "text": "なんかシーンとしてない？",
+      "speak": "なんかシーンとしてない？"
     },
     {
       "emotion": "smile",
-      "min_fever": 0,
-      "max_fever": 4,
-      "params": {
-        "text": "be a driver",
-        "speak": "びーあどらいばー",
-        "volume": 1,
-        "speed": 1
-      }
+      "min_lively_level": 0,
+      "max_lively_level": 4,
+      "text": "be a driver",
+      "speak": "びーあどらいばー"
     },
     {
       "emotion": "smile",
-      "min_fever": 0,
-      "max_fever": 2,
-      "params": {
+      "min_lively_level": 0,
+      "max_lively_level": 2,
         "text": "もっと盛り上がっていこう",
-        "speak": "もっと盛り上がっていこう",
-        "volume": 1,
-        "speed": 1
-      }
+        "speak": "もっと盛り上がっていこう"
     },
     {
       "emotion": "smile",
-      "min_fever": 3,
-      "max_fever": 4,
-      "params": {
-        "text": "いいね、盛り上がってるね!",
-        "speak": "いいね、盛り上がってるね!",
-        "volume": 1,
-        "speed": 1
-      }
+      "min_lively_level": 3,
+      "max_lively_level": 4,
+      "text": "いいね、盛り上がってるね!",
+      "speak": "いいね、盛り上がってるね!"
     },
     {
       "emotion": "smile",
-      "min_fever": 0,
-      "max_fever": 1,
-      "params": {
-        "text": "そろそろお題をかえようか？",
-        "speak": "そろそろお題をかえようか？",
-        "volume": 1,
-        "speed": 1
-      }
+      "min_lively_level": 0,
+      "max_lively_level": 1,
+      "text": "そろそろお題をかえようか？",
+      "speak": "そろそろお題をかえようか？"
     }
   ]
 }

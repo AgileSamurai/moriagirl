@@ -29,7 +29,11 @@ import com.sample.agilesamurai.moriagirl.utils.Action;
  */
 
 public class TopicViewModel {
-    public ObservableField<Action> action;
+    public ObservableField<String>  motion;
+    public ObservableField<String>  text;
+
+    private double minDuration;
+    private double maxDuration;
 
     private TimerModel            timer;
     private ActionControllerModel actionController;
@@ -41,7 +45,9 @@ public class TopicViewModel {
         livelyLevelMeter.setLivelyLevelDeterminer(
             LivelyLevelDeterminerProvider.getDefaultStaticAverageDeterminer());
         // Change action
-        Subscription sub = livelyLevelMeter.getLivelyLevel(20, 10, TimeUnit.SECONDS)
+        int timespan = 20;
+        int timeshift = 10;
+        Subscription sub = livelyLevelMeter.getLivelyLevel(timespan, timeshift, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(this::changeAction);
@@ -49,41 +55,40 @@ public class TopicViewModel {
     }
 
     private void changeAction(LivelyLevel level) {
-        if (level.compareTo(LivelyLevel.Middle) < 0) {
-            if (timer.getTimeSecond() < action.get().getMinDuration()) {
+        if (level.ordinal() < LivelyLevel.Middle.ordinal()) {
+            if (timer.getTimeSecond() < minDuration) {
                 // lively level is low, and duration is lower than min_duration
-                actionController.getReaction(level);
-            }
-            else {
+                receiveAndApplyAction(actionController.getReaction(level));
+            } else {
                 // lively level is low, and duration is larger than min_duration
-                actionController.getTopic(level);
+                receiveAndApplyAction(actionController.getTopic(level));
             }
-        }
-        else {
-            if (timer.getTimeSecond() < action.get().getMaxDuration()) {
+        } else {
+            if (timer.getTimeSecond() < maxDuration) {
                 // lively level is high, and duration is lower than min_duration
-                actionController.getReaction(level);
-            }
-            else {
+                receiveAndApplyAction(actionController.getReaction(level));
+            } else {
                 // lively level is high, and duration is larger than min_duration
-                actionController.getTopic(level);
+                receiveAndApplyAction(actionController.getTopic(level));
             }
-
         }
     }
 
-    private void changeAction(Action action) {
-        this.action.set(action);
+    private void receiveAndApplyAction(TopicAction action) {
+        motion.set(action.getMotion());
+        text.set(action.getText());
+        minDuration = action.getMinDuration();
+        maxDuration = action.getMaxDuration();
+        // Restart timer
+        timer.start();
     }
-    private ObservableField<Action> action;
 
-    public TopicViewModel() {
+    private void receiveAndApplyAction(ReactionAction action) {
+        motion.set(action.getMotion());
+        text.set(action.getText());
+    }
 
     public void unsubscribe() {
         subscriptions.unsubscribe();
-    }
-
-    private ObservableField<Action> getAction() {
-        return this.action;
     }
 }

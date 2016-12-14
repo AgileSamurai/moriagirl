@@ -5,7 +5,14 @@ package com.sample.agilesamurai.moriagirl.utils;
  */
 
 public class ReactionAction extends Action {
-    public ReactionAction(String emotion, Double minDuration, Double maxDuration, Integer minLivelyLevel, Integer maxLivelyLevel) {
-        super(emotion, minDuration, maxDuration, minLivelyLevel, maxLivelyLevel);
+    // TODO: Maybe Reaction need not to have text and speak
+    private String text;
+    private String speak;
+    private Double volume;
+    private Double speed;
+
+    public ReactionAction(String motion, Integer minLivelyLevel, Integer maxLivelyLevel,
+                          String text, String speak) {
+        super(motion, minLivelyLevel, maxLivelyLevel, text, speak);
     }
 }

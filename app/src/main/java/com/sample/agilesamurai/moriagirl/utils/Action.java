@@ -6,29 +6,21 @@ package com.sample.agilesamurai.moriagirl.utils;
 
 public abstract class Action {
     private String motion;
-    private Double minDuration;
-    private Double maxDuration;
     private Integer minLivelyLevel;
     private Integer maxLivelyLevel;
+    private String text;
+    private String speak;
 
-    public Action(String motion, Double minDuration, Double maxDuration, Integer minLivelyLevel, Integer maxLivelyLevel) {
-        this.motion      = motion;
-        this.minDuration = minDuration;
-        this.maxDuration = maxDuration;
+    public Action(String motion, Integer minLivelyLevel, Integer maxLivelyLevel, String text, String speak) {
+        this.motion         = motion;
         this.minLivelyLevel = minLivelyLevel;
         this.maxLivelyLevel = maxLivelyLevel;
+        this.text   = text;
+        this.speak  = speak;
     }
 
-    public String getEmotion() {
+    public String getMotion() {
         return this.motion;
-    }
-
-    public Double getMinDuration() {
-        return this.minDuration;
-    }
-
-    public Double getMaxDuration() {
-        return this.maxDuration;
     }
 
     public Integer getMinLivelyLevel() {
@@ -37,6 +29,14 @@ public abstract class Action {
 
     public Integer getMaxLivelyLevel() {
         return this.maxLivelyLevel;
+    }
+
+    public String getText() {
+        return this.text;
+    }
+
+    public String getSpeak() {
+        return this.speak;
     }
 
     /**

@@ -1,7 +1,7 @@
 package com.sample.agilesamurai.moriagirl.models;
 
-import com.sample.agilesamurai.moriagirl.utils.Action;
 import com.sample.agilesamurai.moriagirl.utils.LivelyLevel;
+import com.sample.agilesamurai.moriagirl.utils.ReactionAction;
 import com.sample.agilesamurai.moriagirl.utils.TopicAction;
 
 import java.util.List;
@@ -11,20 +11,19 @@ import java.util.List;
  */
 
 public class ActionControllerModel {
-    private Action       currentAction;
-    private List<Action> topicStock;
-    private List<Action> reactionStock;
+    private List<TopicAction>    topicStock;
+    private List<ReactionAction> reactionStock;
 
     public ActionControllerModel() {
 
     }
 
 
-    public Action getTopic(LivelyLevel level) {
+    public TopicAction getTopic(LivelyLevel level) {
 
     }
 
-    public Action getReaction(LivelyLevel level) {
+    public ReactionAction getReaction(LivelyLevel level) {
 
     }
 }
