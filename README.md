@@ -6,19 +6,17 @@
 
 これは*面白おかしくかわいいアバターが司会進行をしてくれる*
 
-普段のグループコミュニケーションにはない*自動司会*と*圧倒的面白さ*があります
+普段のグループコミュニケーションにはない*ユーモアのある自動司会*があります
 
 
 ## アジャイルサムライ
 ### メンバー
-- がっくん
-- くさ
-- ともかつ
-- こう
-- じゅんじゅん
-- もっちゃん
+- 伊藤 学歩 (九州工業大学)
+- 草村 優太 (筑波大学)
+- 高橋　知克 (筑波大学)
+- 向 欽 (筑波大学)
+- 王 家潤 (筑波大学)
+- 長岡 源樹 (茨城大学)
 
 ## イメージ
-![moriagirldayo](https://raw.githubusercontent.com/AgileSamurai/moriagirl/images/images/konnichiha.png "moriagirldayo")
-
-![tsukattekureyo](https://raw.githubusercontent.com/AgileSamurai/moriagirl/images/images/tsukattekureyo.png "tsukattekureyo")
+![moriagirldayo](https://raw.githubusercontent.com/AgileSamurai/moriagirl/FixReadme/images/moriagirl.png "moriagirldayo")
