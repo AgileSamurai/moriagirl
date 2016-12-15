@@ -9,6 +9,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observable;
+
 /**
  * Created by ibara on 2016/12/09.
  */
@@ -40,33 +42,33 @@ public class ActionParser {
             topicJson.getString("speak"));
     }
 
-    public List<TopicAction> getGroupTopics() throws JSONException {
+    public Observable<TopicAction> getGroupTopics() throws JSONException {
         List<TopicAction> actions = new ArrayList<>();
         JSONArray groupTopic = root.getJSONArray("group_topic");
         for(int i = 0; i < groupTopic.length(); ++i) {
             TopicAction action = parseTopic(groupTopic.getJSONObject(i));
             actions.add(action);
         }
-        return actions;
+        return Observable.from(actions);
     }
 
-    public List<TopicAction> getPersonalTopics() throws JSONException {
+    public Observable<TopicAction> getPersonalTopics() throws JSONException {
         List<TopicAction> actions = new ArrayList<>();
         JSONArray personalTopic = root.getJSONArray("personal_topic");
         for(int i = 0; i < personalTopic.length(); ++i) {
             TopicAction action = parseTopic(personalTopic.getJSONObject(i));
             actions.add(action);
         }
-        return actions;
+        return Observable.from(actions);
     }
 
-    public List<ReactionAction> getReactions() throws JSONException {
+    public Observable<ReactionAction> getReactions() throws JSONException {
         List<ReactionAction> actions = new ArrayList<>();
         JSONArray reactions = root.getJSONArray("reaction");
         for(int i = 0; i < reactions.length(); ++i) {
             ReactionAction action = parseReaction(reactions.getJSONObject(i));
             actions.add(action);
         }
-        return actions;
+        return Observable.from(actions);
     }
 }

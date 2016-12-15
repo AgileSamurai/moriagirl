@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/lastLevelTextView"
-            android:text="@{viewModel.lastLevel}"
+            android:text=""
             tools:text="LastLevel" />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/lastLevelTextView"
             android:id="@+id/currLevelTextView"
-            android:text="@{viewModel.currLevel}"
+            android:text=""
             tools:text="CurrLevel" />
     </RelativeLayout>
 </layout>

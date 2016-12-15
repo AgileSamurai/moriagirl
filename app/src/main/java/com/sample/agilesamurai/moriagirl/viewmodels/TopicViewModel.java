@@ -17,9 +17,6 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
-import android.databinding.ObservableField;
-
-import com.sample.agilesamurai.moriagirl.utils.Action;
 
 /**
  * Created by ibara1454 on 2016/12/06.
@@ -28,6 +25,7 @@ import com.sample.agilesamurai.moriagirl.utils.Action;
 public class TopicViewModel {
     public ObservableField<String>  motion;
     public ObservableField<String>  text;
+    public ObservableField<Integer> livelyLevel;
 
     private double minDuration;
     private double maxDuration;
@@ -53,7 +51,10 @@ public class TopicViewModel {
         Subscription sub = livelyLevelMeter.getLivelyLevel(timespan, timeshift, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(this::changeAction);
+            .subscribe((level -> {
+                livelyLevel.set(level.ordinal());
+                changeAction(level);
+            }));
         subscriptions.add(sub);
     }
 
@@ -65,7 +66,7 @@ public class TopicViewModel {
                 receiveAndApplyAction(actionController.getReaction(level));
             } else {
                 // lively level is low, and duration is larger than min_duration
-                if (actionController.hasTopic()) {
+                if (actionController.hasTopic(level)) {
                     receiveAndApplyAction(actionController.getTopic(level));
                 }
                 else {
@@ -78,7 +79,7 @@ public class TopicViewModel {
                 receiveAndApplyAction(actionController.getReaction(level));
             } else {
                 // lively level is high, and duration is larger than min_duration
-                if (actionController.hasTopic()) {
+                if (actionController.hasTopic(level)) {
                     receiveAndApplyAction(actionController.getTopic(level));
                 }
                 else {

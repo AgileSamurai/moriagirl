@@ -44,7 +44,7 @@ public abstract class Action {
      * @param level the level we want to check
      * @return boolean value, which represents level is in this interval or not
      */
-    public boolean inLivelyLevel(int level) {
-        return minLivelyLevel < level && level > maxLivelyLevel;
+    public boolean inLivelyLevel(LivelyLevel level) {
+        return minLivelyLevel < level.ordinal() && level.ordinal() > maxLivelyLevel;
     }
 }
