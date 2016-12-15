@@ -51,8 +51,8 @@ public class TopicViewModel {
 
         livelyLevelMeter.setLivelyLevelDeterminer(
             LivelyLevelDeterminerProvider.getDefaultStaticAverageDeterminer());
-        int timespan = 20;
-        int timeshift = 10;
+        int timespan  = 25;
+        int timeshift = 20;
         Subscription sub = livelyLevelMeter.getLivelyLevel(timespan, timeshift, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
