@@ -95,7 +95,7 @@ public class titleActivity extends AppCompatActivity {
         // 終了を検知するリスナー
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer mp) {
-                Log.d("debug","end of audio");
+                mediaPlayer.start();
             }
         });
     }
