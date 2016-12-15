@@ -36,6 +36,9 @@ public class TopicViewModel {
 
     private CompositeSubscription subscriptions = new CompositeSubscription();
 
+    private int TIMESPAN = 15;
+    private int TIMESHIFT = 10;
+
     public TopicViewModel(LivelyLevelMeterModel livelyLevelMeter,
                           ActionControllerModel actionController,
                           TimerModel timer) {
@@ -52,9 +55,8 @@ public class TopicViewModel {
         //
         livelyLevelMeter.setLivelyLevelDeterminer(
             LivelyLevelDeterminerProvider.getDefaultStaticAverageDeterminer());
-        int timespan  = 25;
-        int timeshift = 20;
-        Subscription sub = livelyLevelMeter.getLivelyLevel(timespan, timeshift, TimeUnit.SECONDS)
+
+        Subscription sub = livelyLevelMeter.getLivelyLevel(TIMESPAN, TIMESHIFT, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe((level -> {
