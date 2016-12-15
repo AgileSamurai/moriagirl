@@ -13,10 +13,10 @@ import java.util.logging.Handler;
  * Created by motoki on 2016/08/26.
  * TODO: 声が端末の環境に依存しているので、指定できればした方がいい
  */
-public class Speaking implements TextToSpeech.OnInitListener, Runnable {
+public class Speaking implements TextToSpeech.OnInitListener{
     private TextToSpeech textToSpeech;
     private static final String TAG = "TestTTS";
-    private String text;
+    private String text = "";
     private boolean initialized = false;
 
     private Handler handler ;
@@ -38,6 +38,12 @@ public class Speaking implements TextToSpeech.OnInitListener, Runnable {
         if (TextToSpeech.SUCCESS == status) {
             initialized = true;
             Log.d(TAG, "initialized");
+
+            /*
+             * 初期化される前に話そうとしたとき
+             */
+            if (!text.equals(""))
+                speak();
         } else {
             initialized = false;
             Log.e(TAG, "faile to initialize");
@@ -60,17 +66,31 @@ public class Speaking implements TextToSpeech.OnInitListener, Runnable {
      */
     public void speak(String text) {
         this.text = text;
-        Thread thread = new Thread(this);
-        thread.start();     // 別スレッドで喋らせる
+        setSpeechRate(1.0f);
+        setSpeechPitch(1.0f);
+        if (isInitialized())
+            speak();
     }
 
-    public void speak(){
+    /**
+     * テキストを読み上げる
+     * @param text 読み上げるテキスト
+     * @param speechRate 速さ 普通:1.0
+     * @param pitch ピッチ 普通:1.0
+     */
+    public void speak(String text, float speechRate, float pitch) {
+        setSpeechRate(speechRate);
+        setSpeechPitch(pitch);
+        this.text = text;
+        if (isInitialized())
+            speak();
+    }
+
+    private void speak(){
         if (0 < text.length()) {
             if (textToSpeech.isSpeaking()) {
                 textToSpeech.stop();
             }
-            setSpeechRate(1.0f);
-            setSpeechPitch(1.0f);
 
             // textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null) に
             // KEY_PARAM_UTTERANCE_ID を HasMap で設定
@@ -134,19 +154,5 @@ public class Speaking implements TextToSpeech.OnInitListener, Runnable {
 
     public boolean isInitialized(){
         return initialized;
-    }
-
-    /**
-     * Starts executing the active part of the class' code. This method is
-     * called when a thread is started that has been created with a class which
-     * implements {@code Runnable}.
-     */
-    @Override
-    public void run() {
-        // 初期化されるまで待つ
-        while(!isInitialized()) ;
-
-        // しゃべる
-        speak();
     }
 }
