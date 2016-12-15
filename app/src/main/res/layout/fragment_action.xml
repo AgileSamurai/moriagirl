@@ -15,24 +15,27 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.sample.agilesamurai.moriagirl.views.ActionFragment"
         tools:showIn="@layout/activity_action">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            tools:text="Motion" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/lastLevelTextView"
-            android:text=""
-            tools:text="LastLevel" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lastLevelTextView"
-            android:id="@+id/currLevelTextView"
-            android:text=""
-            tools:text="CurrLevel" />
+            android:id="@+id/MotionTextView"
+            android:text="@{viewModel.motion}"
+            tools:text="Motion" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/MotionTextView"
+            android:id="@+id/TextTextView"
+            android:text="@{viewModel.text}"
+            tools:text="Text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/LivelyLevelTextView"
+            android:text="@{viewModel.livelyLevel}"
+            tools:text="LivelyLevel"
+            android:layout_below="@+id/TextTextView" />
     </RelativeLayout>
 </layout>
