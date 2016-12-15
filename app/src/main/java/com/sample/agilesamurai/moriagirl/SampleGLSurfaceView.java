@@ -17,6 +17,8 @@ import jp.live2d.utils.android.SimpleImage;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.content.res.AssetManager;
+import android.util.Log;
+import android.view.MotionEvent;
 
 
 public class SampleGLSurfaceView extends GLSurfaceView{
