@@ -19,4 +19,4 @@
 - 長岡 源樹 (茨城大学)
 
 ## イメージ
-<img src="https://raw.githubusercontent.com/AgileSamurai/moriagirl/images/images/tsukattekureyo.png" width="500">
+<img src="https://raw.githubusercontent.com/AgileSamurai/moriagirl/FixReadme/images/moriagirl.png" width="500">
