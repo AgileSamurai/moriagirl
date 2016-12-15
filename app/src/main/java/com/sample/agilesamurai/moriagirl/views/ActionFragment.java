@@ -26,7 +26,7 @@ public class ActionFragment extends Fragment {
         FragmentActionBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_action, container, false);
 
         App app = (App)getActivity().getApplication();
-        viewModel = new TopicViewModel(app.getLivelyLevelMeter(), app.getActionController(), app.getTimer());
+        viewModel = new TopicViewModel(app.getLivelyLevelMeter(), app.getActionController(), app.getTimer(), app.getSpeaker());
         binding.setViewModel(viewModel);
 
         View view = binding.getRoot();

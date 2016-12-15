@@ -3,6 +3,7 @@ package com.sample.agilesamurai.moriagirl.viewmodels;
 
 import android.databinding.ObservableField;
 
+import com.sample.agilesamurai.moriagirl.Speaking;
 import com.sample.agilesamurai.moriagirl.models.ActionControllerModel;
 import com.sample.agilesamurai.moriagirl.models.LivelyLevelMeterModel;
 import com.sample.agilesamurai.moriagirl.models.TimerModel;
@@ -31,20 +32,22 @@ public class TopicViewModel {
     private double maxDuration;
 
     private TimerModel            timer;
+    private Speaking              speaker;
     private ActionControllerModel actionController;
     private LivelyLevelMeterModel livelyLevelMeter;
 
     private CompositeSubscription subscriptions = new CompositeSubscription();
 
-    private int TIMESPAN = 15;
+    private int TIMESPAN  = 15;
     private int TIMESHIFT = 10;
 
     public TopicViewModel(LivelyLevelMeterModel livelyLevelMeter,
                           ActionControllerModel actionController,
-                          TimerModel timer) {
+                          TimerModel timer, Speaking speaker) {
         this.livelyLevelMeter = livelyLevelMeter;
         this.actionController = actionController;
         this.timer = timer;
+        this.speaker = speaker;
 
         init();
     }
@@ -102,6 +105,7 @@ public class TopicViewModel {
         text.set(action.getText());
         minDuration = action.getMinDuration();
         maxDuration = action.getMaxDuration();
+        speaker.speak(action.getSpeak());
         // Restart timer
         timer.start();
     }
@@ -109,6 +113,7 @@ public class TopicViewModel {
     private void receiveAndApplyAction(ReactionAction action) {
         motion.set(action.getMotion());
         text.set(action.getText());
+        speaker.speak(action.getSpeak());
     }
 
     public void unsubscribe() {

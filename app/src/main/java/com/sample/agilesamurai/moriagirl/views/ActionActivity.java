@@ -23,7 +23,7 @@ public class ActionActivity extends AppCompatActivity {
         ActivityActionBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_action);
 
         App app = (App)getApplication();
-        viewModel = new TopicViewModel(app.getLivelyLevelMeter(), app.getActionController(), app.getTimer());
+        viewModel = new TopicViewModel(app.getLivelyLevelMeter(), app.getActionController(), app.getTimer(), app.getSpeaker());
         binding.setViewModel(viewModel);
 
         FileManager.init(getApplicationContext());

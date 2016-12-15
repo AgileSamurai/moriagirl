@@ -16,6 +16,7 @@ public class App extends Application {
     private SoundMeterModel smm;
     private ActionControllerModel acm;
     private TimerModel tm;
+    private Speaking sm;
 
     @Override
     public void onCreate() {
@@ -24,6 +25,7 @@ public class App extends Application {
         llm = new LivelyLevelMeterModel(smm);
         acm = new ActionControllerModel(this.getApplicationContext());
         tm  = new TimerModel();
+        sm  = new Speaking(this);
         smm.start();
     }
 
@@ -47,5 +49,9 @@ public class App extends Application {
 
     public TimerModel getTimer() {
         return tm;
+    }
+
+    public Speaking getSpeaker() {
+        return sm;
     }
 }
