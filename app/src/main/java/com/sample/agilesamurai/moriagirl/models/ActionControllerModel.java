@@ -31,9 +31,19 @@ public class ActionControllerModel {
     private List<TopicAction>    topicStock;
     private List<ReactionAction> reactionStock;
 
-    public ActionControllerModel(Context context) throws IOException, JSONException {
+    public ActionControllerModel(Context context) {
         this.context = context;
-        init();
+        try {
+            init();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            throw new ActionFileCannotOpenException("Cannot open Actions.json");
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+            throw new ActionJSONParseException("Action.json parsing error");
+        }
     }
 
     public void init() throws IOException, JSONException {
@@ -88,5 +98,17 @@ public class ActionControllerModel {
         reactionStock.remove(index);
         reactionStock.add(ret);
         return ret;
+    }
+}
+
+class ActionFileCannotOpenException extends RuntimeException {
+    ActionFileCannotOpenException(String error) {
+        super(error);
+    }
+}
+
+class ActionJSONParseException extends RuntimeException {
+    ActionJSONParseException(String error) {
+        super(error);
     }
 }
