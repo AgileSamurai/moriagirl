@@ -6,28 +6,50 @@ package com.sample.agilesamurai.moriagirl.utils;
 
 public abstract class Action {
     private String motion;
-    private Integer minLivelyLevel;
-    private Integer maxLivelyLevel;
+    private LivelyLevel minLivelyLevel;
+    private LivelyLevel maxLivelyLevel;
     private String text;
     private String speak;
 
-    public Action(String motion, Integer minLivelyLevel, Integer maxLivelyLevel, String text, String speak) {
+    public Action(String motion, String minLivelyLevel, String maxLivelyLevel, String text, String speak) {
         this.motion         = motion;
-        this.minLivelyLevel = minLivelyLevel;
-        this.maxLivelyLevel = maxLivelyLevel;
+        this.minLivelyLevel = stringToLivelyLevel(minLivelyLevel);
+        this.maxLivelyLevel = stringToLivelyLevel(maxLivelyLevel);
         this.text   = text;
         this.speak  = speak;
+    }
+
+    static private LivelyLevel stringToLivelyLevel(String levelString) {
+        levelString = levelString.toLowerCase();
+        if (levelString.equals("very_low")) {
+            return LivelyLevel.VeryLow;
+        }
+        else if (levelString.equals("low")) {
+            return LivelyLevel.Low;
+        }
+        else if (levelString.equals("middle")) {
+            return LivelyLevel.Middle;
+        }
+        else if (levelString.equals("high")) {
+            return LivelyLevel.High;
+        }
+        else if (levelString.equals("very_high")) {
+            return LivelyLevel.VeryHigh;
+        }
+        else {
+            throw new WrongLivelyLevelException("Cannot convert " + levelString + "to type LivelyLevel");
+        }
     }
 
     public String getMotion() {
         return this.motion;
     }
 
-    public Integer getMinLivelyLevel() {
+    public LivelyLevel getMinLivelyLevel() {
         return this.minLivelyLevel;
     }
 
-    public Integer getMaxLivelyLevel() {
+    public LivelyLevel getMaxLivelyLevel() {
         return this.maxLivelyLevel;
     }
 
@@ -45,6 +67,12 @@ public abstract class Action {
      * @return boolean value, which represents level is in this interval or not
      */
     public boolean inLivelyLevel(LivelyLevel level) {
-        return minLivelyLevel < level.ordinal() && level.ordinal() > maxLivelyLevel;
+        return minLivelyLevel.ordinal() < level.ordinal() && level.ordinal() > maxLivelyLevel.ordinal();
+    }
+}
+
+class WrongLivelyLevelException extends RuntimeException {
+    WrongLivelyLevelException(String error) {
+        super(error);
     }
 }
