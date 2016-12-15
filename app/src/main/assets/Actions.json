@@ -4,8 +4,8 @@
       "emotion":"smile",
       "min_lively_level": "very_low",
       "max_lively_level": "very_high",
-      "text": "みんなの好きな飲み物を教えて",
-      "speak": "みんなの好きな飲み物を教えて",
+      "text": "皆さんの好きな飲み物を教えてください",
+      "speak": "皆さんの好きな飲み物を教えてください",
       "min_duration": 20,
       "max_duration": 120
     },
@@ -13,8 +13,8 @@
       "emotion":"smile",
       "min_lively_level": "very_low",
       "max_lively_level": "very_high",
-      "text": "全員の趣味を教えて！",
-      "speak": "全員の趣味を教えて!",
+      "text": "皆さんの趣味を教えください！",
+      "speak": "皆さんの趣味を教えください",
       "min_duration": 20,
       "max_duration": 120
     }
@@ -45,36 +45,22 @@
       "emotion":"smile",
       "min_lively_level": "very_low",
       "max_lively_level": "low",
-      "text": "なんかシーンとしてない？",
-      "speak": "なんかシーンとしてない？"
-    },
-    {
-      "emotion": "smile",
-      "min_lively_level": "very_low",
-      "max_lively_level": "very_high",
-      "text": "be a driver",
-      "speak": "びーあどらいばー"
+      "text": "なんかシーンとしてませんか？",
+      "speak": "なんかシーンとしてませんか？"
     },
     {
       "emotion": "smile",
       "min_lively_level": "very_low",
       "max_lively_level": "middle",
-        "text": "もっと盛り上がっていこう",
-        "speak": "もっと盛り上がっていこう"
-    },
-    {
-      "emotion": "smile",
-      "min_lively_level": "high",
-      "max_lively_level": "very_high",
-      "text": "いいね、盛り上がってるね!",
-      "speak": "いいね、盛り上がってるね!"
+        "text": "もっと盛り上がっていきましょう",
+        "speak": "もっと盛り上がっていきましょう"
     },
     {
       "emotion": "smile",
       "min_lively_level": "very_low",
       "max_lively_level": "low",
-      "text": "そろそろお題をかえようか？",
-      "speak": "そろそろお題をかえようか？"
+      "text": "そろそろ新しい話題がほしくなりますね？",
+      "speak": "そろそろ新しい話題がほしくなりますね？"
     }
   ]
 }
