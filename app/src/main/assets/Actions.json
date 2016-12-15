@@ -2,8 +2,8 @@
   "group_topic":[
     {
       "emotion":"smile",
-      "min_lively_level": 0,
-      "max_lively_level": 4,
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
       "text": "みんなの好きな飲み物を教えて",
       "speak": "みんなの好きな飲み物を教えて",
       "min_duration": 20,
@@ -11,8 +11,8 @@
     },
     {
       "emotion":"smile",
-      "min_lively_level": 0,
-      "max_lively_level": 4,
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
       "text": "全員の趣味を教えて！",
       "speak": "全員の趣味を教えて!",
       "min_duration": 20,
@@ -23,8 +23,8 @@
   "personal_topic":[
     {
       "emotion":"smile",
-      "min_lively_level": 0,
-      "max_lively_level": 4,
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
       "text": "NAME さん一番好きな言語は何？",
       "speak": "NAME さん一番好きな言語は何？",
       "min_duration": 20,
@@ -32,8 +32,8 @@
     },
     {
       "emotion": "smile",
-      "min_lively_level": 0,
-      "max_lively_level": 4,
+      "min_lively_level": "very_low",
+      "max_lively_level": "low",
       "text": "NAME さん得意な言語を教えて！",
       "speak": "NAME さん得意な言語を教えて!",
       "min_duration": 20,
@@ -43,36 +43,36 @@
   "reaction":[
     {
       "emotion":"smile",
-      "min_lively_level": 0,
-      "max_lively_level": 1,
+      "min_lively_level": "very_low",
+      "max_lively_level": "low",
       "text": "なんかシーンとしてない？",
       "speak": "なんかシーンとしてない？"
     },
     {
       "emotion": "smile",
-      "min_lively_level": 0,
-      "max_lively_level": 4,
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
       "text": "be a driver",
       "speak": "びーあどらいばー"
     },
     {
       "emotion": "smile",
-      "min_lively_level": 0,
-      "max_lively_level": 2,
+      "min_lively_level": "very_low",
+      "max_lively_level": "middle",
         "text": "もっと盛り上がっていこう",
         "speak": "もっと盛り上がっていこう"
     },
     {
       "emotion": "smile",
-      "min_lively_level": 3,
-      "max_lively_level": 4,
+      "min_lively_level": "high",
+      "max_lively_level": "very_high",
       "text": "いいね、盛り上がってるね!",
       "speak": "いいね、盛り上がってるね!"
     },
     {
       "emotion": "smile",
-      "min_lively_level": 0,
-      "max_lively_level": 1,
+      "min_lively_level": "very_low",
+      "max_lively_level": "low",
       "text": "そろそろお題をかえようか？",
       "speak": "そろそろお題をかえようか？"
     }

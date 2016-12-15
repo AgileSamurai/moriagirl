@@ -62,7 +62,7 @@ public abstract class Action {
     }
 
     /**
-     * Check {@level} is available for this Action.json
+     * Check {@level} is available for this Actions.json
      * @param level the level we want to check
      * @return boolean value, which represents level is in this interval or not
      */

@@ -10,7 +10,7 @@ public class TopicAction extends Action {
     private String text;
     private String speak;
 
-    public TopicAction(String emotion, Integer minLivelyLevel, Integer maxLivelyLevel,
+    public TopicAction(String emotion, String minLivelyLevel, String maxLivelyLevel,
                        Double minDuration, Double maxDuration,
                        String text, String speak) {
         super(emotion, minLivelyLevel, maxLivelyLevel, text, speak);

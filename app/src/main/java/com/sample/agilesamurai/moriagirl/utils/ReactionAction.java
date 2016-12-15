@@ -11,7 +11,7 @@ public class ReactionAction extends Action {
     private Double volume;
     private Double speed;
 
-    public ReactionAction(String motion, Integer minLivelyLevel, Integer maxLivelyLevel,
+    public ReactionAction(String motion, String minLivelyLevel, String maxLivelyLevel,
                           String text, String speak) {
         super(motion, minLivelyLevel, maxLivelyLevel, text, speak);
     }

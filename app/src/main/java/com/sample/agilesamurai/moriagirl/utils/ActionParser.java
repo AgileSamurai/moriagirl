@@ -19,14 +19,14 @@ public class ActionParser {
     private JSONObject root;
 
     public ActionParser(String jsonString) throws JSONException {
-        JSONObject root = new JSONObject(jsonString);
+        root = new JSONObject(jsonString);
     }
 
     private ReactionAction parseReaction(JSONObject reactionJson) throws JSONException {
         return new ReactionAction(
             reactionJson.getString("emotion"),
-            reactionJson.getInt("min_lively_level"),
-            reactionJson.getInt("max_lively_level"),
+            reactionJson.getString("min_lively_level"),
+            reactionJson.getString("max_lively_level"),
             reactionJson.getString("text"),
             reactionJson.getString("speak"));
     }
@@ -34,8 +34,8 @@ public class ActionParser {
     private TopicAction parseTopic(JSONObject topicJson) throws JSONException {
         return new TopicAction(
             topicJson.getString("emotion"),
-            topicJson.getInt("min_lively_level"),
-            topicJson.getInt("max_lively_level"),
+            topicJson.getString("min_lively_level"),
+            topicJson.getString("max_lively_level"),
             topicJson.getDouble("min_duration"),
             topicJson.getDouble("max_duration"),
             topicJson.getString("text"),
