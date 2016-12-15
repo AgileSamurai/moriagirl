@@ -23,9 +23,9 @@ import rx.subscriptions.CompositeSubscription;
  */
 
 public class TopicViewModel {
-    public ObservableField<String>  motion;
-    public ObservableField<String>  text;
-    public ObservableField<Integer> livelyLevel;
+    public ObservableField<String>      motion = new ObservableField<>();
+    public ObservableField<String>        text = new ObservableField<>();
+    public ObservableField<String> livelyLevel = new ObservableField<>();
 
     private double minDuration;
     private double maxDuration;
@@ -47,8 +47,9 @@ public class TopicViewModel {
     }
 
     private void init() {
-        timer.start();
-
+        // Initialize view with LivelyLevel = Low
+        changeAction(LivelyLevel.Low);
+        //
         livelyLevelMeter.setLivelyLevelDeterminer(
             LivelyLevelDeterminerProvider.getDefaultStaticAverageDeterminer());
         int timespan  = 25;
@@ -57,7 +58,7 @@ public class TopicViewModel {
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe((level -> {
-                livelyLevel.set(level.ordinal());
+                livelyLevel.set(level.toString());
                 changeAction(level);
             }));
         subscriptions.add(sub);
@@ -71,7 +72,7 @@ public class TopicViewModel {
                 receiveAndApplyAction(actionController.getReaction(level));
             } else {
                 // lively level is low, and duration is larger than min_duration
-                if (actionController.hasTopic(level)) {
+                if (actionController.hasTopicOfLivelyLevel(level)) {
                     receiveAndApplyAction(actionController.getTopic(level));
                 }
                 else {
@@ -84,7 +85,7 @@ public class TopicViewModel {
                 receiveAndApplyAction(actionController.getReaction(level));
             } else {
                 // lively level is high, and duration is larger than min_duration
-                if (actionController.hasTopic(level)) {
+                if (actionController.hasTopicOfLivelyLevel(level)) {
                     receiveAndApplyAction(actionController.getTopic(level));
                 }
                 else {
