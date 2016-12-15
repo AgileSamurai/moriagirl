@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,11 +31,12 @@ public class ActionControllerModel {
     private List<TopicAction>    topicStock;
     private List<ReactionAction> reactionStock;
 
-    public ActionControllerModel(Context context) {
+    public ActionControllerModel(Context context) throws IOException, JSONException {
         this.context = context;
+        init();
     }
 
-    public void readActions() throws IOException, JSONException {
+    public void init() throws IOException, JSONException {
         AssetManager asset = context.getAssets();
         String jsonString;
         try(InputStream stream = asset.open("Actions.json");
@@ -47,7 +49,9 @@ public class ActionControllerModel {
         // TODO: Use LinkedList
         topicStock    = parser.getGroupTopics().toList().toBlocking().single();
         reactionStock = parser.getReactions().toList().toBlocking().single();
-        // TODO: Shuffle
+
+        Collections.shuffle(topicStock);
+        Collections.shuffle(reactionStock);
     }
 
     public boolean hasTopic() {
