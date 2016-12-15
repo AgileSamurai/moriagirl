@@ -41,4 +41,5 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.0'
     compile files('libs/jackson-annotations-2.8.0.jar')
     compile files('libs/jackson-core-2.8.1.jar')
+    //compile files('libs/live2d_android.jar')
 }
