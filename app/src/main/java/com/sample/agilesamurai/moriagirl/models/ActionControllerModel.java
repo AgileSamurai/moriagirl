@@ -59,7 +59,6 @@ public class ActionControllerModel {
         // TODO: Use LinkedList
         topicStock    = parser.getGroupTopics().toList().toBlocking().single();
         reactionStock = parser.getReactions().toList().toBlocking().single();
-
         Collections.shuffle(topicStock);
         Collections.shuffle(reactionStock);
     }
@@ -68,7 +67,7 @@ public class ActionControllerModel {
         return topicStock.size() != 0;
     }
 
-    public boolean hasTopic(LivelyLevel level) {
+    public boolean hasTopicOfLivelyLevel(LivelyLevel level) {
         return Observable.from(topicStock)
             .filter(topicAction -> topicAction.inLivelyLevel(level))
             .count()
