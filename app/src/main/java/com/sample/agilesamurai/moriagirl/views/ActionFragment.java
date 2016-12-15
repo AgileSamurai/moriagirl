@@ -1,6 +1,7 @@
 package com.sample.agilesamurai.moriagirl.views;
 
 import android.databinding.DataBindingUtil;
+import android.opengl.GLSurfaceView;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.sample.agilesamurai.moriagirl.App;
 import com.sample.agilesamurai.moriagirl.R;
+import com.sample.agilesamurai.moriagirl.SampleGLSurfaceView;
 import com.sample.agilesamurai.moriagirl.databinding.FragmentActionBinding;
 import com.sample.agilesamurai.moriagirl.viewmodels.TopicViewModel;
 
@@ -27,7 +29,12 @@ public class ActionFragment extends Fragment {
         viewModel = new TopicViewModel(app.getLivelyLevelMeter(), app.getActionController(), app.getTimer());
         binding.setViewModel(viewModel);
 
-        return binding.getRoot();
+        View view = binding.getRoot();
+        SampleGLSurfaceView girlView = new SampleGLSurfaceView(app, "haru/motions/haru_m_05.mtn");
+        GLSurfaceView glView = (GLSurfaceView) view.findViewById(R.id.surfaceView);
+        glView.setRenderer(girlView.renderer);
+
+        return view;
     }
 
     @Override

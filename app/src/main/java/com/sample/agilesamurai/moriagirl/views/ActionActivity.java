@@ -1,31 +1,42 @@
 package com.sample.agilesamurai.moriagirl.views;
 
+import android.databinding.DataBindingUtil;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
+import com.sample.agilesamurai.moriagirl.App;
 import com.sample.agilesamurai.moriagirl.R;
+import com.sample.agilesamurai.moriagirl.SampleGLSurfaceView;
+import com.sample.agilesamurai.moriagirl.databinding.ActivityActionBinding;
+import com.sample.agilesamurai.moriagirl.viewmodels.TopicViewModel;
+
+import jp.live2d.Live2D;
+import jp.live2d.utils.android.FileManager;
 
 public class ActionActivity extends AppCompatActivity {
+    private TopicViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_action);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        ActivityActionBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_action);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        App app = (App)getApplication();
+        viewModel = new TopicViewModel(app.getLivelyLevelMeter(), app.getActionController(), app.getTimer());
+        binding.setViewModel(viewModel);
+
+        FileManager.init(getApplicationContext());
+        Live2D.init();
+
+        SampleGLSurfaceView girlView = new SampleGLSurfaceView(this, "haru/motions/haru_m_05.mtn");
+        GLSurfaceView glView = (GLSurfaceView) findViewById(R.id.surfaceView);
+        glView.setRenderer(girlView.renderer);
+    }
+
+    @Override
+    public void onDestroy() {
+        viewModel.unsubscribe();
     }
 
 }
