@@ -32,20 +32,25 @@ public class TopicViewModel {
 
     private TimerModel            timer;
     private ActionControllerModel actionController;
+    private LivelyLevelMeterModel livelyLevelMeter;
 
     private CompositeSubscription subscriptions = new CompositeSubscription();
 
     public TopicViewModel(LivelyLevelMeterModel livelyLevelMeter,
                           ActionControllerModel actionController,
                           TimerModel timer) {
+        this.livelyLevelMeter = livelyLevelMeter;
         this.actionController = actionController;
         this.timer = timer;
 
-        this.timer.start();
+        init();
+    }
+
+    private void init() {
+        timer.start();
 
         livelyLevelMeter.setLivelyLevelDeterminer(
             LivelyLevelDeterminerProvider.getDefaultStaticAverageDeterminer());
-        // Change action
         int timespan = 20;
         int timeshift = 10;
         Subscription sub = livelyLevelMeter.getLivelyLevel(timespan, timeshift, TimeUnit.SECONDS)
