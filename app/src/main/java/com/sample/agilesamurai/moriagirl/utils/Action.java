@@ -67,7 +67,7 @@ public abstract class Action {
      * @return boolean value, which represents level is in this interval or not
      */
     public boolean inLivelyLevel(LivelyLevel level) {
-        return minLivelyLevel.ordinal() < level.ordinal() && level.ordinal() > maxLivelyLevel.ordinal();
+        return minLivelyLevel.ordinal() <= level.ordinal() && level.ordinal() <= maxLivelyLevel.ordinal();
     }
 }
 

@@ -85,7 +85,7 @@ public class ActionControllerModel {
             }
         }
         ReactionAction ret = reactionStock.get(index);
-        topicStock.remove(index);
+        reactionStock.remove(index);
         reactionStock.add(ret);
         return ret;
     }
