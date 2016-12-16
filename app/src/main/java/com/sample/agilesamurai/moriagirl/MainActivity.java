@@ -2,6 +2,7 @@ package com.sample.agilesamurai.moriagirl;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.opengl.GLSurfaceView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,12 +12,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sample.agilesamurai.moriagirl.views.SoundMeterActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import jp.live2d.Live2D;
+import jp.live2d.utils.android.FileManager;
 
 public class MainActivity extends AppCompatActivity {
     static List<String> name = new ArrayList();
@@ -26,11 +31,12 @@ public class MainActivity extends AppCompatActivity {
     Speaking speaking;
     Greeting greeting;
     SelfIntroduction selfIntroduction;
-    ActionController actionController;
     Byebye byebye;
     final int num_of_topic = 3;
     //何人自己紹介したのかカウント
     int selfintroduction_count = 0;
+    GLSurfaceView glView;
+    SampleGLSurfaceView girlView;
 
     public enum State {
         DisplayInputMessage,
@@ -48,25 +54,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        syokaiButton = (Button)findViewById(R.id.syokai);
-        byebyeButton = (Button)findViewById(R.id.byebye);
+        syokaiButton = (Button) findViewById(R.id.syokai);
+        byebyeButton = (Button) findViewById(R.id.byebye);
         speaking = new Speaking(this);
         memberManager = new MemberManager(this);
         name = memberManager.getNames();
         greeting = new Greeting(this);
-        actionController = new ActionController(this);
         byebye = new Byebye(this);
         greeting.randomGreeting();
 
-        // Open SoundMeter Activity
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SoundMeterActivity.class);
-                startActivity(intent);
-            }
-        });
+        FileManager.init(getApplicationContext());
+
+        //for Live2d
+        Live2D.init();
+        //assets/haru/motionsの中から動きを選択
+        //TODO 動きを変更するにはどうすれば良いのだろうか
+        girlView = new SampleGLSurfaceView(this, "haru/motions/haru_m_05.mtn");
+        glView = (GLSurfaceView) findViewById(R.id.surfaceView);
+        glView.setRenderer(girlView.renderer);
     }
 
     @Override
@@ -84,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // メニューの要素を追加して取得
-        MenuItem actionItem = menu.add("Action Button Return title");
+        MenuItem actionItem = menu.add("Action.json Button Return title");
 
         // アイコンを設定
         actionItem.setIcon(android.R.drawable.ic_menu_revert);
@@ -142,11 +147,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void topicPut(){
-        int count;
-        count = actionController.moveAction(name, Action.ActionType.Personal);
-        if(count == num_of_topic || count == -1){
-            setState(State.ByeBye);
-        }
     }
 
     public void byebye() {

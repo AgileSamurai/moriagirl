@@ -9,4 +9,6 @@
     <string name="inputName">画面をタップして名前を入力！～</string>
     <string name="kuma">球磨だクマ！</string>
     <string name="end">終わり</string>
+    <string name="title_activity_action">ActionActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>
