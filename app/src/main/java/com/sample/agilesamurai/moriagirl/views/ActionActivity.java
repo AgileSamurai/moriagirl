@@ -36,6 +36,7 @@ public class ActionActivity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
+        super.onDestroy();
         viewModel.unsubscribe();
     }
 
