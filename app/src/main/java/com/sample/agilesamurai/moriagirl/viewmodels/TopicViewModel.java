@@ -54,8 +54,9 @@ public class TopicViewModel {
 
     private void init() {
         // Initialize view with LivelyLevel = Low
+        livelyLevel.set(LivelyLevel.Low.toString());
         changeAction(LivelyLevel.Low);
-        //
+
         livelyLevelMeter.setLivelyLevelDeterminer(
             LivelyLevelDeterminerProvider.getDefaultStaticAverageDeterminer());
 

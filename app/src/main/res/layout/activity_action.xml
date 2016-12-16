@@ -32,10 +32,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/LivelyLevelTextView"
-            android:text="@{viewModel.livelyLevel}"
-            android:layout_below="@+id/TextTextView"
-            android:visibility="invisible"
-            tools:text="LivelyLevel" />
+            android:text="@{@string/lively_level + viewModel.livelyLevel}"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/lively_level"
+            android:textSize="26sp"
+            tools:text="LivelyLevel = LEVEL" />
 
     </RelativeLayout>
 </layout>
