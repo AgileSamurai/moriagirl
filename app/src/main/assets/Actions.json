@@ -4,6 +4,96 @@
       "emotion":"smile",
       "min_lively_level": "very_low",
       "max_lively_level": "very_high",
+      "text": "皆さんが一番好きな言語はなんですか？",
+      "speak": "皆さんが一番好きな言語はなんですか？",
+      "min_duration": 20,
+      "max_duration": 120
+    },
+    {
+      "emotion":"smile",
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
+      "text": "皆さんのおすすめの食べ物やさんを教えてください",
+      "speak": "皆さんのおすすめの食べ物やさんを教えてください",
+      "min_duration": 20,
+      "max_duration": 120
+    },
+    {
+      "emotion":"smile",
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
+      "text": "皆さんの自分の長所だと思うところを教えてください",
+      "speak": "皆さんの自分の長所だと思うところを教えてください",
+      "min_duration": 20,
+      "max_duration": 120
+    },
+    {
+      "emotion":"smile",
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
+      "text": "皆さんの自分の短所だと思うところを教えてください",
+      "speak": "皆さんの自分の短所だと思うところを教えてください",
+      "min_duration": 20,
+      "max_duration": 120
+    },
+    {
+      "emotion":"smile",
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
+      "text": "皆さんはきのこの山派ですか？たけのこの里派ですか？",
+      "speak": "皆さんはきのこの山派ですか？たけのこの里派ですか？",
+      "min_duration": 20,
+      "max_duration": 120
+    },
+    {
+      "emotion":"smile",
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
+      "text": "皆さんはテキストエディタは何を使ってますか？",
+      "speak": "皆さんはテキストエディタは何を使ってますか？",
+      "min_duration": 20,
+      "max_duration": 120
+    },
+    {
+      "emotion":"smile",
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
+      "text": "皆さんのアプリ開発経験を教えてください",
+      "speak": "皆さんのアプリ開発経験を教えてください",
+      "min_duration": 20,
+      "max_duration": 120
+    },
+    {
+      "emotion":"smile",
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
+      "text": "一人ずつ順番に一発芸をしてください",
+      "speak": "一人ずつ順番に一発芸をしてください",
+      "min_duration": 20,
+      "max_duration": 120
+    },
+    {
+      "emotion":"smile",
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
+      "text": "皆さんの出身地を面白く紹介してください",
+      "speak": "皆さんの出身地を面白く紹介してください",
+      "min_duration": 20,
+      "max_duration": 120
+    },
+    {
+      "emotion":"smile",
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
+      "text": "じゃんけんをして、負けた人はものまねをしてください",
+      "speak": "じゃんけんをして、負けた人はものまねをしてください",
+      "min_duration": 20,
+      "max_duration": 120
+    },
+    {
+      "emotion":"smile",
+      "min_lively_level": "very_low",
+      "max_lively_level": "very_high",
       "text": "皆さんの好きな飲み物を教えてください",
       "speak": "皆さんの好きな飲み物を教えてください",
       "min_duration": 20,
