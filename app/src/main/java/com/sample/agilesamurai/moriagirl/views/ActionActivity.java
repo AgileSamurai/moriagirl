@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
 
 import com.sample.agilesamurai.moriagirl.App;
 import com.sample.agilesamurai.moriagirl.R;
@@ -21,6 +22,7 @@ public class ActionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityActionBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_action);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         App app = (App)getApplication();
         viewModel = new TopicViewModel(app.getLivelyLevelMeter(), app.getActionController(), app.getTimer(), app.getSpeaker());
