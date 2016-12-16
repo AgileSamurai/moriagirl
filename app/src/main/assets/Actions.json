@@ -49,11 +49,11 @@
       "speak": "なんかシーンとしてませんか？"
     },
     {
-      "emotion": "smile",
+      "emotion":"smile",
       "min_lively_level": "very_low",
-      "max_lively_level": "middle",
-        "text": "もっと盛り上がっていきましょう",
-        "speak": "もっと盛り上がっていきましょう"
+      "max_lively_level": "low",
+      "text": "うん〜",
+      "speak": "うん"
     },
     {
       "emotion": "smile",
@@ -61,6 +61,20 @@
       "max_lively_level": "low",
       "text": "そろそろ新しい話題がほしくなりますね？",
       "speak": "そろそろ新しい話題がほしくなりますね？"
+    },
+    {
+      "emotion": "smile",
+      "min_lively_level": "middle",
+      "max_lively_level": "very_high",
+      "text": "いぇ〜いぇ〜",
+      "speak": "いぇー"
+    },
+    {
+      "emotion": "smile",
+      "min_lively_level": "high",
+      "max_lively_level": "very_high",
+      "text": "皆さん仲いいですね",
+      "speak": "皆さん仲いいですね"
     }
   ]
 }
