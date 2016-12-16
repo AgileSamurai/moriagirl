@@ -37,6 +37,7 @@
             android:layout_alignParentEnd="true"
             android:textColor="@color/lively_level"
             android:textSize="26sp"
+            android:visibility="invisible"
             tools:text="LivelyLevel = LEVEL" />
 
     </RelativeLayout>
